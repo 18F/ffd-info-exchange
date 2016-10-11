@@ -1,8 +1,26 @@
 # ffd-info-exchange
 
-## Team Practices
+## Team practices
 
 See our [team practices document](/docs/team-practices.md) for additional information.
+
+## Local installation
+
+This app is designed to run on Python 3.4+. `pyvenv` can manage the dependencies installed with `pip`. With that, you can prepare your development environment by running:
+
+```
+git clone https://github.com/18F/ffd-info-exchange.git
+cd ffd-info-exchange
+pyvenv ffd-env
+source ffd-env/bin/activate
+pip install -r requirements.txt
+createdb ffd-info-exchange
+cd ffd_info_exchange
+python manage.py migrate
+python manage.py runserver
+```
+
+The app should now be running at http://localhost:8000.
 
 ## Contributing
 
