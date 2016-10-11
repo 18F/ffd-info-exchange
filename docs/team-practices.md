@@ -113,5 +113,5 @@ Given our distributed model, slack will be used for async comms. The following a
 
 # Additional principles
 
-## Coding & Branchin Standards
+## Coding & Branching Standards
 TBD (GitFlow?)
