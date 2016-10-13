@@ -6,7 +6,20 @@ See our [team practices document](/docs/team-practices.md) for additional inform
 
 ## Local installation
 
-This app is designed to run on Python 3.4+. `pyvenv` can manage the dependencies installed with `pip`. With that, you can prepare your development environment by running:
+This app is designed to run on Python 3.4+. You'll also need to have [PostgreSQL](https://www.postgresql.org) running. If you don't already have PostgreSQL installed:
+
+```
+brew update
+brew install postgres
+```
+
+Follow the post-installation instructions for postgres. If you didn't see them, run `brew info postgres`. Lastly, make a default `postgres` user:
+
+```
+createuser -sdl postgres
+```
+
+`pyvenv` can manage the dependencies installed with `pip`. With that, you can prepare your development environment by running:
 
 ```
 git clone https://github.com/18F/ffd-info-exchange.git
