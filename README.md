@@ -1,8 +1,43 @@
 # ffd-info-exchange
 
-## Team Practices
+## Team practices
 
 See our [team practices document](/docs/team-practices.md) for additional information.
+
+## Local installation
+
+This app is designed to run on Python 3.4+. You'll also need to have [PostgreSQL](https://www.postgresql.org) running.
+
+If you don't already have PostgreSQL installed and are running MacOS/OS X you can install it using [Homebrew](http://brew.sh/):
+
+```
+brew update
+brew install postgres
+```
+
+Follow the post-installation instructions for postgres. If you didn't see them, run `brew info postgres`. Lastly, make a default `postgres` user:
+
+```
+createuser -sdl postgres
+```
+
+If you're running an operating system other than MacOS, follow installation instructions on the [PostgreSQL website](https://www.postgresql.org).
+
+`pyvenv` can manage the dependencies installed with `pip`. With that, you can prepare your development environment by running:
+
+```
+git clone https://github.com/18F/ffd-info-exchange.git
+cd ffd-info-exchange
+pyvenv ffd-env
+source ffd-env/bin/activate
+pip install -r requirements.txt
+createdb ffd-info-exchange
+cd ffd_info_exchange
+python manage.py migrate
+python manage.py runserver
+```
+
+The app should now be running at http://localhost:8000.
 
 ## Contributing
 
