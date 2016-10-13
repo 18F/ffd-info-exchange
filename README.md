@@ -6,7 +6,7 @@ See our [team practices document](/docs/team-practices.md) for additional inform
 
 ## Local installation
 
-This app is designed to run on Python 3.4+. You'll also need to have [PostgreSQL](https://www.postgresql.org) running. If you don't already have PostgreSQL installed:
+This app is designed to run on Python 3.4+. You'll also need to have [PostgreSQL](https://www.postgresql.org) running. If you don't already have PostgreSQL installed and are running MacOS/OS X you can install it using [Homebrew](http://brew.sh/):
 
 ```
 brew update
