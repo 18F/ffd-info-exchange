@@ -1,5 +1,9 @@
 # ffd-info-exchange
 
+## Team Practices
+
+See our [team practices document](/docs/team-practices.md) for additional information.
+
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for additional information.
