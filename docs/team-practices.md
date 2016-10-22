@@ -111,6 +111,9 @@ At the end of the sprint, we will demo all stories in the `Done` column.  As a t
 Given our distributed model, slack will be used for async comms. The following are channels of note:
 - #ffd-info-sharing
 
+## GitHub Pull Requests
+The `master` branch is a protected branch.  To merge any changes to this branch, the requester must create a Pull Request and have it reviewed by a team member.  Upon receiving reviewer approval, the requester is free to merge.
+
 # Additional principles
 
 ## Coding & Branching Standards
