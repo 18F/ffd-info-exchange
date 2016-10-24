@@ -48,7 +48,7 @@ To manually run the test suite:
 3. Run the following command:
 
 ```
-python fafsa/functional_tests.py
+python functional_tests.py
 ```
 
 ## Contributing
