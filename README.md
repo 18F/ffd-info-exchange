@@ -39,6 +39,18 @@ python manage.py runserver
 
 The app should now be running at http://localhost:8000.
 
+## Testing
+
+To manually run the test suite:
+
+1. Open a new tab or window in your command line terminal.
+2. Navigate to the `ffd_info_exchange` directory specified above.
+3. Run the following command:
+
+```
+python fafsa/functional_tests.py
+```
+
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for additional information.
