@@ -1,16 +1,14 @@
 ---
-name: Federal Front Door - Information Exchange Alpha
+name: Federal Front Door — Information Exchange Alpha
 full_name: ffd-info-exchange
 type: app
 owner_type: project
 status: active
 stage: alpha
 testable: true
-description: >
-  @kategarklavs to populate
+description: The Federal Front Door: Information Exchange project is a twelve-week discovery engagement (ending 12/23/16) meant to uncover possibilities for information sharing between federal agencies as a way of providing better public access to government services.
 impact: >
-  @kategarklavs to populate
-stack:
+ Our goal is to learn more about end users' and agencies' attitudes toward federal information sharing, ultimately identifying opportunity areas for further research. 
 - Django
 licenses:
   .about.yml:
