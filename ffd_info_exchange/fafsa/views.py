@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def fafsa_form(request):
-    return render(request, '<html><title>FAFSA</title></html>')
+    return render(request, 'fafsa_form.html')
