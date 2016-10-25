@@ -1,7 +1,9 @@
 ---
 name: Federal Front Door — Information Exchange Alpha
 full_name: ffd-info-exchange
-type: app
+type: 
+- app
+- docs
 owner_type: project
 status: active
 stage: alpha
