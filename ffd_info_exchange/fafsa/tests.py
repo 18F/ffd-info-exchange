@@ -1,7 +1,10 @@
+from django.core.urlresolvers import resolve
 from django.test import TestCase
+from fafsa.views import fafsa_form
 
 
-class SmokeTest(TestCase):
+class FAFSAFormTest(TestCase):
 
-    def test_expected_fail(self):
-        self.assertEqual(1 + 1, 5)
+    def test_url_resolves_to_fafsa_form_view(self):
+        found = resolve('/')
+        self.assertEqual(found.func, fafsa_form)
