@@ -28,7 +28,7 @@ class FafsaTest(unittest.TestCase):
         # The user opens a web browser and sees the FAFSA form.
         # @todo: Reimplement with live_server_url.
         self.browser.get('http://127.0.0.1:8000')
-        assert 'FAFSA' in self.browser.title
+        assert 'FAFSA - Federal Student Aid' in self.browser.title
 
         # They see some FAFSA branding.
 
