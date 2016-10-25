@@ -113,6 +113,7 @@ Given our distributed model, slack will be used for async comms. The following a
 
 ## GitHub Pull Requests
 The `master` branch is a protected branch.  To merge any changes to this branch, the requester must create a Pull Request and have it reviewed by a team member.  Upon receiving reviewer approval, the requester is free to merge.
+- The requester may leverage the `plz-review` label to mark PRs that are ready to be reviewed.
 
 # Additional principles
 
