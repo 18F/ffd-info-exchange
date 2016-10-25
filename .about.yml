@@ -13,6 +13,7 @@ impact: >
  Our goal is to learn more about end users' and agencies' attitudes toward federal information sharing, ultimately identifying opportunity areas for further research. 
 stack:
 - Django
+- Postgres
 licenses:
   .about.yml:
     name: CC0
