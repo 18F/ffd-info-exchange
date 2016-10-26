@@ -1,0 +1,13 @@
+language: python
+sudo: false
+python: 
+- '3.4'
+install:
+- pip install -r requirements.txt
+services:
+- postgresql
+before_script:
+- psql -c 'create database "ffd-info-exchange";' -U postgres
+script:
+- cd ffd_info_exchange
+- python manage.py migrate
