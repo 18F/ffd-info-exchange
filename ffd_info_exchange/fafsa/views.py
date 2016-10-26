@@ -5,7 +5,8 @@ from .forms import FAFSAApplicationForm
 
 
 def fafsa_form(request):
-    form = FAFSAApplicationForm(request.POST or None)
+#    form = FAFSAApplicationForm(request.POST or None)
+    form = FAFSAApplicationForm
 #    if form.is_valid():
 #        application = form.save()
 #        return redirect(confirmation_screen)

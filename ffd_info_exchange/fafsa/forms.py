@@ -1,8 +1,11 @@
-from .models import Application
+#from localflavor.us import forms as localflavor
+from django import forms
+#from .models import Application
+#@todo: Reinstate when actually wiring this up.
 import floppyforms.__future__ as forms
 
 
-class FAFSAApplicationForm(forms.ModelForm):
-    class Meta:
-        model = Application
-        fields = ['name_first', 'name_last', 'date_of_birth']
+class FAFSAApplicationForm(forms.Form):
+    first_name = forms.CharField(label="Your first name")
+    last_name = forms.CharField(label="Your last name")
+    date_of_birth = forms.DateTimeField(label='Your date of birth (MM/DD/YYYY)')
