@@ -2,3 +2,4 @@ Django>=1.10.2
 psycopg2
 selenium
 whitenoise
+django-floppyforms
