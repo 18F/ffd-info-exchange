@@ -1,0 +1,7 @@
+---
+memory: 512M
+instances: 1
+applications:
+- name: ffd-info-exchange-fafsa
+  path: .
+  timeout: 180
