@@ -44,9 +44,9 @@ On days without planning or demos, the team will have a standup. This meeting wi
 
 Each team member will provide an update on what they completed yesterday and what they're planning for today, and will highlight any blockers.
 
-The standup will be from 4:30 - 4:45 EST.
+The [standup](https://plus.google.com/hangouts/_/gsa.gov/ffd-std-up?hceid=bWljaGFlbC5hbnRpcG9ydGFAZ3NhLmdvdg.mk72f0850gioa6fdptq21firk8&authuser=0) will be from 4:15 - 4:30 EST.
 
-If a team member is unable to attend the meeting, they should post a slackup in the #ffd-info-sharing channel with their update for the day.
+If a team member is unable to attend the meeting, they should post a slackup in the #ffd-info-exchange channel with their update for the day.
 
 ## Sprint demos
 Sprint demos are an opportunity for the team to showcase the hard work they've completed during the sprint.
@@ -55,7 +55,7 @@ Sprint demos will be open to folks outside the team, particularly the potential 
 
 ## Retrospectives
 Retros are a forum private to the team where we will review what went well and what didn't.
-Retros will be 30 minutes in length and private to our team. On request, we can also include product owners and product stewards who aren't normally in attendance.
+Retros will be 30 minutes in length and private to our team. On request, we can also exclude product owners and product stewards who are normally in attendance.
 Here's the time breakdown for each retro:
 
 1 minute : Vote from 1-5 on how the sprint went (1 --> Poor, 5--> Excellent)
