@@ -122,9 +122,9 @@ USE_TZ = True
 # Static files: use vendored in USWDS, and Whitenoise for serving.
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# @todo: Revisit this (and asset handling) during cloud.gov deployment.
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, "../third-party/uswds-0.13.1")
-#]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    '../third-party/uswds-0.13.1',
+]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
