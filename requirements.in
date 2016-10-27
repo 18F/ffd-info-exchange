@@ -2,4 +2,6 @@ Django>=1.10.2
 psycopg2
 selenium
 whitenoise
+dj-database-url==0.3.0 #grabs environment variables and dumps them into a Django settings file
+waitress==0.8.9 #a pure python WSGI server that is a replacement for gunicorn
 django-floppyforms
