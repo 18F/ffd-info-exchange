@@ -108,15 +108,15 @@ As stories are completed, they're placed in the `Done` column. When a team membe
 At the end of the sprint, we will demo all stories in the `Done` column.  As a team, we will assess whether we hit the goals of that story; if so, we will `Close` the issue.  If not, then the story will be put back at the top of the `Backlog` to see if we continue the work in the next sprint or cut our losses.
 
 ## Slack
-Given our distributed model, slack will be used for async comms. The following are channels of note:
+Given our distributed model, we'll use Slack for asynchronous comms. The following are channels of note:
 - #ffd-info-sharing
 
 ## GitHub Pull Requests
-The `master` branch is a protected branch.  To merge any changes to this branch, the requester must create a Pull Request and have it reviewed by a team member.  Upon receiving reviewer approval, the requester is free to merge.
+The `master` branch is a protected branch.  To merge any changes to this branch, the requester must create a Pull Request and have a team member review it.  Upon receiving reviewer approval, the requester is free to merge.
 - The requester may leverage the `plz-review` label to mark PRs that are ready to be reviewed.
 - PRs that are not yet ready to be merged can also include a `WIP` in the headline.
 
 # Additional principles
 
-## Coding & Branching Standards
+## Coding & branching standards
 TBD (GitFlow?)
