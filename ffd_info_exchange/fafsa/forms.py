@@ -1,5 +1,6 @@
-#from localflavor.us import forms as localflavor
-from django import forms
+from localflavor.us import forms as localflavor
+from localflavor.us.forms import USSocialSecurityNumberField, USStateField
+#from django import forms
 #from .models import Application
 #@todo: Reinstate when actually wiring this up.
 import floppyforms.__future__ as forms
