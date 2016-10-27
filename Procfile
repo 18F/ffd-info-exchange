@@ -1,1 +1,1 @@
-web: python manage.py runserver
+web: waitress-serve --port=$PORT ffd-info-exchange-fafsa.wsgi:application
