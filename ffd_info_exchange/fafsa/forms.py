@@ -7,6 +7,7 @@ import floppyforms.__future__ as forms
 
 
 class FAFSAApplicationForm(forms.Form):
-    first_name = forms.CharField(label="Your first name")
-    last_name = forms.CharField(label="Your last name")
-    date_of_birth = forms.DateTimeField(label='Your date of birth (MM/DD/YYYY)')
+    first_name = forms.CharField(label="First name")
+    last_name = forms.CharField(label="Last name")
+    ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.")
+    date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)')
