@@ -6,6 +6,8 @@
   <h1>Welcome to the FAFSA!</h1>
   <p>To complete this form and be considered for federal financial aid, you’ll need to answer a series of questions about yourself, your parents, and your financial history.</p>
 
+  <p>To begin, please share the following information:</p>
+
   <form method="POST" action="." class="usa-form-large">
     {% csrf_token %}
     {% for field in form %}
