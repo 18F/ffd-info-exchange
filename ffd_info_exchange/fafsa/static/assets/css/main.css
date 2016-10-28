@@ -1,0 +1,19 @@
+/* USWDS Overrides */
+
+.usa-banner-inner {
+  padding: 0;
+}
+
+.usa-header-extended .usa-navbar {
+  padding: 0;
+}
+
+/* Other CSS */
+
+.disclaimer-right {
+  float: right;
+}
+
+.main-content {
+  padding-top: 4rem;
+}
