@@ -5,3 +5,4 @@ whitenoise
 django-localflavor
 django-localflavor-us
 django-floppyforms
+django-formtools
