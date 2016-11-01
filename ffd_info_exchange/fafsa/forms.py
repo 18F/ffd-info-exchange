@@ -1,7 +1,17 @@
 from localflavor.us import forms as localflavor
 from localflavor.us.forms import USSocialSecurityNumberField, USStateSelect, USZipCodeField, USPSSelect, USPhoneNumberField
 from django import forms
-import floppyforms.__future__ as forms
+#import floppyforms.__future__ as forms
+
+YES_OR_NO = (('1', 'Yes'), ('0', 'No'))
+YES_NO_MAYBE = (('1', 'Yes'), ('0', 'No'), ('2', 'Maybe'))
+GENDER_OPTIONS = (('female', 'Female'), ('male', 'Male'))
+MARITAL_STATUS = (('single', 'Single'), ('married_or_remarried', 'Married or remarried'), ('separated', 'Separated'), ('divorced', 'Divorced'), ('widowed', 'Widowed'))
+CITIZENSHIP_STATUS = (('yes', "Yes, I'm a U.S. citizen (or U.S. national)"), ('no_but_eligible', "No, but I'm an eligible noncitizen"), ('not_at_all', "No, I'm not a citizen or eligible noncitizen"))
+SCHOOL_COMPLETION_STATUS = (('diploma', "I’ll have a high school diploma"), ('ged', "I’ll have a GED certificate or state-authorized high school equivalent certificate"), ('home_schooled', "I was home schooled and will have completed my curriculum"), ('none', "None of the above"))
+COLLEGE_GRADE_LEVEL = (('0'), ("First-year student (never attended college)")), (('1'), ("First-year student (attended college before)")), (('2'), ("Second-year student (sophomore)")), (('3'), ("Third-year student (junior)")), (('4'), ("Fourth-year student (senior)")), (('5'), ("Fifth-year student (other undergraduate)")), (('6'), ("First-year graduate/professional student")), (('grad_continuing'), ("Continuing graduate/professional student/beyond"))
+DEGREES = (('1'), ("First bachelor’s degree")), (('2'), ("Second bachelor’s degree")), (('3'), ("Associate degree (occupational or technical program)")), (('4'), ("Associate degree (general education/transfer program)")), (('5'), ("Certificate/diploma (occupational/technical/educational program of less than two years)")), (('6'), ("Certificate/diplomat (occupational/technical/educational program of at least two years)")), (('7'), ("Teaching credential program (nondegree)")), (('8'), ("Graduate or professional degree")), (('9'), ("Other or undecided"))
+PARENTS_SCHOOL_COMPLETION = (('middle'), ("Middle school/junior high")), (('high'), ("High school")), (('college'), ("College or beyond")), (('not_sure'), ("I don’t know")),
 
 YES_OR_NO = (('1', 'Yes'), ('0', 'No'))
 YES_NO_MAYBE = (('1', 'Yes'), ('0', 'No'), ('2', 'Maybe'))
@@ -60,8 +70,7 @@ class FAFSAApplicationForm2(forms.Form):
 
 
 class FAFSAApplicationForm3(forms.Form):
-    # "Student eligibility, continued" section
-    # @TODO: Flag that this isn't consistent with the previous section's title.
+    # "Your financial aid eligibility, continued" section
     high_school_name = forms.CharField(label="What is the name of your high school?")
     high_school_city = forms.CharField(label="In what city is your high school?")
     # @todo: Fix this next one. label="In what state is your high school?"
@@ -199,12 +208,12 @@ class FAFSAApplicationForm12(forms.Form):
     # of a car? Irrelevant for purposes of user testing, but it's surprising.
 
 
-class FAFSAApplicationForm12(forms.Form):
+class FAFSAApplicationForm13(forms.Form):
     # "Sign and submit"
     who_filled_this_out = forms.ChoiceField(choices=FORM_FILLER, label="Are you the student applying for financial aid, or are you a preparer?", help_text="A preparer is someone completing the FAFSA on behalf of the student, not the student themselves.")
 
 
-#class FAFSAApplicationForm13(forms.Form):
+#class FAFSAApplicationForm14(forms.Form):
     # You’re almost done! To sign your FAFSA electronically, you’ll need to
     # provide some personal information to verify that you are who you say you
     # are. This helps protect you against identity theft and fraud.
