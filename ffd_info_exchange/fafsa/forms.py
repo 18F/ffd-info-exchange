@@ -1,8 +1,7 @@
 from localflavor.us import forms as localflavor
 from localflavor.us.forms import USSocialSecurityNumberField, USStateSelect, USZipCodeField, USPSSelect, USPhoneNumberField
 from django import forms
-#from .models import Application
-#import floppyforms.__future__ as forms
+import floppyforms.__future__ as forms
 
 YES_OR_NO = (('1', 'Yes'), ('0', 'No'))
 YES_NO_MAYBE = (('1', 'Yes'), ('0', 'No'), ('2', 'Maybe'))
