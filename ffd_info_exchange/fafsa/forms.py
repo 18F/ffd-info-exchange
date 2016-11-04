@@ -30,7 +30,7 @@ class FAFSAApplicationForm1(forms.Form):
     ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.")
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)')
     assigned_sex = forms.ChoiceField(widget=forms.RadioSelect, choices=GENDER_OPTIONS, label="What gender do you identify with?")
-    mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt number")
+    mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt number)")
     mailing_address_city = forms.CharField(label="City")
     mailing_address_country = forms.CharField(label="Country, if not U.S.", required=False)  # @todo: Incorporate localflavor
     mailing_address_state = localflavor.USStateSelect()  # @todo: Fix this.
