@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 #from django.contrib import admin
 
-from fafsa import views
+from fafsa.forms import FAFSAApplicationForm1, FAFSAApplicationForm2, FAFSAApplicationForm3, FAFSAApplicationForm4, FAFSAApplicationForm5, FAFSAApplicationForm6, FAFSAApplicationForm7, FAFSAApplicationForm8, FAFSAApplicationForm9, FAFSAApplicationForm10
+from fafsa.views import FAFSAWizard
 
 urlpatterns = [
 #    url(r'^admin/', admin.site.urls),
-    url(r'^$', views.fafsa_form, name='fafsa'),
+    url(r'^$', FAFSAWizard.as_view([FAFSAApplicationForm1, FAFSAApplicationForm2, FAFSAApplicationForm3, FAFSAApplicationForm4, FAFSAApplicationForm5, FAFSAApplicationForm6, FAFSAApplicationForm7, FAFSAApplicationForm8, FAFSAApplicationForm9, FAFSAApplicationForm10])),
 ]
