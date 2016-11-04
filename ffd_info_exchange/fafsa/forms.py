@@ -29,18 +29,18 @@ class FAFSAApplicationForm1(forms.Form):
     last_name = forms.CharField(label="Last name")
     ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.")
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)')
-    assigned_sex = forms.ChoiceField(widget=forms.RadioSelect, choices=GENDER_OPTIONS, label="What gender do you identify with?")
+    assigned_sex = forms.ChoiceField(choices=GENDER_OPTIONS, label="What gender were you designated at birth?")
     mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt number)")
     mailing_address_city = forms.CharField(label="City")
     mailing_address_country = forms.CharField(label="Country, if not U.S.", required=False)  # @todo: Incorporate localflavor
     mailing_address_state = localflavor.USStateSelect()  # @todo: Fix this.
     mailing_address_zip = localflavor.USZipCodeField(label="ZIP code")
-    state_five_years = forms.ChoiceField(widget=forms.RadioSelect, choices=YES_OR_NO, label="Have you lived in your state for at least five years?")
+    state_five_years = forms.ChoiceField(choices=YES_OR_NO, label="Have you lived in your state for at least five years?")
     usps = localflavor.USPSSelect()  # @todo: Determine whether this is relevant.
     phone = localflavor.USPhoneNumberField(label="Telephone number")
     email = forms.EmailField(label="Email address")
     marital_status = forms.ChoiceField(choices=MARITAL_STATUS, label="Current marital status")
-    drivers_license = forms.ChoiceField(widget=forms.RadioSelect, choices=YES_OR_NO, label="Do you have driver's license information that you'd like to share?")
+    drivers_license = forms.ChoiceField(choices=YES_OR_NO, label="Do you have driver's license information that you'd like to share?")
     # @todo: Add conditional driver's license number.
     # @todo: Add conditional driver's license state (dropdown select).
 
@@ -54,7 +54,7 @@ class FAFSAApplicationForm2(forms.Form):
     degree_pursued = forms.ChoiceField(choices=DEGREES, label="What degree or certificate will you be working on when you begin the 2017-2018 school year?")
     work_study = forms.ChoiceField(choices=YES_NO_MAYBE, label="Would you like to be considered for work study?")
     has_degree = forms.ChoiceField(choices=YES_OR_NO, label="Will you have your first bachelor's degree before you begin the 2017-2018 school year?")
-    foster_youth = forms.ChoiceField(widget=forms.RadioSelect, choices=YES_OR_NO, label="Are you a foster youth, or were you ever in the foster care system?")
+    foster_youth = forms.ChoiceField(choices=YES_OR_NO, label="Are you a foster youth, or were you ever in the foster care system?")
     completed_parent_1 = forms.ChoiceField(choices=PARENTS_SCHOOL_COMPLETION, label="Highest school completed by Parent 1")
     completed_parent_2 = forms.ChoiceField(choices=PARENTS_SCHOOL_COMPLETION, label="Highest school completed by Parent 2")
 
@@ -83,11 +83,11 @@ class FAFSAApplicationForm5(forms.Form):
 
 class FAFSAApplicationForm6(forms.Form):
     # "Dependency determination" section
-    has_dependents_children = forms.ChoiceField(widget=forms.RadioSelect, choices=YES_OR_NO, label="Do you now have or will you have children who will receive more than half of their support from you between July 1, 2017 and June 30, 2018?")
-    has_dependents_non_children = forms.ChoiceField(widget=forms.RadioSelect, choices=YES_OR_NO, label="Do you have dependents (other than your children or spouse) who live with you and who receive more than half of their support from you, now and through June 30, 2018?")
+    has_dependents_children = forms.ChoiceField(choices=YES_OR_NO, label="Do you now have or will you have children who will receive more than half of their support from you between July 1, 2017 and June 30, 2018?")
+    has_dependents_non_children = forms.ChoiceField(choices=YES_OR_NO, label="Do you have dependents (other than your children or spouse) who live with you and who receive more than half of their support from you, now and through June 30, 2018?")
     household_size = forms.IntegerField(label="Your number of household members in 2017-2018", min_value=1)
     num_household_college = forms.IntegerField(label="How many people in your household will be in college in 2017-2018?", min_value=0)
-    qs_about_parents = forms.ChoiceField(widget=forms.RadioSelect, choices=YES_OR_NO, label="Do you want to answer questions about your parents?")
+    qs_about_parents = forms.ChoiceField(choices=YES_OR_NO, label="Do you want to answer questions about your parents?")
 
 
 class FAFSAApplicationForm7(forms.Form):
@@ -98,7 +98,7 @@ class FAFSAApplicationForm7(forms.Form):
     parent_1_first_initial = forms.CharField(label="What is this parent's first initial?")
     parent_1_date_of_birth = forms.DateTimeField(label="What is this parent's date of birth?", help_text="(MM/DD/YYYY)")
     parent_1_email = forms.EmailField(label="What is this parent's email address?")
-    parent_1_state_five_years = forms.ChoiceField(widget=forms.RadioSelect, choices=YES_OR_NO, label="Has this parent lived in their current state for at least five years?")
+    parent_1_state_five_years = forms.ChoiceField(choices=YES_OR_NO, label="Has this parent lived in their current state for at least five years?")
     parent_1_household_size = forms.IntegerField(label="Your parent's number of household members in 2017-2018", min_value=1)
     parent_1_num_household_college = forms.IntegerField(label="How many people in this parent's household will be in college between July 1, 2017 and June 30, 2018? Do not include your parents.", min_value=0)
 
