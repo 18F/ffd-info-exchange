@@ -1,27 +1,42 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
+{% load i18n %}
+
+{% block head %}
+{{ wizard.form.media }}
+{% endblock %}
 
 {% block content %}
   {% load floppyforms %}
+  <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+
   <h1>Welcome to the FAFSA!</h1>
   <p>To complete this form and be considered for federal financial aid, you’ll need to answer a series of questions about yourself, your parents, and your financial history.</p>
 
-  <form method="POST" action="." class="usa-form-large">
+  <p>To begin, please share the following information:</p>
+
+  <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
-    {% for field in form %}
-      {% if field.errors %}<div class="usa-input-error">{% endif %}
-        <label for="{{ field|id }}" {% if field.errors %}class="usa-input-error-label"{% endif %}>
-          {{ field.label }}:
-        </label>
-        {% if field.help_text %}<div class="help-text usa-form-hint">{{ field.help_text }}</div>{% endif %}
-        {% for error in field.errors %}
-          <span class="usa-input-error-message" role="alert">{{ error }}</span>
+    {{ wizard.management_form }}
+    {% if wizard.form.forms %}
+        {{ wizard.form.management_form }}
+        {% for form in wizard.form.forms %}
+            {{ form }}
         {% endfor %}
-        {% widget field %}
-      {% if field.errors %}</div>{% endif %}
-    {% endfor %}
+    {% else %}
+        {{ wizard.form }}
+    {% endif %}
+
+  {% if wizard.steps.prev %}
     <div class="button_wrapper">
-      <button class="usa-button-big" type="submit">Submit</button>
+      <button class="usa-button-small" name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
+      <button class="usa-button-small" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
     </div>
-  </form>
-{% endblock content %}
+  {% endif %}
+
+  <div class="button_wrapper">
+    <input type="submit" value="{% trans "submit" %}"/>
+  </div>
+</form>
+
+{% endblock %}
