@@ -19,7 +19,7 @@ TAX_COMPLETION_STATUS_STUDENT = (('already_filed', "I already completed my tax r
 TAX_FILING_STATUS = (('single', "Single"), ('head', "Head of household"), ('joint', "Married — filed joint return"), ('separate', "Married — filed separate returns"), ('widowed', "Qualifying widow or widower"), ('not_sure', "I’m not sure"))
 TAX_FORM_TYPES = (('1040', "IRS 1040"), ('1040a', "IRS 1040A or 1040EZ"), ('foreign', "Foreign tax return"), ('associated', "A tax return with Puerto Rico, a U.S. territory, or a freely associated state"))
 BENEFIT_PROGRAMS = (('medicaid', "Medicaid"), ('ssi', "Supplemental Security Income (SSI)"), ('snap', "Supplemental Nutrition Assistance Program (SNAP)"), ('lunch', "Free or reduced-price school lunch"), ('tanf', "Temporary Assistance for Needy Families (TANF)"), ('wic', "Special Supplemental Nutrition Program for Women, Infants, and Children (WIC)"), ('none', "None of the above"))
-
+FORM_FILLER = (('student', "Student"), ('preparer', "Preparer"))
 
 class FAFSAApplicationForm1(forms.Form):
     # "Your demographic information" section
