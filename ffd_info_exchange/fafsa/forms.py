@@ -1,8 +1,7 @@
 from localflavor.us import forms as localflavor
 from localflavor.us.forms import USSocialSecurityNumberField, USStateSelect, USZipCodeField, USPSSelect, USPhoneNumberField
 from django import forms
-#from .models import Application
-#import floppyforms.__future__ as forms
+#import floppyforms.__future__ as floppyforms
 
 YES_OR_NO = (('1', 'Yes'), ('0', 'No'))
 YES_NO_MAYBE = (('1', 'Yes'), ('0', 'No'), ('2', 'Maybe'))
@@ -60,8 +59,7 @@ class FAFSAApplicationForm2(forms.Form):
 
 
 class FAFSAApplicationForm3(forms.Form):
-    # "Student eligibility, continued" section
-    # @TODO: Flag that this isn't consistent with the previous section's title.
+    # "Your financial aid eligibility, continued" section
     high_school_name = forms.CharField(label="What is the name of your high school?")
     high_school_city = forms.CharField(label="In what city is your high school?")
     # @todo: Fix this next one. label="In what state is your high school?"
