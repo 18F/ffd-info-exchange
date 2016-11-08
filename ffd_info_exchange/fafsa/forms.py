@@ -22,6 +22,16 @@ TAX_FORM_TYPES = (('1040', "IRS 1040"), ('1040a', "IRS 1040A or 1040EZ"), ('fore
 BENEFIT_PROGRAMS = (('medicaid', "Medicaid"), ('ssi', "Supplemental Security Income (SSI)"), ('snap', "Supplemental Nutrition Assistance Program (SNAP)"), ('lunch', "Free or reduced-price school lunch"), ('tanf', "Temporary Assistance for Needy Families (TANF)"), ('wic', "Special Supplemental Nutrition Program for Women, Infants, and Children (WIC)"), ('none', "None of the above"))
 
 
+irs_data =  { 'student_return_type': '1040',
+              'student_agi': 4350,
+              'student_earned': 5153,
+              'student_is_dislocated': '0',
+              'student_received_benefits': 'snap',
+              'student_eligible_for_simpler': '0',
+              # @todo: Fill in the remainder. Start with FAFSAApplicationForm14.
+              }
+
+
 class FAFSAApplicationForm1(forms.Form):
     # "Your demographic information" section
     # To start the application process, we'll need to collect some basic information about you.
@@ -166,24 +176,32 @@ class FAFSAApplicationForm11(forms.Form):
 class FAFSAApplicationForm12(forms.Form):
     # Simulation. This presumes we're logging into the IRS site with info
     # already provided.
-    # Intro text along the lines of "Here's what the IRS transferred:"
+    # "Pull info" between the previous step and this one.
+    # Conditional intro text along the lines of "Here's what the IRS
+    # transferred:"
 
 
 class FAFASApplicationForm13(forms.Form):
     # @todo: Make this conditional on the value of consent_to_retrieve_data.
     # Not strictly necessary for this round of user testing but it'd be more
     # realistic.
+
+    # In a non-prototype, we'd want to verify that `irs_data` contained valid
+    # and relevant data — and sanitize it — before throwing it into these fields.
+    # Also update this to respect consent_to_retrieve data, not pulling or
+    # populating data unless authorized.
     student_filing_status = forms.ChoiceField(choices=TAX_FILING_STATUS, label="For 2015, what is your tax filing status (according to your tax return)?")
-    student_return_type = forms.ChoiceField(choices=TAX_FORM_TYPES, label="What type of income tax return did you file for 2015?")
-    student_agi = forms.IntegerField(label="What was your adjusted gross income for 2015?", min_value=0, help_text="You can find this number on IRS Form 1040, line 37.")
-    student_earned = forms.IntegerField(label="How much did you earn from working (including wages, salaries, and tips) in 2015?", min_value=0, help_text="Calculate this by adding lines 7, 12, and 18 of the IRS Form 1040.")
-    student_is_dislocated = forms.ChoiceField(choices=YES_NO_MAYBE, label="As of today, are you a dislocated worker?")
-    student_received_benefits = forms.MultipleChoiceField(choices=BENEFIT_PROGRAMS, label="In 2015 or 2016, did you or anyone in your household receive benefits from any of the federal programs listed below? Select all that apply or select 'None of the above' if you didn't receive any benefits. If, at the time you are completing the FAFSA, you or anyone in your household did NOT receive any of these benefits during 2015 or 2016, but will receive any of them on or before December 31, 2016, you must return to the FAFSA and update your response.", help_text="Please note that answering these questions won’t impact your eligibility for these programs or student aid.")
+    student_return_type = forms.ChoiceField(choices=TAX_FORM_TYPES, label="What type of income tax return did you file for 2015?", initial=irs_data['student_return_type'])
+    student_agi = forms.IntegerField(label="What was your adjusted gross income for 2015?", min_value=0, help_text="You can find this number on IRS Form 1040, line 37.", initial=irs_data['student_agi'])
+    student_earned = forms.IntegerField(label="How much did you earn from working (including wages, salaries, and tips) in 2015?", min_value=0, help_text="Calculate this by adding lines 7, 12, and 18 of the IRS Form 1040.", initial=irs_data['student_earned'])
+    student_is_dislocated = forms.ChoiceField(choices=YES_NO_MAYBE, label="As of today, are you a dislocated worker?", initial=irs_data['student_is_dislocated'])
+    student_received_benefits = forms.MultipleChoiceField(choices=BENEFIT_PROGRAMS, label="In 2015 or 2016, did you or anyone in your household receive benefits from any of the federal programs listed below? Select all that apply or select 'None of the above' if you didn't receive any benefits. If, at the time you are completing the FAFSA, you or anyone in your household did NOT receive any of these benefits during 2015 or 2016, but will receive any of them on or before December 31, 2016, you must return to the FAFSA and update your response.", help_text="Please note that answering these questions won’t impact your eligibility for these programs or student aid.", initial=irs_data['student_received_benefits'])
     # @todo: Check that the corresponding parent text is in line with this. ^ There may have been half a dropped sentence.
-    student_eligible_for_simpler = forms.ChoiceField(choices=YES_NO_MAYBE, label="You let us know that you completed a 2015 IRS Form 1040. Were you eligible to file an IRS 1040A or 1040EZ?")
+    student_eligible_for_simpler = forms.ChoiceField(choices=YES_NO_MAYBE, label="You let us know that you completed a 2015 IRS Form 1040. Were you eligible to file an IRS 1040A or 1040EZ?", , initial=irs_data['student_eligible_for_simpler'])
 
 
 class FAFSAApplicationForm14(forms.Form):
+    # @todo: Continue adding 'initial' values.
     student_tax_paid = forms.IntegerField(label="How much income tax did you pay in 2015?", min_value=0, help_text="Calculate this by subtracting line 46 from line 56 on IRS Form 1040.")
     student_exemptions = forms.IntegerField(label="Enter your exemptions from 2015.", min_value=0, help_text="You can find this on line 6d of IRS Form 1040.")
 
