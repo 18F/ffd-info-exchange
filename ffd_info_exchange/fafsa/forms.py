@@ -11,6 +11,7 @@ CITIZENSHIP_STATUS = (('yes', "Yes, I'm a U.S. citizen (or U.S. national)"), ('n
 SCHOOL_COMPLETION_STATUS = (('diploma', "I’ll have a high school diploma"), ('ged', "I’ll have a GED certificate or state-authorized high school equivalent certificate"), ('home_schooled', "I was home schooled and will have completed my curriculum"), ('none', "None of the above"))
 COLLEGE_GRADE_LEVEL = (('0', "First-year student (never attended college)"), ('1', "First-year student (attended college before)"), ('2', "Second-year student (sophomore)"), ('3', "Third-year student (junior)"), ('4', "Fourth-year student (senior)"), ('5', "Fifth-year student (other undergraduate)"), ('6', "First-year graduate/professional student"), ('grad_continuing', "Continuing graduate/professional student/beyond"))
 DEGREES = (('1', "First bachelor’s degree"), ('2', "Second bachelor’s degree"), ('3', "Associate degree (occupational or technical program)"), ('4', "Associate degree (general education/transfer program)"), ('5', "Certificate/diploma (occupational/technical/educational program of less than two years)"), ('6', "Certificate/diplomat (occupational/technical/educational program of at least two years)"), ('7', "Teaching credential program (nondegree)"), ('8', "Graduate or professional degree"), ('9', "Other or undecided"))
+CONSENT_TO_RETRIEVE_DATA = (('1', 'Import my 2015 tax information using the Data Retrieval Tool.'), ('0', 'Do not import my 2015 tax information — I’ll enter it manually.'))
 PARENTS_SCHOOL_COMPLETION = (('middle'), ("Middle school/junior high")), (('high'), ("High school")), (('college'), ("College or beyond")), (('not_sure'), ("I don’t know")),
 HOUSING_PLANS = (('on_campus', "On campus"), ('parents', "With parent(s)"), ('off_campus', "Off campus"))
 MARITAL_STATUS_PARENTS = (('never_married', "Never married"), ('live_together', "Unmarried and both parents living together"), ('married', "Married or remarried"), ('divorced', "Divorced or separated"), ('widowed', "Widowed"))
@@ -157,7 +158,21 @@ class FAFSAApplicationForm11(forms.Form):
     # few questions about your tax information.
     # ^ @todo: Consider making this phrasing more accommodating of 'parent'.
     student_taxes_completed = forms.ChoiceField(choices=TAX_COMPLETION_STATUS_STUDENT, label="For 2015, have you completed your IRS income tax return or another tax return?")
-    # @TO CONSIDER: This is an intervention opportunity!
+    # @todo: At some point, make the following dependent on the former. If they
+    # won't file or haven't filed, presumably there's nothing to pull.
+    consent_to_retrieve_data = forms.ChoiceField(choices=CONSENT_TO_RETRIEVE_DATA, label="Would you like to transfer your 2015 tax data from the IRS?", help_text="Allowing the IRS to transfer your tax information saves time and is more accurate than manually completing this section. The Department of Education will not store any of your tax information after your FAFSA is processed.")
+
+
+class FAFSAApplicationForm12(forms.Form):
+    # Simulation. This presumes we're logging into the IRS site with info
+    # already provided.
+    # Intro text along the lines of "Here's what the IRS transferred:"
+
+
+class FAFASApplicationForm13(forms.Form):
+    # @todo: Make this conditional on the value of consent_to_retrieve_data.
+    # Not strictly necessary for this round of user testing but it'd be more
+    # realistic.
     student_filing_status = forms.ChoiceField(choices=TAX_FILING_STATUS, label="For 2015, what is your tax filing status (according to your tax return)?")
     student_return_type = forms.ChoiceField(choices=TAX_FORM_TYPES, label="What type of income tax return did you file for 2015?")
     student_agi = forms.IntegerField(label="What was your adjusted gross income for 2015?", min_value=0, help_text="You can find this number on IRS Form 1040, line 37.")
@@ -168,7 +183,7 @@ class FAFSAApplicationForm11(forms.Form):
     student_eligible_for_simpler = forms.ChoiceField(choices=YES_NO_MAYBE, label="You let us know that you completed a 2015 IRS Form 1040. Were you eligible to file an IRS 1040A or 1040EZ?")
 
 
-class FAFSAApplicationForm12(forms.Form):
+class FAFSAApplicationForm14(forms.Form):
     student_tax_paid = forms.IntegerField(label="How much income tax did you pay in 2015?", min_value=0, help_text="Calculate this by subtracting line 46 from line 56 on IRS Form 1040.")
     student_exemptions = forms.IntegerField(label="Enter your exemptions from 2015.", min_value=0, help_text="You can find this on line 6d of IRS Form 1040.")
 
@@ -198,12 +213,12 @@ class FAFSAApplicationForm12(forms.Form):
     # of a car? Irrelevant for purposes of user testing, but it's surprising.
 
 
-class FAFSAApplicationForm13(forms.Form):
+class FAFSAApplicationForm15(forms.Form):
     # "Sign and submit"
     who_filled_this_out = forms.ChoiceField(choices=FORM_FILLER, label="Are you the student applying for financial aid, or are you a preparer?", help_text="A preparer is someone completing the FAFSA on behalf of the student, not the student themselves.")
 
 
-#class FAFSAApplicationForm14(forms.Form):
+#class FAFSAApplicationForm16(forms.Form):
     # You’re almost done! To sign your FAFSA electronically, you’ll need to
     # provide some personal information to verify that you are who you say you
     # are. This helps protect you against identity theft and fraud.
