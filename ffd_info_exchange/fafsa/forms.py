@@ -42,9 +42,6 @@ class FAFSAApplicationForm1(forms.Form):
     phone = localflavor.USPhoneNumberField(label="Telephone number", required=False)
     email = forms.EmailField(label="Email address", required=False)
     marital_status = forms.ChoiceField(choices=MARITAL_STATUS, label="Current marital status", required=False)
-    drivers_license = forms.ChoiceField(choices=YES_OR_NO, label="Do you have driver's license information that you'd like to share?", required=False)
-    # @todo: Add conditional driver's license number.
-    # @todo: Add conditional driver's license state (dropdown select).
 
 
 class FAFSAApplicationForm2(forms.Form):
@@ -62,98 +59,14 @@ class FAFSAApplicationForm2(forms.Form):
 
 
 class FAFSAApplicationForm3(forms.Form):
-    # "Your financial aid eligibility, continued" section
-    high_school_name = forms.CharField(label="What is the name of your high school?", required=False)
-    high_school_city = forms.CharField(label="In what city is your high school?", required=False)
-    # @todo: Fix this next one. label="In what state is your high school?"
-    high_school_state = localflavor.USStateSelect()
-
-
-class FAFSAApplicationForm4(forms.Form):
-    # "School selection" section
-    # @TODO: Flesh this out.
-    # "You can send your completed FAFSA to up to four schools free of charge; you can send it to additional schools for a small fee."
-    # "For each of the four schools to which you’d like to send the FAFSA, enter the school code (if you know it). If you don’t know it, look up each school by name or location (city and state)."
-    school_code = forms.CharField(label="For each of the four schools to which you’d like to send the FAFSA, enter the school code (if you know it).", required=False)
-
-
-class FAFSAApplicationForm5(forms.Form):
-    # "School selection summary" section
-    housing_plans = forms.ChoiceField(choices=HOUSING_PLANS, label="Add housing plans", required=False)
-
-
-class FAFSAApplicationForm6(forms.Form):
     # "Dependency determination" section
     has_dependents_children = forms.ChoiceField(choices=YES_OR_NO, label="Do you now have or will you have children who will receive more than half of their support from you between July 1, 2017 and June 30, 2018?", required=False)
     has_dependents_non_children = forms.ChoiceField(choices=YES_OR_NO, label="Do you have dependents (other than your children or spouse) who live with you and who receive more than half of their support from you, now and through June 30, 2018?", required=False)
     household_size = forms.IntegerField(label="Your number of household members in 2017-2018", min_value=1, required=False)
     num_household_college = forms.IntegerField(label="How many people in your household will be in college in 2017-2018?", min_value=0, required=False)
-    qs_about_parents = forms.ChoiceField(choices=YES_OR_NO, label="Do you want to answer questions about your parents?", required=False)
 
 
-class FAFSAApplicationForm7(forms.Form):
-    # "Parent demographics information" section
-    marital_status_parents = forms.ChoiceField(choices=MARITAL_STATUS_PARENTS, label="As of today, what is the marital status of your legal parents (biological and/or adoptive)?", required=False)
-    parent_1_ssn = USSocialSecurityNumberField(label="What is this parent's Social Security number?", required=False)
-    parent_1_last_name = forms.CharField(label="What is this parent's last name?", required=False)
-    parent_1_first_initial = forms.CharField(label="What is this parent's first initial?", required=False)
-    parent_1_date_of_birth = forms.DateTimeField(label="What is this parent's date of birth?", help_text="(MM/DD/YYYY)", required=False)
-    parent_1_email = forms.EmailField(label="What is this parent's email address?", required=False)
-    parent_1_state_five_years = forms.ChoiceField(choices=YES_OR_NO, label="Has this parent lived in their current state for at least five years?", required=False)
-    parent_1_household_size = forms.IntegerField(label="Your parent's number of household members in 2017-2018", min_value=1, required=False)
-    parent_1_num_household_college = forms.IntegerField(label="How many people in this parent's household will be in college between July 1, 2017 and June 30, 2018? Do not include your parents.", min_value=0, required=False)
-
-
-class FAFSAApplicationForm8(forms.Form):
-    # "Parent tax information" section
-    # To determine your eligibility for federal financial aid, we’ll need to ask you a few questions about your parent’s (or parents’) tax information.
-    parents_taxes_completed = forms.ChoiceField(choices=TAX_COMPLETION_STATUS_PARENTS, label="Have your parents completed their 2015 IRS income tax return or another tax return?", required=False)
-    parents_filing_status = forms.ChoiceField(choices=TAX_FILING_STATUS, label="For 2015, what is your parents' tax filing status (according to their tax return)?", required=False)
-
-
-class FAFSAApplicationForm9(forms.Form):
-    # "Parent financial information" section
-    # "We have a few more questions about your parents' income and tax information."
-    parents_return_type = forms.ChoiceField(choices=TAX_FORM_TYPES, label="What type of income tax return did your parents file for 2015?", required=False)
-    parents_agi = forms.IntegerField(label="What was your parents’ adjusted gross income for 2015?", min_value=0, help_text="You can find this number on IRS Form 1040, line 37.", required=False)
-    parent_1_earned = forms.IntegerField(label="How much did your first parent earn from working (including wages, salaries, and tips) in 2015?", min_value=0, help_text="Calculate this by adding lines 7, 12, and 18 of the IRS Form 1040.", required=False)
-    parent_2_earned = forms.IntegerField(label="How much did your second parent earn from working (including wages, salaries, and tips) in 2015?", min_value=0, help_text="Calculate this by adding lines 7, 12, and 18 of the IRS Form 1040.", required=False)
-    parent_is_dislocated = forms.ChoiceField(choices=YES_NO_MAYBE, label="As of today, is either of your parents a dislocated worker?", required=False)
-    parents_received_benefits = forms.MultipleChoiceField(choices=BENEFIT_PROGRAMS, label="In 2015 or 2016, did you, your parents, or anyone in your parents’ household receive benefits from any of the federal programs listed below? Check all that apply or check 'None of the above' if, at the time you are completing the FAFSA, you, your parents, or anyone in your parents’ household did NOT receive any of these benefits during 2015 or 2016, but will receive any of them on or before December 31, 2016, you must return to the FAFSA and update your response.", help_text="Please note that answering these questions won’t impact your eligibility for these programs or student aid.", required=False)
-    # @todo: Doublecheck whether this ^ is accurate. "You" is covered again in student_received_benefits, below.
-    parents_eligible_for_simpler = forms.ChoiceField(choices=YES_NO_MAYBE, label="You indicated that your parents filed an IRS 1040. Were they eligible to file a 1040A or 1040EZ?", required=False)
-
-
-class FAFSAApplicationForm10(forms.Form):
-    # "Parent financial information, continued" section
-    parents_tax_paid = forms.IntegerField(label="How much income tax did your parents pay in 2015?", min_value=0, help_text="Calculate this by subtracting line 46 from line 56 on IRS Form 1040.", required=False)
-    parents_exemptions = forms.IntegerField(label="Enter your parents’ exemptions from 2015.", min_value=0, help_text="You can find this on line 6d of IRS Form 1040.", required=False)
-
-    # "Did your parents have any of the following items in 2015? Check all that apply and list amounts."
-    # " 2015 additional financial information:"
-    lifetime_learning = forms.IntegerField(label="American Opportunity tax credit or Lifetime Learning tax credit", required=False)
-    child_support_paid = forms.IntegerField(label="Child support paid", required=False)
-    work_study_earned = forms.IntegerField(label="Taxable earnings from work-study programs, assistantships, or fellowships", required=False)
-    grants_and_scholarships = forms.IntegerField(label="College grant and scholarship aid reported to the IRS", required=False)
-    combat_pay = forms.IntegerField(label="Combat pay or special combat pay", required=False)
-    coop_education = forms.IntegerField(label="Cooperative education program earnings", required=False)
-
-    # "2015 untaxed income:"
-    tax_deferred = forms.IntegerField(label="Payments to tax-deferred pension and retirement savings plans", min_value=0, required=False)
-    ira_deductions = forms.IntegerField(label="IRA deductions and payments to self-employed SEP, SIMPLE, and Keogh", min_value=0, required=False)
-    child_support_received = forms.IntegerField(label="Child support your parents received", min_value=0, required=False)
-    interest_income = forms.IntegerField(label="Tax-exempt interest income", min_value=0, required=False)
-    untaxed_distributions = forms.IntegerField(label="Untaxed portions of IRA distributions", min_value=0, required=False)
-    living_allowances = forms.IntegerField(label="Housing, food, and other living allowances paid to military and clergy members", min_value=0, required=False)
-    veterans_benefits = forms.IntegerField(label="Veterans noneducation benefits", min_value=0, required=False)
-    other_untaxed_income = forms.IntegerField(label="Other untaxed income that’s not reported, such as workers' compensation or disability benefits", min_value=0, required=False)
-
-    value_accounts = forms.IntegerField(label="As of today, how much money do your parents have in cash, savings accounts, and checking accounts?", min_value=0, required=False)
-    value_investments = forms.IntegerField(label="As of today, what is the net worth of your parents’ investments, including real estate?", help_text="Don’t include the value of their home.", min_value=0, required=False)
-    value_businesses = forms.IntegerField(label="As of today, what is the net worth of your parents’ current businesses and/or investment farms?", help_text="Don't include a family farm or family business with 100 or fewer full-time employees.", min_value=0, required=False)
-
-
-class FAFSAApplicationForm11(forms.Form):
+class FAFSAApplicationForm4(forms.Form):
     # "Student tax information" section
     # Thanks for sharing your parents’ financial information. Now we have a
     # few questions about your tax information.
@@ -170,7 +83,7 @@ class FAFSAApplicationForm11(forms.Form):
     student_eligible_for_simpler = forms.ChoiceField(choices=YES_NO_MAYBE, label="You let us know that you completed a 2015 IRS Form 1040. Were you eligible to file an IRS 1040A or 1040EZ?", required=False)
 
 
-class FAFSAApplicationForm12(forms.Form):
+class FAFSAApplicationForm5(forms.Form):
     student_tax_paid = forms.IntegerField(label="How much income tax did you pay in 2015?", min_value=0, help_text="Calculate this by subtracting line 46 from line 56 on IRS Form 1040.", required=False)
     student_exemptions = forms.IntegerField(label="Enter your exemptions from 2015.", min_value=0, help_text="You can find this on line 6d of IRS Form 1040.", required=False)
 
@@ -200,7 +113,7 @@ class FAFSAApplicationForm12(forms.Form):
     # of a car? Irrelevant for purposes of user testing, but it's surprising.
 
 
-class FAFSAApplicationForm13(forms.Form):
+class FAFSAApplicationForm6(forms.Form):
     # "Sign and submit"
     who_filled_this_out = forms.ChoiceField(choices=FORM_FILLER, label="Are you the student applying for financial aid, or are you a preparer?", help_text="A preparer is someone completing the FAFSA on behalf of the student, not the student themselves.", required=False)
 
