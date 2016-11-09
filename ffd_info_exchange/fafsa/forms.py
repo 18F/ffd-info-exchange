@@ -30,13 +30,15 @@ class FAFSAApplicationForm1(forms.Form):
     ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.", required=False)
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
     assigned_sex = forms.ChoiceField(choices=GENDER_OPTIONS, label="What gender were you designated at birth?", required=False)
+
+
+class FAFSAApplicationForm2(forms.Form):
     mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt number)", required=False)
     mailing_address_city = forms.CharField(label="City", required=False)
     mailing_address_country = forms.CharField(label="Country, if not U.S.", required=False)  # @todo: Incorporate localflavor
     mailing_address_state = localflavor.USStateSelect()
-    # @todo: Fix this ^ and add required=False.
+    # @todo: Fix this ^ and add required=False
     mailing_address_zip = localflavor.USZipCodeField(label="ZIP code", required=False)
-    state_five_years = forms.ChoiceField(choices=YES_OR_NO, label="Have you lived in your state for at least five years?", required=False)
     usps = localflavor.USPSSelect()
     # @todo: Determine whether this ^ is relevant. If so, add required=False.
     phone = localflavor.USPhoneNumberField(label="Telephone number", required=False)
@@ -44,7 +46,7 @@ class FAFSAApplicationForm1(forms.Form):
     marital_status = forms.ChoiceField(choices=MARITAL_STATUS, label="Current marital status", required=False)
 
 
-class FAFSAApplicationForm2(forms.Form):
+class FAFSAApplicationForm3(forms.Form):
     # "Your financial aid eligibility" section
     # Please answer these questions to help us determine whether you’re eligible for financial aid.
     us_citizen = forms.ChoiceField(choices=CITIZENSHIP_STATUS, label="Are you a U.S. citizen?", required=False)
@@ -58,7 +60,7 @@ class FAFSAApplicationForm2(forms.Form):
     completed_parent_2 = forms.ChoiceField(choices=PARENTS_SCHOOL_COMPLETION, label="Highest school completed by Parent 2", required=False)
 
 
-class FAFSAApplicationForm3(forms.Form):
+class FAFSAApplicationForm4(forms.Form):
     # "Dependency determination" section
     has_dependents_children = forms.ChoiceField(choices=YES_OR_NO, label="Do you now have or will you have children who will receive more than half of their support from you between July 1, 2017 and June 30, 2018?", required=False)
     has_dependents_non_children = forms.ChoiceField(choices=YES_OR_NO, label="Do you have dependents (other than your children or spouse) who live with you and who receive more than half of their support from you, now and through June 30, 2018?", required=False)
@@ -66,7 +68,7 @@ class FAFSAApplicationForm3(forms.Form):
     num_household_college = forms.IntegerField(label="How many people in your household will be in college in 2017-2018?", min_value=0, required=False)
 
 
-class FAFSAApplicationForm4(forms.Form):
+class FAFSAApplicationForm5(forms.Form):
     # "Student tax information" section
     # Thanks for sharing your parents’ financial information. Now we have a
     # few questions about your tax information.
@@ -83,7 +85,7 @@ class FAFSAApplicationForm4(forms.Form):
     student_eligible_for_simpler = forms.ChoiceField(choices=YES_NO_MAYBE, label="You let us know that you completed a 2015 IRS Form 1040. Were you eligible to file an IRS 1040A or 1040EZ?", required=False)
 
 
-class FAFSAApplicationForm5(forms.Form):
+class FAFSAApplicationForm6(forms.Form):
     student_tax_paid = forms.IntegerField(label="How much income tax did you pay in 2015?", min_value=0, help_text="Calculate this by subtracting line 46 from line 56 on IRS Form 1040.", required=False)
     student_exemptions = forms.IntegerField(label="Enter your exemptions from 2015.", min_value=0, help_text="You can find this on line 6d of IRS Form 1040.", required=False)
 
@@ -113,7 +115,7 @@ class FAFSAApplicationForm5(forms.Form):
     # of a car? Irrelevant for purposes of user testing, but it's surprising.
 
 
-class FAFSAApplicationForm6(forms.Form):
+class FAFSAApplicationForm7(forms.Form):
     # "Sign and submit"
     who_filled_this_out = forms.ChoiceField(choices=FORM_FILLER, label="Are you the student applying for financial aid, or are you a preparer?", help_text="A preparer is someone completing the FAFSA on behalf of the student, not the student themselves.", required=False)
 
