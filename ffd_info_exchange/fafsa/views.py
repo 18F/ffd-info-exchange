@@ -34,6 +34,54 @@ class FAFSAWizard(SessionWizardView):
         }
     }
 
+    templates = {
+        '0': 'demographics.html',
+        '1': 'contact.html',
+        '2': 'eligibility.html',
+        '3': 'dependents.html',
+        '4': 'consent.html',
+        '5': 'tax_info.html',
+        '6': 'tax_info_2.html',
+        '7': 'sign_and_submit.html'
+    }
+
+    content = {
+        '0': {
+            'subhead': 'Your demographic information',
+            'intro': ('To complete this form and be considered for federal '
+                      'financial aid, you’ll need to answer a series of '
+                      'questions about yourself, your parents, and your '
+                      'financial history.'),
+            'body': 'To begin, please share the following information:'
+        },
+        '1': {
+            'subhead': 'Your contact information'
+        },
+        '2': {
+            'subhead': 'Your eligibility information',
+            'intro': 'Please answer these questions to help us determine whether you’re eligible for financial aid.'
+        },
+        '3': {
+            'subhead': 'Your dependents',
+            'intro': 'Share information about your dependents to help us calculate the right amount of aid for you.'
+        },
+        '4': {
+            'subhead': 'Your tax information'
+        },
+        '5': {
+            'subhead': 'Your tax information, continued'
+        },
+        '6': {
+            'subhead': 'Your tax information, continued'
+        },
+        '7': {
+            'subhead': 'Sign and submit',
+            'intro': ('You\'re almost done! To sign your FAFSA electronically, '
+                     'you’ll need to re-enter some personal information, which '
+                     'will act as your electronic signature.')
+        }
+    }
+
     def done(self, form_list, **kwargs):
         form_data = self.process_form_data(form_list)
 
@@ -54,3 +102,14 @@ class FAFSAWizard(SessionWizardView):
         prev_data = self.storage.get_step_data('4') or {}
         if prev_data.get('4-consent_to_retrieve_data') == '1':
             return True
+
+    def get_template_names(self):
+        step = self.storage.current_step
+        return self.templates[step]
+
+    def get_context_data(self, form, **kwargs):
+        context = super(FAFSAWizard, self).get_context_data(form, **kwargs)
+        step = self.storage.current_step
+        if step in self.content:
+            context.update(self.content[step])
+        return context

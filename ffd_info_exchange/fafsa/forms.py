@@ -3,21 +3,22 @@ from localflavor.us.forms import USSocialSecurityNumberField, USStateSelect, USZ
 from django import forms
 #import floppyforms.__future__ as floppyforms
 
-YES_OR_NO = (('1', 'Yes'), ('0', 'No'))
-YES_NO_MAYBE = (('1', 'Yes'), ('0', 'No'), ('2', 'Maybe'))
-GENDER_OPTIONS = (('female', 'Female'), ('male', 'Male'))
-MARITAL_STATUS = (('single', 'Single'), ('married_or_remarried', 'Married or remarried'), ('separated', 'Separated'), ('divorced', 'Divorced'), ('widowed', 'Widowed'))
-CITIZENSHIP_STATUS = (('yes', "Yes, I'm a U.S. citizen (or U.S. national)"), ('no_but_eligible', "No, but I'm an eligible noncitizen"), ('not_at_all', "No, I'm not a citizen or eligible noncitizen"))
-SCHOOL_COMPLETION_STATUS = (('diploma', "I’ll have a high school diploma"), ('ged', "I’ll have a GED certificate or state-authorized high school equivalent certificate"), ('home_schooled', "I was home schooled and will have completed my curriculum"), ('none', "None of the above"))
-COLLEGE_GRADE_LEVEL = (('0', "First-year student (never attended college)"), ('1', "First-year student (attended college before)"), ('2', "Second-year student (sophomore)"), ('3', "Third-year student (junior)"), ('4', "Fourth-year student (senior)"), ('5', "Fifth-year student (other undergraduate)"), ('6', "First-year graduate/professional student"), ('grad_continuing', "Continuing graduate/professional student/beyond"))
-DEGREES = (('1', "First bachelor’s degree"), ('2', "Second bachelor’s degree"), ('3', "Associate degree (occupational or technical program)"), ('4', "Associate degree (general education/transfer program)"), ('5', "Certificate/diploma (occupational/technical/educational program of less than two years)"), ('6', "Certificate/diplomat (occupational/technical/educational program of at least two years)"), ('7', "Teaching credential program (nondegree)"), ('8', "Graduate or professional degree"), ('9', "Other or undecided"))
-PARENTS_SCHOOL_COMPLETION = (('middle'), ("Middle school/junior high")), (('high'), ("High school")), (('college'), ("College or beyond")), (('not_sure'), ("I don’t know")),
-TAX_COMPLETION_STATUS_STUDENT = (('already_filed', "I already completed my tax return"), ('will_file', "I will file my tax return"), ('wont_file', "I'm not going to file my tax return"))
-TAX_FILING_STATUS = (('single', "Single"), ('head', "Head of household"), ('joint', "Married — filed joint return"), ('separate', "Married — filed separate returns"), ('widowed', "Qualifying widow or widower"), ('not_sure', "I’m not sure"))
-TAX_FORM_TYPES = (('1040', "IRS 1040"), ('1040a', "IRS 1040A or 1040EZ"), ('foreign', "Foreign tax return"), ('associated', "A tax return with Puerto Rico, a U.S. territory, or a freely associated state"))
-CONSENT_TO_RETRIEVE_DATA = (('1', 'I allow the IRS to import my 2015 tax information.'), ('0', 'Do not import my 2015 tax information — I’ll enter it manually.'))
+BLANK_CHOICE = (('', 'Choose one'))
+YES_OR_NO = (BLANK_CHOICE, ('1', 'Yes'), ('0', 'No'))
+YES_NO_MAYBE = (BLANK_CHOICE, ('1', 'Yes'), ('0', 'No'), ('2', 'Maybe'))
+GENDER_OPTIONS = (BLANK_CHOICE, ('female', 'Female'), ('male', 'Male'))
+MARITAL_STATUS = (BLANK_CHOICE, ('single', 'Single'), ('married_or_remarried', 'Married or remarried'), ('separated', 'Separated'), ('divorced', 'Divorced'), ('widowed', 'Widowed'))
+CITIZENSHIP_STATUS = (BLANK_CHOICE, ('yes', "Yes, I'm a U.S. citizen (or U.S. national)"), ('no_but_eligible', "No, but I'm an eligible noncitizen"), ('not_at_all', "No, I'm not a citizen or eligible noncitizen"))
+SCHOOL_COMPLETION_STATUS = (BLANK_CHOICE, ('diploma', "I’ll have a high school diploma"), ('ged', "I’ll have a GED certificate or state-authorized high school equivalent certificate"), ('home_schooled', "I was home schooled and will have completed my curriculum"), ('none', "None of the above"))
+COLLEGE_GRADE_LEVEL = (BLANK_CHOICE, ('0', "First-year student (never attended college)"), ('1', "First-year student (attended college before)"), ('2', "Second-year student (sophomore)"), ('3', "Third-year student (junior)"), ('4', "Fourth-year student (senior)"), ('5', "Fifth-year student (other undergraduate)"), ('6', "First-year graduate/professional student"), ('grad_continuing', "Continuing graduate/professional student/beyond"))
+DEGREES = (BLANK_CHOICE, ('1', "First bachelor’s degree"), ('2', "Second bachelor’s degree"), ('3', "Associate degree (occupational or technical program)"), ('4', "Associate degree (general education/transfer program)"), ('5', "Certificate/diploma (occupational/technical/educational program of less than two years)"), ('6', "Certificate/diplomat (occupational/technical/educational program of at least two years)"), ('7', "Teaching credential program (nondegree)"), ('8', "Graduate or professional degree"), ('9', "Other or undecided"))
+PARENTS_SCHOOL_COMPLETION = (BLANK_CHOICE, ('middle', "Middle school/junior high"), ('high', "High school"), ('college', "College or beyond"), ('not_sure', "I don’t know"))
+TAX_COMPLETION_STATUS_STUDENT = (BLANK_CHOICE, ('already_filed', "I already completed my tax return"), ('will_file', "I will file my tax return"), ('wont_file', "I'm not going to file my tax return"))
+TAX_FILING_STATUS = (BLANK_CHOICE, ('single', "Single"), ('head', "Head of household"), ('joint', "Married — filed joint return"), ('separate', "Married — filed separate returns"), ('widowed', "Qualifying widow or widower"), ('not_sure', "I’m not sure"))
+TAX_FORM_TYPES = (BLANK_CHOICE, ('1040', "IRS 1040"), ('1040a', "IRS 1040A or 1040EZ"), ('foreign', "Foreign tax return"), ('associated', "A tax return with Puerto Rico, a U.S. territory, or a freely associated state"))
+CONSENT_TO_RETRIEVE_DATA = (BLANK_CHOICE, ('1', 'I allow the IRS to import my 2015 tax information.'), ('0', 'Do not import my 2015 tax information — I’ll enter it manually.'))
 BENEFIT_PROGRAMS = (('medicaid', "Medicaid"), ('ssi', "Supplemental Security Income (SSI)"), ('snap', "Supplemental Nutrition Assistance Program (SNAP)"), ('lunch', "Free or reduced-price school lunch"), ('tanf', "Temporary Assistance for Needy Families (TANF)"), ('wic', "Special Supplemental Nutrition Program for Women, Infants, and Children (WIC)"), ('none', "None of the above"))
-FORM_FILLER = (('student', "Student"), ('preparer', "Preparer"))
+FORM_FILLER = (BLANK_CHOICE, ('student', "Student"), ('preparer', "Preparer"))
 
 
 class FAFSAApplicationForm1(forms.Form):
@@ -118,7 +119,8 @@ class FAFSAApplicationForm7(forms.Form):
 class FAFSAApplicationForm8(forms.Form):
     # "Sign and submit"
     who_filled_this_out = forms.ChoiceField(choices=FORM_FILLER, label="Are you the student applying for financial aid, or are you a preparer?", help_text="A preparer is someone completing the FAFSA on behalf of the student, not the student themselves.", required=False)
-
+    signing_ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", required=False)
+    signining_dob = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
 
 #class FAFSAApplicationForm14(forms.Form):
     # You’re almost done! To sign your FAFSA electronically, you’ll need to

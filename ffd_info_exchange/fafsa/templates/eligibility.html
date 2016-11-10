@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block head %}
+{{ wizard.form.media }}
+{% endblock %}
+
+{% block content %}
+  {% load floppyforms %}
+  <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+
+  <h1>{{ subhead }}</h1>
+  <p>{{ intro }}</p>
+
+  <p>{{ body }}</p>
+
+  <form method="POST" action="/" class="usa-form-large">
+    {% csrf_token %}
+    {{ wizard.management_form }}
+    {% if wizard.form.forms %}
+        {{ wizard.form.management_form }}
+        {% for form in wizard.form.forms %}
+            {{ form }}
+        {% endfor %}
+    {% else %}
+        {{ wizard.form }}
+    {% endif %}
+
+  <div class="button_wrapper">
+    {% if wizard.steps.prev %}
+      <button class="usa-button-small" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Previous Step" %}</button>
+    {% endif %}
+    <input type="submit" value="{% trans "Next" %}"/>
+  </div>
+</form>
+
+{% endblock %}
