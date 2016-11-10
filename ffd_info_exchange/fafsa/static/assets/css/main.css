@@ -1,5 +1,10 @@
 /* USWDS Overrides */
 
+form [type="submit"], form [type="submit"] {
+  display: inline-block;
+  height: 4.4rem;
+}
+
 .usa-banner-inner {
   padding: 0;
 }

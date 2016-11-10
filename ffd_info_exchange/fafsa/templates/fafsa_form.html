@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static from staticfiles %}
 {% load i18n %}
 
 {% block head %}
@@ -27,15 +26,11 @@
         {{ wizard.form }}
     {% endif %}
 
-  {% if wizard.steps.prev %}
-    <div class="button_wrapper">
-      <button class="usa-button-small" name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
-      <button class="usa-button-small" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
-    </div>
-  {% endif %}
-
   <div class="button_wrapper">
-    <input type="submit" value="{% trans "submit" %}"/>
+    {% if wizard.steps.prev %}
+      <button class="usa-button-small" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Previous Step" %}</button>
+    {% endif %}
+    <input type="submit" value="{% trans "Next" %}"/>
   </div>
 </form>
 
