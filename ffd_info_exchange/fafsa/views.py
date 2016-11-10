@@ -34,6 +34,15 @@ class FAFSAWizard(SessionWizardView):
         }
     }
 
+    initial_data = {
+        # To provide initial data for any field, add data to the corresponding
+        # dict. It's zero-indexed. So, for example, if you wanted divorced as
+        # the default value for marital status on the first form, you'd do:
+        '0': {
+            'marital_status': 'divorced'
+        }
+    }
+
     def done(self, form_list, **kwargs):
         form_data = process_form_data(form_list)
 
@@ -48,7 +57,7 @@ class FAFSAWizard(SessionWizardView):
         consent = self.consent_to_retrieve()
         if step in ['5', '6'] and consent:
             return self.dummy_data.get(step)
-        return {}
+        return self.initial_data.get(step)
 
     def consent_to_retrieve(self):
         prev_data = self.storage.get_step_data('4') or {}
