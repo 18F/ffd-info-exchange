@@ -11,7 +11,7 @@ class FAFSAWizard(SessionWizardView):
             'student_agi': 38750,
             'student_earned': 42000,
             'student_is_dislocated': '0',
-            'student_received_benefits': ['snap'],
+            #'student_received_benefits': ['snap'],
             'student_eligible_for_simpler': '0'
         },
         '6': {
