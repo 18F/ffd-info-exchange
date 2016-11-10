@@ -15,8 +15,10 @@ PARENTS_SCHOOL_COMPLETION = (('middle'), ("Middle school/junior high")), (('high
 TAX_COMPLETION_STATUS_STUDENT = (('already_filed', "I already completed my tax return"), ('will_file', "I will file my tax return"), ('wont_file', "I'm not going to file my tax return"))
 TAX_FILING_STATUS = (('single', "Single"), ('head', "Head of household"), ('joint', "Married — filed joint return"), ('separate', "Married — filed separate returns"), ('widowed', "Qualifying widow or widower"), ('not_sure', "I’m not sure"))
 TAX_FORM_TYPES = (('1040', "IRS 1040"), ('1040a', "IRS 1040A or 1040EZ"), ('foreign', "Foreign tax return"), ('associated', "A tax return with Puerto Rico, a U.S. territory, or a freely associated state"))
+CONSENT_TO_RETRIEVE_DATA = (('1', 'I allow the IRS to import my 2015 tax information.'), ('0', 'Do not import my 2015 tax information — I’ll enter it manually.'))
 BENEFIT_PROGRAMS = (('medicaid', "Medicaid"), ('ssi', "Supplemental Security Income (SSI)"), ('snap', "Supplemental Nutrition Assistance Program (SNAP)"), ('lunch', "Free or reduced-price school lunch"), ('tanf', "Temporary Assistance for Needy Families (TANF)"), ('wic', "Special Supplemental Nutrition Program for Women, Infants, and Children (WIC)"), ('none', "None of the above"))
 FORM_FILLER = (('student', "Student"), ('preparer', "Preparer"))
+
 
 class FAFSAApplicationForm1(forms.Form):
     # "Your demographic information" section
@@ -27,6 +29,7 @@ class FAFSAApplicationForm1(forms.Form):
     ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.", required=False)
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
     assigned_sex = forms.ChoiceField(choices=GENDER_OPTIONS, label="What gender were you designated at birth?", required=False)
+    marital_status = forms.ChoiceField(choices=MARITAL_STATUS, label="Current marital status", required=False)
 
 
 class FAFSAApplicationForm2(forms.Form):
@@ -40,7 +43,6 @@ class FAFSAApplicationForm2(forms.Form):
     # @todo: Determine whether this ^ is relevant. If so, add required=False.
     phone = localflavor.USPhoneNumberField(label="Telephone number", required=False)
     email = forms.EmailField(label="Email address", required=False)
-    marital_status = forms.ChoiceField(choices=MARITAL_STATUS, label="Current marital status", required=False)
 
 
 class FAFSAApplicationForm3(forms.Form):
@@ -71,9 +73,10 @@ class FAFSAApplicationForm5(forms.Form):
     # few questions about your tax information.
     # ^ @todo: Consider making this phrasing more accommodating of 'parent'.
     student_taxes_completed = forms.ChoiceField(choices=TAX_COMPLETION_STATUS_STUDENT, label="For 2015, have you completed your IRS income tax return or another tax return?", required=False)
-    # @TO CONSIDER: This is an intervention opportunity!
-    student_filing_status = forms.ChoiceField(choices=TAX_FILING_STATUS, label="For 2015, what is your tax filing status (according to your tax return)?", required=False)
-    student_return_type = forms.ChoiceField(choices=TAX_FORM_TYPES, label="What type of income tax return did you file for 2015?", required=False)
+    consent_to_retrieve_data = forms.ChoiceField(choices=CONSENT_TO_RETRIEVE_DATA, label="Use the Data Retrieval Tool to import your tax data.", help_text="Why import your data? Allowing the IRS to share your tax information saves time and is more accurate than manually completing this section. The IRS uses your full legal name and Social Security number to retrieve your tax information. \n\nThe Department of Education will not store any of your tax information after your FAFSA is processed.", required=False)
+
+
+class FAFSAApplicationForm6(forms.Form):
     student_agi = forms.IntegerField(label="What was your adjusted gross income for 2015?", min_value=0, help_text="You can find this number on IRS Form 1040, line 37.", required=False)
     student_earned = forms.IntegerField(label="How much did you earn from working (including wages, salaries, and tips) in 2015?", min_value=0, help_text="Calculate this by adding lines 7, 12, and 18 of the IRS Form 1040.", required=False)
     student_is_dislocated = forms.ChoiceField(choices=YES_NO_MAYBE, label="As of today, are you a dislocated worker?", required=False)
@@ -82,7 +85,7 @@ class FAFSAApplicationForm5(forms.Form):
     student_eligible_for_simpler = forms.ChoiceField(choices=YES_NO_MAYBE, label="You let us know that you completed a 2015 IRS Form 1040. Were you eligible to file an IRS 1040A or 1040EZ?", required=False)
 
 
-class FAFSAApplicationForm6(forms.Form):
+class FAFSAApplicationForm7(forms.Form):
     student_tax_paid = forms.IntegerField(label="How much income tax did you pay in 2015?", min_value=0, help_text="Calculate this by subtracting line 46 from line 56 on IRS Form 1040.", required=False)
     student_exemptions = forms.IntegerField(label="Enter your exemptions from 2015.", min_value=0, help_text="You can find this on line 6d of IRS Form 1040.", required=False)
 
@@ -112,7 +115,7 @@ class FAFSAApplicationForm6(forms.Form):
     # of a car? Irrelevant for purposes of user testing, but it's surprising.
 
 
-class FAFSAApplicationForm7(forms.Form):
+class FAFSAApplicationForm8(forms.Form):
     # "Sign and submit"
     who_filled_this_out = forms.ChoiceField(choices=FORM_FILLER, label="Are you the student applying for financial aid, or are you a preparer?", help_text="A preparer is someone completing the FAFSA on behalf of the student, not the student themselves.", required=False)
 
