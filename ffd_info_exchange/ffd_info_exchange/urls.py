@@ -22,7 +22,8 @@ from fafsa.forms import (FAFSAApplicationForm1,
                          FAFSAApplicationForm4,
                          FAFSAApplicationForm5,
                          FAFSAApplicationForm6,
-                         FAFSAApplicationForm7)
+                         FAFSAApplicationForm7,
+                         FAFSAApplicationForm8)
 from fafsa.views import FAFSAWizard
 
 urlpatterns = [
@@ -33,5 +34,6 @@ urlpatterns = [
                                     FAFSAApplicationForm4,
                                     FAFSAApplicationForm5,
                                     FAFSAApplicationForm6,
-                                    FAFSAApplicationForm7])),
+                                    FAFSAApplicationForm7,
+                                    FAFSAApplicationForm8]))
 ]
