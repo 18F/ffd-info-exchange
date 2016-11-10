@@ -13,7 +13,48 @@ form [type="submit"], form [type="submit"] {
   padding: 0;
 }
 
+@media screen and (min-width: 951px) {
+  .usa-header-extended .usa-logo {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .usa-header {
+    border-bottom: 1px solid #d0d0d0;
+  }
+}
+
+.usa-header {
+  background: #1f5c99; /* dept of ed color */
+}
+
+.usa-logo a {
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+.usa-nav-secondary-links a {
+  color: #FFFFFF;
+}
+
 /* Other CSS */
+
+.main-content {
+  padding: 4rem 1rem 0;
+}
+
+@media screen and (min-width: 951px) {
+  .main-content {
+    padding-left: 4rem 0 0;
+  }
+}
+
+.usa-logo-subtext {
+  color: #FFFFFF;
+  display: block;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
 
 .disclaimer-right {
   float: right;
