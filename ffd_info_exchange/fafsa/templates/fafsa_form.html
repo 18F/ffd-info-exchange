@@ -9,29 +9,20 @@
   {% load floppyforms %}
   <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
 
-  <h1>Welcome to the FAFSA!</h1>
-  <p>To complete this form and be considered for federal financial aid, you’ll need to answer a series of questions about yourself, your parents, and your financial history.</p>
+  <h1>{{ hed }}</h1>
+  <h1>{{ subhead }}</h1>
+  <p>{{ intro }}</p>
 
-  <p>To begin, please share the following information:</p>
+  <p>{{ body }}</p>
 
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
     {{ wizard.management_form }}
-    {% if wizard.form.forms %}
-        {{ wizard.form.management_form }}
-        {% for form in wizard.form.forms %}
-            {{ form }}
-        {% endfor %}
-    {% else %}
-        {{ wizard.form }}
-    {% endif %}
-
-  <div class="button_wrapper">
-    {% if wizard.steps.prev %}
-      <button class="usa-button-small" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Previous Step" %}</button>
-    {% endif %}
-    <input type="submit" value="{% trans "Next" %}"/>
-  </div>
-</form>
+    {% for field in wizard.form %}
+      {{ field.label_tag }} {{ field }}
+      {{ field.help_text }}
+    {% endfor %}
+    {% include 'includes/navigation.html' %}
+  </form>
 
 {% endblock %}

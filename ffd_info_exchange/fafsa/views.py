@@ -47,6 +47,7 @@ class FAFSAWizard(SessionWizardView):
 
     content = {
         '0': {
+            'hed': 'Welcome to the FAFSA!',
             'subhead': 'Your demographic information',
             'intro': ('To complete this form and be considered for federal '
                       'financial aid, you’ll need to answer a series of '
@@ -103,9 +104,9 @@ class FAFSAWizard(SessionWizardView):
         if prev_data.get('4-consent_to_retrieve_data') == '1':
             return True
 
-    def get_template_names(self):
-        step = self.storage.current_step
-        return self.templates[step]
+    #def get_template_names(self):
+    #    step = self.storage.current_step
+    #    return self.templates[step]
 
     def get_context_data(self, form, **kwargs):
         context = super(FAFSAWizard, self).get_context_data(form, **kwargs)
