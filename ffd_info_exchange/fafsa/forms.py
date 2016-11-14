@@ -1,5 +1,6 @@
 from localflavor.us import forms as localflavor
 from localflavor.us.forms import USSocialSecurityNumberField, USStateSelect, USZipCodeField, USPSSelect, USPhoneNumberField
+from localflavor.us.us_states import STATE_CHOICES
 from django import forms
 #import floppyforms.__future__ as floppyforms
 
@@ -8,6 +9,7 @@ YES_OR_NO = (BLANK_CHOICE, ('1', 'Yes'), ('0', 'No'))
 YES_NO_MAYBE = (BLANK_CHOICE, ('1', 'Yes'), ('0', 'No'), ('2', 'Maybe'))
 GENDER_OPTIONS = (BLANK_CHOICE, ('female', 'Female'), ('male', 'Male'))
 MARITAL_STATUS = (BLANK_CHOICE, ('single', 'Single'), ('married_or_remarried', 'Married or remarried'), ('separated', 'Separated'), ('divorced', 'Divorced'), ('widowed', 'Widowed'))
+STATES = ((BLANK_CHOICE,) + STATE_CHOICES)
 CITIZENSHIP_STATUS = (BLANK_CHOICE, ('yes', "Yes, I'm a U.S. citizen (or U.S. national)"), ('no_but_eligible', "No, but I'm an eligible noncitizen"), ('not_at_all', "No, I'm not a citizen or eligible noncitizen"))
 SCHOOL_COMPLETION_STATUS = (BLANK_CHOICE, ('diploma', "I’ll have a high school diploma"), ('ged', "I’ll have a GED certificate or state-authorized high school equivalent certificate"), ('home_schooled', "I was home schooled and will have completed my curriculum"), ('none', "None of the above"))
 COLLEGE_GRADE_LEVEL = (BLANK_CHOICE, ('0', "First-year student (never attended college)"), ('1', "First-year student (attended college before)"), ('2', "Second-year student (sophomore)"), ('3', "Third-year student (junior)"), ('4', "Fourth-year student (senior)"), ('5', "Fifth-year student (other undergraduate)"), ('6', "First-year graduate/professional student"), ('grad_continuing', "Continuing graduate/professional student/beyond"))
@@ -25,7 +27,7 @@ class FAFSAApplicationForm1(forms.Form):
     # "Your demographic information" section
     # To start the application process, we'll need to collect some basic information about you.
     first_name = forms.CharField(label="First name", required=False)
-    middle_initial = forms.CharField(label="Middle initial", max_length=1, required=False)
+    middle_initial = forms.CharField(label="Middle initial (if applicable)", max_length=1, required=False)
     last_name = forms.CharField(label="Last name", required=False)
     ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.", required=False)
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
@@ -34,10 +36,10 @@ class FAFSAApplicationForm1(forms.Form):
 
 
 class FAFSAApplicationForm2(forms.Form):
-    mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt number)", required=False)
+    mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt. number)", required=False)
     mailing_address_city = forms.CharField(label="City", required=False)
     mailing_address_country = forms.CharField(label="Country, if not U.S.", required=False)  # @todo: Incorporate localflavor
-    mailing_address_state = localflavor.USStateSelect()
+    mailing_address_state = forms.ChoiceField(choices=STATES, label="State", required=False)
     # @todo: Fix this ^ and add required=False
     mailing_address_zip = localflavor.USZipCodeField(label="ZIP code", required=False)
     usps = localflavor.USPSSelect()
