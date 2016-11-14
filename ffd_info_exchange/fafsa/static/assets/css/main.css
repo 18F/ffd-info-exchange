@@ -5,6 +5,10 @@ form [type="submit"], form [type="submit"] {
   height: 4.4rem;
 }
 
+label {
+  max-width: 40rem;
+}
+
 .usa-banner-inner {
   padding: 0;
 }
@@ -39,12 +43,12 @@ form [type="submit"], form [type="submit"] {
 /* Other CSS */
 
 .main-content {
-  padding: 4rem 1rem 0;
+  padding: 2rem 1rem 0;
 }
 
 @media screen and (min-width: 951px) {
   .main-content {
-    padding-left: 4rem 0 0;
+    padding-left: 3rem 0 0;
   }
 }
 
@@ -62,4 +66,87 @@ form [type="submit"], form [type="submit"] {
 
 .main-content {
   padding-top: 4rem;
+}
+
+.button_wrapper {
+  margin: 2rem 0 5rem;
+}
+
+.tooltip {
+  display: inline-block;
+  position: absolute;
+  margin-top: 3rem;
+  margin-left: 5px;
+}
+.tooltip:hover .tooltip-text {
+  opacity: 1;
+}
+
+.tooltip-text {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .tooltip-text {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    background-color: #323a45;
+    border-radius: 0.3rem;
+    bottom: 100%;
+    color: #ffffff;
+    display: block;
+    font-size: 14px;
+    left: 50%;
+    padding: 7px 10px;
+    width: 267px;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.1s ease-in-out;
+    transition-delay: 0.1s;
+    z-index: 1;
+  }
+}
+
+.usa-form-large label {
+  display: inline-block;
+}
+
+.usa-label {
+  background-color: #0071bc;
+  border-radius: 1rem;
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.7rem;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+a:visited.usa-label {
+  color: #FFFFFF;
+}
+
+
+/*Text Styling*/
+
+.headline-text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 5rem;
+  margin: 2rem 0 1rem;
+}
+
+.subhead-text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 2.9rem;
+  margin: 2rem 0 0;
+}
+
+.intro-text, .body-text {
+  line-height: 1.4;
+  margin-bottom: 0rem;
+  margin-top: .75rem;
+  width: 60%;
 }
