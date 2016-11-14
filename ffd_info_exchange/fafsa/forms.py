@@ -38,7 +38,6 @@ class FAFSAApplicationForm1(forms.Form):
 class FAFSAApplicationForm2(forms.Form):
     mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt. number)", required=False)
     mailing_address_city = forms.CharField(label="City", required=False)
-    mailing_address_country = forms.CharField(label="Country, if not U.S.", required=False)  # @todo: Incorporate localflavor
     mailing_address_state = forms.ChoiceField(choices=STATES, label="State", required=False)
     # @todo: Fix this ^ and add required=False
     mailing_address_zip = localflavor.USZipCodeField(label="ZIP code", required=False)
