@@ -5,6 +5,10 @@ form [type="submit"], form [type="submit"] {
   height: 4.4rem;
 }
 
+label {
+  max-width: 40rem;
+}
+
 .usa-banner-inner {
   padding: 0;
 }
@@ -39,12 +43,12 @@ form [type="submit"], form [type="submit"] {
 /* Other CSS */
 
 .main-content {
-  padding: 4rem 1rem 0;
+  padding: 2rem 1rem 0;
 }
 
 @media screen and (min-width: 951px) {
   .main-content {
-    padding-left: 4rem 0 0;
+    padding-left: 3rem 0 0;
   }
 }
 
@@ -62,6 +66,10 @@ form [type="submit"], form [type="submit"] {
 
 .main-content {
   padding-top: 4rem;
+}
+
+.button_wrapper {
+  margin: 2rem 0 5rem;
 }
 
 .tooltip {
@@ -117,4 +125,28 @@ form [type="submit"], form [type="submit"] {
 
 a:visited.usa-label {
   color: #FFFFFF;
+}
+
+
+/*Text Styling*/
+
+.headline-text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 5rem;
+  margin: 2rem 0 1rem;
+}
+
+.subhead-text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 2.9rem;
+  margin: 2rem 0 0;
+}
+
+.intro-text, .body-text {
+  line-height: 1.4;
+  margin-bottom: 0rem;
+  margin-top: .75rem;
+  width: 60%;
 }

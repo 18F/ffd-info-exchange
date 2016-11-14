@@ -7,13 +7,14 @@
 
 {% block content %}
   {% load floppyforms %}
-  <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+  {% if wizard.steps.prev %}<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>{% endif %}
 
-  <h1>{{ hed }}</h1>
-  <h1>{{ subhead }}</h1>
-  <p>{{ intro }}</p>
+  {% if hed %}<h1 class="headline-text">{{ hed }}</h1>{% endif %}
 
-  <p>{{ body }}</p>
+  {% if subhead %}<h2 class="subhead-text">{{ subhead }}</h2>{% endif %}
+  {% if intro %}<p class="intro-text">{{ intro }}</p>{% endif %}
+
+  {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
 
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
