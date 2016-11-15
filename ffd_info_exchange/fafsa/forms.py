@@ -29,8 +29,10 @@ class FAFSAApplicationForm1(forms.Form):
     first_name = forms.CharField(label="First name", required=False)
     middle_initial = forms.CharField(label="Middle initial (if applicable)", max_length=1, required=False)
     last_name = forms.CharField(label="Last name", required=False)
-    ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.", required=False)
-    date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
+    #ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.", required=False)
+    ssn = forms.CharField(label="Social Security number", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your FAFSA.", required=False)
+    #date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
+    date_of_birth = forms.CharField(label='Date of birth (MM/DD/YYYY)', required=False)
     assigned_sex = forms.ChoiceField(choices=GENDER_OPTIONS, label="What gender were you designated at birth?", required=False)
     marital_status = forms.ChoiceField(choices=MARITAL_STATUS, label="Current marital status", required=False)
 
@@ -39,12 +41,12 @@ class FAFSAApplicationForm2(forms.Form):
     mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt. number)", required=False)
     mailing_address_city = forms.CharField(label="City", required=False)
     mailing_address_state = forms.ChoiceField(choices=STATES, label="State", required=False)
-    # @todo: Fix this ^ and add required=False
-    mailing_address_zip = localflavor.USZipCodeField(label="ZIP code", required=False)
-    usps = localflavor.USPSSelect()
-    # @todo: Determine whether this ^ is relevant. If so, add required=False.
-    phone = localflavor.USPhoneNumberField(label="Telephone number", required=False)
-    email = forms.EmailField(label="Email address", required=False)
+    #mailing_address_zip = localflavor.USZipCodeField(label="ZIP code", required=False)
+    #phone = localflavor.USPhoneNumberField(label="Telephone number", required=False)
+    #email = forms.EmailField(label="Email address", required=False)
+    mailing_address_zip = localflavor.CharField(label="ZIP code", required=False)
+    phone = localflavor.CharField(label="Telephone number", required=False)
+    email = forms.CharField(label="Email address", required=False)
 
 
 class FAFSAApplicationForm3(forms.Form):
@@ -120,8 +122,10 @@ class FAFSAApplicationForm7(forms.Form):
 class FAFSAApplicationForm8(forms.Form):
     # "Sign and submit"
     who_filled_this_out = forms.ChoiceField(choices=FORM_FILLER, label="Are you the student applying for financial aid, or are you a preparer?", help_text="A preparer is someone completing the FAFSA on behalf of the student, not the student themselves.", required=False)
-    signing_ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", required=False)
-    signining_dob = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
+    #signing_ssn = localflavor.USSocialSecurityNumberField(label="Social Security number", required=False)
+    #signining_dob = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
+    signing_ssn = forms.CharField(label="Social Security number", required=False)
+    signining_dob = forms.CharField(label='Date of birth (MM/DD/YYYY)', required=False)
 
 #class FAFSAApplicationForm14(forms.Form):
     # You’re almost done! To sign your FAFSA electronically, you’ll need to
