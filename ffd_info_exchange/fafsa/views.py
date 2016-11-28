@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
-from django.http import HttpResponse
 from .forms import *
 from formtools.wizard.views import SessionWizardView
+
 
 class FAFSAWizard(SessionWizardView):
     template_name = "fafsa_form.html"
@@ -78,8 +78,8 @@ class FAFSAWizard(SessionWizardView):
         '7': {
             'subhead': 'Sign and submit',
             'intro': ('You\'re almost done! To sign your FAFSA electronically, '
-                     'you’ll need to re-enter some personal information, which '
-                     'will act as your electronic signature.')
+                      'you’ll need to re-enter some personal information, which '
+                      'will act as your electronic signature.')
         }
     }
 
