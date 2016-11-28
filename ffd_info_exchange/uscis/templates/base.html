@@ -1,0 +1,28 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>{% block title %}Application for Naturalization{% endblock %}</title>
+      <link rel="stylesheet" href="{% static "css/uswds.min.css" %}">
+      <link rel="stylesheet" href="{% static "assets/css/main.css" %}">
+      <style type="text/css">
+        .help-text {
+            font-style: italic;
+            font-weight: normal;
+        }
+      </style>
+  </head>
+  <body>
+    {% include 'includes/header.html' %}
+    <main class="main-content">
+      <div class="usa-grid-full">
+        <div class="usa-width-one-whole">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+  <script src="{% static "js/uswds.min.js" %}"></script>
+  </body>
+</html>
