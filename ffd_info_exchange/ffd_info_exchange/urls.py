@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
-#from django.contrib import admin
 
 from fafsa.forms import (FAFSAApplicationForm1,
                          FAFSAApplicationForm2,
@@ -27,7 +26,6 @@ from fafsa.forms import (FAFSAApplicationForm1,
 from fafsa.views import FAFSAWizard
 
 urlpatterns = [
-#    url(r'^admin/', admin.site.urls),
     url(r'^$', FAFSAWizard.as_view([FAFSAApplicationForm1,
                                     FAFSAApplicationForm2,
                                     FAFSAApplicationForm3,
