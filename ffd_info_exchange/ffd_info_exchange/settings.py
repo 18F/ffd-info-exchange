@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'localflavor',
     'localflavor.us',
     'fafsa',
+    'uscis',
 ]
 
 MIDDLEWARE = [
