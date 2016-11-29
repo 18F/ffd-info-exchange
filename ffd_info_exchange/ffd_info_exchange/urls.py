@@ -25,13 +25,28 @@ from fafsa.forms import (FAFSAApplicationForm1,
                          FAFSAApplicationForm8)
 from fafsa.views import FAFSAWizard
 
+from uscis.forms import (N400Step1,
+                         N400Step2,
+                         N400Step3,
+                         N400Step4,
+                         N400Step5,
+                         N400Step6)
+from uscis.views import USCISWizard
+
 urlpatterns = [
-    url(r'^$', FAFSAWizard.as_view([FAFSAApplicationForm1,
-                                    FAFSAApplicationForm2,
-                                    FAFSAApplicationForm3,
-                                    FAFSAApplicationForm4,
-                                    FAFSAApplicationForm5,
-                                    FAFSAApplicationForm6,
-                                    FAFSAApplicationForm7,
-                                    FAFSAApplicationForm8]))
+    url(r'^fafsa/$', FAFSAWizard.as_view([FAFSAApplicationForm1,
+                                          FAFSAApplicationForm2,
+                                          FAFSAApplicationForm3,
+                                          FAFSAApplicationForm4,
+                                          FAFSAApplicationForm5,
+                                          FAFSAApplicationForm6,
+                                          FAFSAApplicationForm7,
+                                          FAFSAApplicationForm8])),
+    # Setting USCIS as the new default. Could change it to `uscis` later.
+    url(r'^$', USCISWizard.as_view([N400Step1,
+                                    N400Step2,
+                                    N400Step3,
+                                    N400Step4,
+                                    N400Step5,
+                                    N400Step6])),
 ]
