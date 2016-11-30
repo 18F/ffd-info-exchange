@@ -4,6 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+django-countries==4.0
 django-floppyforms==1.7.0
 django-formtools==1.0
 django-localflavor-us==1.1

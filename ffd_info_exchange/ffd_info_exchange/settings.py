@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'floppyforms',
     'localflavor',
     'localflavor.us',
+    'django_countries',
     'fafsa',
     'uscis',
 ]

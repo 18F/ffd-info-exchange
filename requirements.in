@@ -2,6 +2,7 @@ Django>=1.10.3
 psycopg2
 selenium
 whitenoise
+django-countries
 django-localflavor
 django-localflavor-us
 django-floppyforms
