@@ -31,13 +31,26 @@ class USCISWizard(SessionWizardView):
                       'your moral character.')
         },
         '4': {
-            'subhead': '5. Review your application',
+            'subhead': '5. Evidence for your application',
+            'intro': ('Now that you’ve provided all the required information '
+                      'about yourself, please upload scanned copies of the '
+                      'following documents: '),
+            'body': ('* Your birth certificate'
+                     '* Your Permanent Resident Card (green card)'
+                     '* Your driver’s license'
+                     '* Your most recent tax return'
+                     '* Two identical photographs (color, passport-style)'
+                     '* If you’re married: A copy of your marriage certificate'
+                     )
+            },
+        '5': {
+            'subhead': '6. Review your application',
             'intro': ('Please review your answers and make sure everything is '
                       'correct. If you would rather review your application as '
                       'a PDF, you can download the entire form.')
         },
-        '5': {
-            'subhead': '6. Sign and pay',
+        '6': {
+            'subhead': '7. Sign and pay',
             'intro': ('I verify that all of the information I’ve included in '
                       'my application is true and correct, to the best of my '
                       'knowledge. In addition, I verify that:'),
@@ -47,6 +60,34 @@ class USCISWizard(SessionWizardView):
             # @todo: Consider adding signature-in-place functionality for
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"
+        },
+        '7': {
+            'subhead': '8. Optional recommended services',
+            'intro': ("Based on the information you provided, you’re eligible "
+                      "to legally change your name and apply for TSA PreCheck "
+                      "and a U.S. passport."),
+            'body': ('If your applications for a name change, TSA PreCheck, '
+                     'and/or a U.S. passport are approved, the granting '
+                     'agencies will contact you directly.')
+        },
+        '8': {
+            'subhead': 'Name change (optional)',
+            'intro': ("You indicated that you’d like to legally change your "
+                      'name. Please provide your new name in the fields below.'),
+            'body': ('Once your Application for Naturalization is approved, '
+                     'your name-change request will be processed. If your '
+                     'Application for Naturalization is not approved, your '
+                     'name-change request will not be granted.')
+        },
+        '9': {
+            'subhead': 'TSA PreCheck application (optional)',
+            'intro': (''),
+            'body': ('')
+        },
+        '10': {
+            'subhead': 'U.S. passport application (optional)',
+            'intro': (''),
+            'body': ('')
         },
     }
 

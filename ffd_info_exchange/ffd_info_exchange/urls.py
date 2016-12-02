@@ -30,7 +30,14 @@ from uscis.forms import (N400Step1,
                          N400Step3,
                          N400Step4,
                          N400Step5,
-                         N400Step6)
+                         N400Step6,
+                         N400Step7,
+                         AdditionalServices,
+                         NameChange,
+                         # Note: intentionally commented out for demo.
+                         #TSAPreCheck,
+                         #Passport,
+                         )
 from uscis.views import USCISWizard
 
 urlpatterns = [
@@ -48,5 +55,12 @@ urlpatterns = [
                                     N400Step3,
                                     N400Step4,
                                     N400Step5,
-                                    N400Step6])),
+                                    N400Step6,
+                                    N400Step7,
+                                    AdditionalServices,
+                                    NameChange,
+                                    # Note: intentionally commented out for demo.
+                                    #TSAPreCheck,
+                                    #Passport
+                                    ])),
 ]

@@ -8,6 +8,7 @@ from localflavor.us.us_states import STATE_CHOICES
 
 BLANK_CHOICE = (('', 'Choose one'))
 YES_OR_NO = (BLANK_CHOICE, ('1', 'Yes'), ('0', 'No'))
+YES_OR_NO_RADIO = (('1', 'Yes'), ('0', 'No'))
 YES_NO_MAYBE = (BLANK_CHOICE, ('1', 'Yes'), ('0', 'No'), ('2', 'Maybe'))
 ELIGIBILITY_OPTIONS = (('0', "I’ve been a lawful permanent resident for at least five years."),
                        ('1', "I’ve been a lawful permanent resident for at least three years and I’ve been married to my spouse (a U.S. citizen) for at least three years. (As of the date I applied for citizenship, my spouse has been a U.S. citizen for at least three years.)"),
@@ -40,6 +41,11 @@ HAIR_COLOR_CHOICES = (('0', 'bald (no hair)'),
                       )
 
 STATES = ((BLANK_CHOICE,) + STATE_CHOICES)
+CONTACT_OPTIONS = (BLANK_CHOICE,
+                   ('email', 'Email'),
+                   ('phone', 'Primary phone number'),
+                   ('phone_additional', 'Additional phone number'),
+                   )
 MARITAL_STATUS = (BLANK_CHOICE, ('single', 'Single'), ('married_or_remarried', 'Married or remarried'), ('separated', 'Separated'), ('divorced', 'Divorced'), ('widowed', 'Widowed'))
 
 
@@ -68,8 +74,8 @@ class N400Step2(forms.Form):
     # @todo: Adjust the display of the above so they're reasonable.
     weight = forms.IntegerField(label="Weight in pounds", required=False)
     # @todo: Fix rendering of these checkboxes.
-    eye_color = forms.ChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=forms.CheckboxSelect, required=False)
-    hair_color = forms.ChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=forms.CheckboxSelect, required=False)
+    eye_color = forms.ChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=forms.CheckboxSelectMultiple, required=False)
+    hair_color = forms.ChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=forms.CheckboxSelectMultiple, required=False)
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
     date_of_residency = forms.DateTimeField(label='Date you became a Lawful Permanent Resident (MM/DD/YYYY)', required=False)
     country_of_birth = forms.CharField(label="Country of birth", required=False)
@@ -85,31 +91,83 @@ class N400Step2(forms.Form):
     # @maybe: Refactor these as CountryField()s.
     # Docs: https://pypi.python.org/pypi/django-countries#countryselectwidget
     residential_address_country = forms.CharField(label="Country, if outside the U.S.", required=False)
-    # @todo: Pick up here with dates of residence.
-
-    mailing_address_permanent = forms.CharField(label="Permanent mailing address (incl. apt. number)", required=False)
+    dates_of_residence = forms.CharField(label="Dates of residence (ex: from MM/DD/YYYY to present", required=False)
+    # Is your mailing address different than your residential address?
+    # or: If you have a different mailing address:
+    mailing_address_street = forms.CharField(label="Mailing address street number and name", required=False)
+    mailing_address_apt = forms.CharField(label="Apartment or floor number (if applicable)", required=False)
     mailing_address_city = forms.CharField(label="City", required=False)
     mailing_address_state = forms.ChoiceField(choices=STATES, label="State", required=False)
     # @maybe: Refactor as a USStateSelect.
     mailing_address_zip = USZipCodeField(label="ZIP code", required=False)
 
     email = forms.EmailField(label="Email address", required=False)
-    # @todo: Tweak this to allow for non-U.S. phone numbers.
-    phone = USPhoneNumberField(label="Telephone number", required=False)
-    other_names = forms.CharField(label="Other names you have used since birth", required=False)
+    # @todo: Tweak this to allow for non-U.S. phone numbers. Add country code field.
+    phone_primary = USPhoneNumberField(label="Primary phone number", required=False)
+    phone_additional = USPhoneNumberField(label="Additional phone number", required=False)
+
+    how_to_contact = forms.ChoiceField(label='How would you like us to contact you?', choices=CONTACT_OPTIONS, required=False)
+    occupation = forms.CharField(label="Occupation", required=False)
+    employer_name = forms.CharField(label="Name of your current employer or school", required=False)
 
 
 class N400Step3(forms.Form):
+    # @todo: Fill in the remaining questions.
     marital_status = forms.ChoiceField(choices=MARITAL_STATUS, label="Current marital status", required=False)
 
 
 class N400Step4(forms.Form):
-    dummy_question = True
+    # Moral character
+    taxes_owe = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Do you owe any overdue local, state, or federal taxes?', required=False)
+    taxes_not_filed = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever not filed any local, state, or federal taxes?', required=False)
+    felony_convicted = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever been convicted of or pled guilty to a felony?', required=False)
+    felony_insanity = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever been found not guilty of a felony by reason of insanity?', required=False)
+    felony_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Within the past seven years, have you been convicted of a felony?', required=False)
+    incarceration_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Within the past five years, have you been released from incarceration?', required=False)
+    # "Were you ever, in any way, involved with any of the following?"
+    genocide = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Genocide?', required=False)
+    torture = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Torture?', required=False)
+    murder = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Killing, or trying to kill, someone?', required=False)
+    harm = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Badly hurting, or trying to hurt, a person on purpose?', required=False)
+    sexual_assault = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Forcing, or trying to force, someone to have any kind of sexual contact or relations?', required=False)
+    repressing_religion = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Not letting someone practice their religion?', required=False)
 
 
 class N400Step5(forms.Form):
-    dummy_question = True
+    # Evidence for your application
+    add_custom_template = True
 
 
 class N400Step6(forms.Form):
+    # Review your application
+    add_custom_template = True
+    # In the forthcoming template, include a representation of the data thus far.
+
+
+class N400Step7(forms.Form):
+    # Sign and pay
+    dummy_question = True
+    # @maybe: Add "signature" fields.
+
+
+# @todo: Add a verification-and-confirmation screen before this.
+class AdditionalServices(forms.Form):
+    # In practice, we don't need to store this information. Revisit once the
+    # templates are individually customizable.
+    #
+    # @todo: Fix checkbox rendering.
+    name_change_opt_in = forms.BooleanField(widget=forms.CheckboxInput, label='Would you like to apply to legally change your name?', required=False)
+
+
+class NameChange(forms.Form):
+    desired_last_name = forms.CharField(label="Last name (family name)", required=False)
+    desired_first_name = forms.CharField(label="First name (given name)", required=False)
+    desired_middle_name = forms.CharField(label="Middle name (if applicable)", required=False)
+
+
+class TSAPreCheck(forms.Form):
+    dummy_question = True
+
+
+class Passport(forms.Form):
     dummy_question = True
