@@ -80,9 +80,12 @@ class USCISWizard(SessionWizardView):
                      'name-change request will not be granted.')
         },
         '9': {
-            'subhead': 'TSA PreCheck application (optional)',
-            'intro': (''),
-            'body': ('')
+            'subhead': 'Global Entry/TSA PreCheck application (optional)',
+            'intro': ('You indicated that you’d like to apply for Global Entry/'
+                      'TSA PreCheck. You’ve already provided most of the '
+                      'information necessary for this application; you’ll need '
+                      'to answer just a few additional questions.'),
+            'body': ('Additional information:')
         },
         '10': {
             'subhead': 'U.S. passport application (optional)',

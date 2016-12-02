@@ -34,8 +34,7 @@ from uscis.forms import (N400Step1,
                          N400Step7,
                          AdditionalServices,
                          NameChange,
-                         # Note: intentionally commented out for demo.
-                         #TSAPreCheck,
+                         TSAPreCheck,
                          #Passport,
                          )
 from uscis.views import USCISWizard
@@ -59,8 +58,7 @@ urlpatterns = [
                                     N400Step7,
                                     AdditionalServices,
                                     NameChange,
-                                    # Note: intentionally commented out for demo.
-                                    #TSAPreCheck,
+                                    TSAPreCheck,
                                     #Passport
                                     ])),
 ]
