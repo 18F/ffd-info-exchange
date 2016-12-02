@@ -9,46 +9,85 @@ class USCISWizard(SessionWizardView):
     content = {
         '0': {
             'hed': 'Application for Naturalization',
-            'subhead': '1. Basis for eligibility',
-            'intro': ('In this section we will tell you the basis of eligibility'
-                      ' that most closely matches the information you provide '
-                      'by asking you about the following: '
-                      '[...]'),
-            'body': 'At the end of this section, you will be able to confirm '
-                    'that the basis of eligibility presented applies to you, '
-                    'or you can select a different basis of eligibility.'
+            'subhead': '1. Information about your eligibility',
+            'intro': ('Please provide some information to help us determine '
+                      'whether you’re eligible to apply for U.S. citizenship.'),
         },
         '1': {
-            'subhead': '2. About you',
-            'intro': ('In this section, we will collect some basic information '
-                      'about you, including how to contact you, your education '
-                      'and employment history, details about your family, and '
-                      'more.')
+            'subhead': '2. Information about you',
+            'intro': ('Thanks for sharing your eligibility information. '
+                      'Now we’d like to ask you for some information about '
+                      'yourself.')
         },
         '2': {
-            'subhead': '3. Moral character',
-            'intro': ('In this section, we will ask you questions related to '
-                      'your moral character.')
+            'subhead': '3. Information about your family',
+            'intro': ('Share the following information about your family to '
+                      'help us better understand your eligibility for '
+                      'citizenship.')
         },
         '3': {
-            'subhead': '4. Evidence for your application',
-            'intro': ('Based on the answers you provided, we have generated an '
-                      'evidence checklist for you. In this section, you will '
-                      'upload the requested evidence.')
+            'subhead': '4. Moral character',
+            'intro': ('In this section, we’ll ask you questions related to '
+                      'your moral character.')
         },
         '4': {
-            'subhead': '5. Review application',
-            'intro': ('Please review your answers and make sure everything is '
-                      'correct. If you would rather review this as a PDF, you '
-                      'can download your entire Application for Naturalization.')
-        },
+            'subhead': '5. Evidence for your application',
+            'intro': ('Now that you’ve provided all the required information '
+                      'about yourself, please upload scanned copies of the '
+                      'following documents: '),
+            'body': ('* Your birth certificate'
+                     '* Your Permanent Resident Card (green card)'
+                     '* Your driver’s license'
+                     '* Your most recent tax return'
+                     '* Two identical photographs (color, passport-style)'
+                     '* If you’re married: A copy of your marriage certificate'
+                     )
+            },
         '5': {
-            'subhead': '6. Sign and pay',
-            'intro': ('These are the categories of questions we may ask you '
-                      'about in this section:'),
-            'body': ('* Interpreter and/or preparer information,'
-                     '* Applicant signature',
-                     '* Payment information')
+            'subhead': '6. Review your application',
+            'intro': ('Please review your answers and make sure everything is '
+                      'correct. If you would rather review your application as '
+                      'a PDF, you can download the entire form.')
+        },
+        '6': {
+            'subhead': '7. Sign and pay',
+            'intro': ('I verify that all of the information I’ve included in '
+                      'my application is true and correct, to the best of my '
+                      'knowledge. In addition, I verify that:'),
+            'body': ('* I can read and understand English and completed every question myself, OR I worked with an approved translator to complete this application.'
+                     '* I’ve provided all the requested evidence to support my application.',
+                     '* I’ve enclosed my biometrics fee and processing fee.')
+            # @todo: Consider adding signature-in-place functionality for
+            # the "Applicant's signature" and "Translator's signature (if
+            # applicable)"
+        },
+        '7': {
+            'subhead': '8. Optional recommended services',
+            'intro': ("Based on the information you provided, you’re eligible "
+                      "to legally change your name and apply for TSA PreCheck "
+                      "and a U.S. passport."),
+            'body': ('If your applications for a name change, TSA PreCheck, '
+                     'and/or a U.S. passport are approved, the granting '
+                     'agencies will contact you directly.')
+        },
+        '8': {
+            'subhead': 'Name change (optional)',
+            'intro': ("You indicated that you’d like to legally change your "
+                      'name. Please provide your new name in the fields below.'),
+            'body': ('Once your Application for Naturalization is approved, '
+                     'your name-change request will be processed. If your '
+                     'Application for Naturalization is not approved, your '
+                     'name-change request will not be granted.')
+        },
+        '9': {
+            'subhead': 'TSA PreCheck application (optional)',
+            'intro': (''),
+            'body': ('')
+        },
+        '10': {
+            'subhead': 'U.S. passport application (optional)',
+            'intro': (''),
+            'body': ('')
         },
     }
 
