@@ -64,11 +64,11 @@ class USCISWizard(SessionWizardView):
         '7': {
             'subhead': '8. Optional recommended services',
             'intro': ("Based on the information you provided, you’re eligible "
-                      "to legally change your name and apply for TSA PreCheck "
-                      "and a U.S. passport."),
-            'body': ('If your applications for a name change, TSA PreCheck, '
-                     'and/or a U.S. passport are approved, the granting '
-                     'agencies will contact you directly.')
+                      "to legally change your name and apply for Global Entry/"
+                      "TSA PreCheck and a U.S. passport."),
+            'body': ('If your applications for a name change, Global Entry/TSA '
+                     'PreCheck, and/or a U.S. passport are approved, the '
+                     'granting agencies will contact you directly.')
         },
         '8': {
             'subhead': 'Name change (optional)',
@@ -80,9 +80,12 @@ class USCISWizard(SessionWizardView):
                      'name-change request will not be granted.')
         },
         '9': {
-            'subhead': 'TSA PreCheck application (optional)',
-            'intro': (''),
-            'body': ('')
+            'subhead': 'Global Entry/TSA PreCheck application (optional)',
+            'intro': ('You indicated that you’d like to apply for Global Entry/'
+                      'TSA PreCheck. You’ve already provided most of the '
+                      'information necessary for this application; you’ll need '
+                      'to answer just a few additional questions.'),
+            'body': ('Additional information:')
         },
         '10': {
             'subhead': 'U.S. passport application (optional)',

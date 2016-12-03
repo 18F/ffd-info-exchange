@@ -166,7 +166,10 @@ class NameChange(forms.Form):
 
 
 class TSAPreCheck(forms.Form):
-    dummy_question = True
+    phone_country_code = forms.IntegerField(label="Phone country code", required=False)
+    names_match = forms.ChoiceField(label="Do the names on the identity documents you've already provided match the name on your birth certificate?", choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, help_text="If the names on your identity documents don’t match the name you were given at birth, you’ll need to provide additional documentation.", required=False)
+    how_many_documents = forms.IntegerField(label="How many documents are you providing to show that the name you’re enrolling under is the same as your current name?", required=False)
+    under_indictment_tsa = forms.ChoiceField(label="Are you under indictment for qualifying crimes outlined by the TSA?", choices=YES_OR_NO_RADIO, help_text="For a list of qualifying crimes, see https://www.tsa.gov/Disqualifying-Offenses-Factors", widget=forms.RadioSelect, required=False)
 
 
 class Passport(forms.Form):
