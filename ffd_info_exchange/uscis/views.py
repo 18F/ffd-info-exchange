@@ -3,32 +3,32 @@ from .forms import *
 from formtools.wizard.views import SessionWizardView
 
 # Working off of http://django-formtools.readthedocs.io/en/latest/wizard.html#wizard-template-for-each-form.
-
-FORMS = [('1', N400Step1),
-         ('2', N400Step2),
-         ('3', N400Step3),
-         ('4', N400Step4),
-         ('5', N400Step5),
-         ('6', N400Step6),
-         ('7', N400Step7),
-         ('bonuses', AdditionalServices),
-         ('name_change', NameChange),
-         ('tsa', TSAPreCheck),
-         ('passport', Passport),
+# Note: these currently get cranky when given non-numeric keys. :(
+FORMS = [('0', N400Step1),
+         ('1', N400Step2),
+         ('2', N400Step3),
+         ('3', N400Step4),
+         ('4', N400Step5),
+         ('5', N400Step6),
+         ('6', N400Step7),
+         ('7', AdditionalServices),
+         ('8', NameChange),
+         ('9', TSAPreCheck),
+         ('10', Passport),
          ]
 
 # @todo: Update this to use different templates. This is an interim step.
-TEMPLATES = {'1': 'uscis_form.html',
+TEMPLATES = {'0': 'uscis_form.html',
+             '1': 'uscis_form.html',
              '2': 'uscis_form.html',
              '3': 'uscis_form.html',
              '4': 'uscis_form.html',
              '5': 'uscis_form.html',
              '6': 'uscis_form.html',
              '7': 'uscis_form.html',
-             'bonuses': 'uscis_form.html',
-             'name_change': 'uscis_form.html',
-             'tsa': 'uscis_form.html',
-             'passport': 'uscis_form.html'
+             '8': 'uscis_form.html',
+             '9': 'uscis_form.html',
+             '10': 'uscis_form.html'
              }
 
 
@@ -148,7 +148,6 @@ class USCISWizard(SessionWizardView):
 #        if prev_data.get('4-consent_to_retrieve_data') == '1':
 #            return True
 
-    # @todo next: Troubleshoot this part.
     def get_template_names(self):
         return [TEMPLATES[self.steps.current]]
 
