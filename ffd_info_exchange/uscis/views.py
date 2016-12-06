@@ -17,18 +17,17 @@ FORMS = [('0', N400Step1),
          ('10', Passport),
          ]
 
-# @todo: Update this to use different templates. This is an interim step.
-TEMPLATES = {'0': 'uscis_form.html',
-             '1': 'uscis_form.html',
-             '2': 'uscis_form.html',
-             '3': 'uscis_form.html',
-             '4': 'uscis_form.html',
-             '5': 'uscis_form.html',
-             '6': 'uscis_form.html',
-             '7': 'uscis_form.html',
-             '8': 'uscis_form.html',
-             '9': 'uscis_form.html',
-             '10': 'uscis_form.html'
+TEMPLATES = {'0': '0-n400.html',
+             '1': '1-n400.html',
+             '2': '2-n400.html',
+             '3': '3-n400.html',
+             '4': '4-n400.html',
+             '5': '5-n400.html',
+             '6': '6-n400.html',
+             '7': '7-n400.html',
+             '8': '8-n400.html',
+             '9': '9-n400.html',
+             '10': '10-n400.html'
              }
 
 
@@ -37,8 +36,6 @@ TEMPLATES = {'0': 'uscis_form.html',
 
 
 class USCISWizard(SessionWizardView):
-    template_name = "uscis_form.html"
-
     content = {
         '0': {
             'hed': 'Application for Naturalization',

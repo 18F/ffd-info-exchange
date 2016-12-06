@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block head %}
+{{ wizard.form.media }}
+{% endblock %}
+
+{% block content %}
+  {% load floppyforms %}
+  {% if wizard.steps.prev %}<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>{% endif %}
+
+  {% if hed %}<h1 class="headline-text">{{ hed }}</h1>{% endif %}
+
+  {% if subhead %}<h2 class="subhead-text">{{ subhead }}</h2>{% endif %}
+  {% if intro %}<p class="intro-text">{{ intro }}</p>{% endif %}
+
+  {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
+
+  <form method="POST" action="/" class="usa-form-large">
+    {% csrf_token %}
+    {{ wizard.management_form }}
+    {% for field in wizard.form %}
+      {{ field.label_tag }}
+      {% if field.help_text %}
+        <div class="tooltip">
+          <p class="tooltip-text" id="tooltip-text-labels">{{ field.help_text }}</p>
+          <a class="usa-label label-beta" href="#" aria-describedby="tooltip-text-labels">?</a>
+        </div>
+      {% endif %}
+      {{ field.errors }}
+      {{ field }}
+
+    {% endfor %}
+    {% include 'includes/navigation.html' %}
+  </form>
+
+{% endblock %}
