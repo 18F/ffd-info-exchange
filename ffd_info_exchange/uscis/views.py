@@ -137,17 +137,6 @@ class USCISWizard(SessionWizardView):
 
         return form_data
 
-#    def get_form_initial(self, step):
-#        consent = self.consent_to_retrieve()
-#        if step in ['5', '6'] and consent:
-#            return self.dummy_data.get(step)
-#        return {}
-
-#    def consent_to_retrieve(self):
-#        prev_data = self.storage.get_step_data('4') or {}
-#        if prev_data.get('4-consent_to_retrieve_data') == '1':
-#            return True
-
     def get_template_names(self):
         return [TEMPLATES[self.steps.current]]
 
