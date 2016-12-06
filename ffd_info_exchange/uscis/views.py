@@ -2,6 +2,39 @@ from django.shortcuts import render_to_response
 from .forms import *
 from formtools.wizard.views import SessionWizardView
 
+# Working off of http://django-formtools.readthedocs.io/en/latest/wizard.html#wizard-template-for-each-form.
+
+FORMS = [('1', N400Step1),
+         ('2', N400Step2),
+         ('3', N400Step3),
+         ('4', N400Step4),
+         ('5', N400Step5),
+         ('6', N400Step6),
+         ('7', N400Step7),
+         ('bonuses', AdditionalServices),
+         ('name_change', NameChange),
+         ('tsa', TSAPreCheck),
+         ('passport', Passport),
+         ]
+
+# @todo: Update this to use different templates. This is an interim step.
+TEMPLATES = {'1': 'uscis_form.html',
+             '2': 'uscis_form.html',
+             '3': 'uscis_form.html',
+             '4': 'uscis_form.html',
+             '5': 'uscis_form.html',
+             '6': 'uscis_form.html',
+             '7': 'uscis_form.html',
+             'bonuses': 'uscis_form.html',
+             'name_change': 'uscis_form.html',
+             'tsa': 'uscis_form.html',
+             'passport': 'uscis_form.html'
+             }
+
+
+# @todo: Follow the 'pay_by_credit_card' example when setting up whether they
+# want to pursue more options.
+
 
 class USCISWizard(SessionWizardView):
     template_name = "uscis_form.html"
@@ -115,9 +148,9 @@ class USCISWizard(SessionWizardView):
 #        if prev_data.get('4-consent_to_retrieve_data') == '1':
 #            return True
 
-    #def get_template_names(self):
-    #    step = self.storage.current_step
-    #    return self.templates[step]
+    # @todo next: Troubleshoot this part.
+    def get_template_names(self):
+        return [TEMPLATES[self.steps.current]]
 
     def get_context_data(self, form, **kwargs):
         context = super(USCISWizard, self).get_context_data(form, **kwargs)
