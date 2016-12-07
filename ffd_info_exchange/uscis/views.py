@@ -2,10 +2,40 @@ from django.shortcuts import render_to_response
 from .forms import *
 from formtools.wizard.views import SessionWizardView
 
+# Working off of http://django-formtools.readthedocs.io/en/latest/wizard.html#wizard-template-for-each-form.
+# Note: these currently get cranky when given non-numeric keys. :(
+FORMS = [('0', N400Step1),
+         ('1', N400Step2),
+         ('2', N400Step3),
+         ('3', N400Step4),
+         ('4', N400Step5),
+         ('5', N400Step6),
+         ('6', N400Step7),
+         ('7', AdditionalServices),
+         ('8', NameChange),
+         ('9', TSAPreCheck),
+         ('10', Passport),
+         ]
+
+TEMPLATES = {'0': 'n400-default.html',
+             '1': 'n400-default.html',
+             '2': 'n400-default.html',
+             '3': 'n400-default.html',
+             '4': 'n400-default.html',
+             '5': 'n400-default.html',
+             '6': 'n400-default.html',
+             '7': 'bonus-services.html',
+             '8': 'name-change.html',
+             '9': 'tsa.html',
+             '10': 'passport.html'
+             }
+
+
+# @todo: Follow the 'pay_by_credit_card' example when setting up whether they
+# want to pursue more options.
+
 
 class USCISWizard(SessionWizardView):
-    template_name = "uscis_form.html"
-
     content = {
         '0': {
             'hed': 'Application for Naturalization',
@@ -104,20 +134,8 @@ class USCISWizard(SessionWizardView):
 
         return form_data
 
-#    def get_form_initial(self, step):
-#        consent = self.consent_to_retrieve()
-#        if step in ['5', '6'] and consent:
-#            return self.dummy_data.get(step)
-#        return {}
-
-#    def consent_to_retrieve(self):
-#        prev_data = self.storage.get_step_data('4') or {}
-#        if prev_data.get('4-consent_to_retrieve_data') == '1':
-#            return True
-
-    #def get_template_names(self):
-    #    step = self.storage.current_step
-    #    return self.templates[step]
+    def get_template_names(self):
+        return [TEMPLATES[self.steps.current]]
 
     def get_context_data(self, form, **kwargs):
         context = super(USCISWizard, self).get_context_data(form, **kwargs)
