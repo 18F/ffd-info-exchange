@@ -146,11 +146,10 @@ class N400Step6(forms.Form):
 
 class N400Step7(forms.Form):
     # Sign and pay
-    dummy_question = True
-    # @maybe: Add "signature" fields.
+    signature_applicant = forms.CharField(label="Applicant's signature", required=True)
+    signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)
 
 
-# @todo: Add a verification-and-confirmation screen before this.
 class AdditionalServices(forms.Form):
     # In practice, we don't need to store this information. Revisit once the
     # templates are individually customizable.

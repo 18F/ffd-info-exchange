@@ -23,7 +23,7 @@ TEMPLATES = {'0': 'n400-default.html',
              '3': 'n400-default.html',
              '4': '5-n400.html',
              '5': 'n400-default.html',
-             '6': 'n400-default.html',
+             '6': 'n400-sign-and-pay.html',
              '7': 'bonus-services.html',
              '8': 'name-change.html',
              '9': 'tsa.html',
@@ -81,13 +81,7 @@ class USCISWizard(SessionWizardView):
         },
         '6': {
             'subhead': '7. Sign and pay',
-            'intro': ('I verify that all of the information I’ve included in '
-                      'my application is true and correct, to the best of my '
-                      'knowledge. In addition, I verify that:'),
-            'body': ('* I can read and understand English and completed every question myself, OR I worked with an approved translator to complete this application.'
-                     '* I’ve provided all the requested evidence to support my application.',
-                     '* I’ve enclosed my biometrics fee and processing fee.')
-            # @todo: Consider adding signature-in-place functionality for
+            # @todo: If time allows, add signature-in-place functionality for
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"
         },
