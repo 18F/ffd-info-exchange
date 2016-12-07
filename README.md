@@ -2,7 +2,7 @@
 
 ## About this project
 
-Welcome to the ffd-info-exchange repository! The Federal Front Door: Information Exchange project is a twelve-week discovery engagement (ending 12/23/16) meant to uncover possibilities for information sharing between federal agencies as a way of providing better public access to government services. 
+Welcome to the ffd-info-exchange repository! The Federal Front Door: Information Exchange project is a three-month discovery engagement (ending 12/31/16) meant to uncover possibilities for information sharing between federal agencies as a way of providing better public access to government services. 
 
 Our work is divided into three broad categories: research, prototyping (and testing), and synthesis. During the research phase, we familiarized ourselves with applicable legislation — namely, the Privacy Act of 1974 and the Computer Matching and Privacy Protection Act of 1988 — and determined how these laws apply to our work. We also identified current examples of information-sharing between agencies, conducted user interviews, and researched best practices for communicating privacy- and security-related concepts.
 
