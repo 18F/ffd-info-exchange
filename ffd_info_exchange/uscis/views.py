@@ -17,17 +17,17 @@ FORMS = [('0', N400Step1),
          ('10', Passport),
          ]
 
-TEMPLATES = {'0': '0-n400.html',
-             '1': '1-n400.html',
-             '2': '2-n400.html',
-             '3': '3-n400.html',
-             '4': '4-n400.html',
-             '5': '5-n400.html',
-             '6': '6-n400.html',
-             '7': '7-n400.html',
-             '8': '8-n400.html',
-             '9': '9-n400.html',
-             '10': '10-n400.html'
+TEMPLATES = {'0': 'n400-default.html',
+             '1': 'n400-default.html',
+             '2': 'n400-default.html',
+             '3': 'n400-default.html',
+             '4': 'n400-default.html',
+             '5': 'n400-default.html',
+             '6': 'n400-default.html',
+             '7': 'bonus-services.html',
+             '8': 'name-change.html',
+             '9': 'tsa.html',
+             '10': 'passport.html'
              }
 
 
