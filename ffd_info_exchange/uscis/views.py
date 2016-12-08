@@ -24,7 +24,7 @@ TEMPLATES = {'0': 'n400-default.html',
              '4': '5-n400.html',
              '5': 'n400-default.html',
              '6': 'n400-sign-and-pay.html',
-             '7': 'bonus-services.html',
+             '7': 'select-bonus-services.html',
              '8': 'name-change.html',
              '9': 'tsa.html',
              '10': 'passport.html'
@@ -90,9 +90,6 @@ class USCISWizard(SessionWizardView):
             'intro': ("Based on the information you provided, you’re eligible "
                       "to legally change your name and apply for Global Entry/"
                       "TSA PreCheck and a U.S. passport."),
-            'body': ('If your applications for a name change, Global Entry/TSA '
-                     'PreCheck, and/or a U.S. passport are approved, the '
-                     'granting agencies will contact you directly.')
         },
         '8': {
             'subhead': 'Name change (optional)',
