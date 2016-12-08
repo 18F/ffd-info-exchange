@@ -61,7 +61,11 @@ ROOT_URLCONF = 'ffd_info_exchange.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # @todo: Adjust this so it actually uses FAFSA templates for FAFSA.
+        # Currently it just makes the USCIS templates the master ones.
+        # @maybe: Also refactor to iterate over a tuple of the app names.
+        'DIRS': [os.path.join(BASE_DIR, 'uscis/templates'),
+                 os.path.join(BASE_DIR, 'fafsa/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
