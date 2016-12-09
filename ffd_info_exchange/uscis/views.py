@@ -94,11 +94,12 @@ class USCISWizard(SessionWizardView):
         '8': {
             'subhead': 'Name change (optional)',
             'intro': ("You indicated that you’d like to legally change your "
-                      'name. Please provide your new name in the fields below.'),
+                      'name. Please provide your desired new name in the fields '
+                      'below.'),
             'body': ('Once your Application for Naturalization is approved, '
-                     'your name-change request will be processed. If your '
+                     'your name change request will be processed. If your '
                      'Application for Naturalization is not approved, your '
-                     'name-change request will not be granted.')
+                     'name change request will not be granted.')
         },
         '9': {
             'subhead': 'Global Entry/TSA PreCheck application (optional)',
