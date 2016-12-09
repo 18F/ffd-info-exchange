@@ -5,6 +5,8 @@ from localflavor.us.us_states import STATE_CHOICES
 #from django_countries.fields import CountryField
 #from django_countries.fields import LazyTypedChoiceField
 #from django_countries.widgets import CountrySelectWidget
+from uscis.widgets import UswdsRadioSelect, UswdsCheckbox
+
 
 BLANK_CHOICE = (('', 'Choose one'))
 YES_OR_NO = (BLANK_CHOICE, ('1', 'Yes'), ('0', 'No'))
@@ -51,7 +53,7 @@ MARITAL_STATUS = (BLANK_CHOICE, ('single', 'Single'), ('married_or_remarried', '
 
 class N400Step1(forms.Form):
     a_number = forms.IntegerField(label="Your nine-digit A-number", help_text="Your A-number is the eight- or nine-digit number on your Permanent Resident Card.", required=False)
-    not_a_minor = forms.ChoiceField(label="Are you at least 18 years old?", choices=YES_OR_NO, widget=forms.RadioSelect, required=False)
+    not_a_minor = forms.ChoiceField(label="Are you at least 18 years old?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, required=False)
     why_eligible = forms.ChoiceField(label="How are you eligible to apply for citizenship?", choices=ELIGIBILITY_OPTIONS, widget=forms.RadioSelect, required=False)
     # @todo: Reinstate that radio button issue.
 
