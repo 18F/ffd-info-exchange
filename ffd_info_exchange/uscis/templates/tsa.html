@@ -7,7 +7,6 @@
 
 {% block content %}
   {% load floppyforms %}
-  {% if wizard.steps.prev %}<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>{% endif %}
 
   {% if hed %}<h1 class="headline-text">{{ hed }}</h1>{% endif %}
 
@@ -31,7 +30,6 @@
       {{ field }}
 
     {% endfor %}
-    {% include 'includes/navigation.html' %}
   </form>
 
 {% endblock %}
