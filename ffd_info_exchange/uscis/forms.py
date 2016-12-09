@@ -151,11 +151,10 @@ class N400Step7(forms.Form):
 
 
 class AdditionalServices(forms.Form):
-    # In practice, we don't need to store this information. Revisit once the
-    # templates are individually customizable.
-    #
-    # @todo: Fix checkbox rendering.
-    name_change_opt_in = forms.BooleanField(widget=forms.CheckboxInput, label='Would you like to apply to legally change your name?', required=False)
+    # If we take a click-individual-buttons-and-return approach, we don't need
+    # to store this information. If we take the click-checkboxes-and-queue-them
+    # -up approach, it may be appropriate to have actual fields here.
+    placeholder = True
 
 
 class NameChange(forms.Form):
