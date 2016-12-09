@@ -119,19 +119,19 @@ class N400Step3(forms.Form):
 
 class N400Step4(forms.Form):
     # Moral character
-    taxes_owe = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Do you owe any overdue local, state, or federal taxes?', required=False)
-    taxes_not_filed = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever not filed any local, state, or federal taxes?', required=False)
-    felony_convicted = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever been convicted of or pled guilty to a felony?', required=False)
-    felony_insanity = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever been found not guilty of a felony by reason of insanity?', required=False)
-    felony_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Within the past seven years, have you been convicted of a felony?', required=False)
-    incarceration_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Within the past five years, have you been released from incarceration?', required=False)
+    taxes_owe = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Do you owe any overdue local, state, or federal taxes?', required=False)
+    taxes_not_filed = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever not filed any local, state, or federal taxes?', required=False)
+    felony_convicted = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever been convicted of or pled guilty to a felony?', required=False)
+    felony_insanity = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever been found not guilty of a felony by reason of insanity?', required=False)
+    felony_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Within the past seven years, have you been convicted of a felony?', required=False)
+    incarceration_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Within the past five years, have you been released from incarceration?', required=False)
     # "Were you ever, in any way, involved with any of the following?"
-    genocide = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Genocide?', required=False)
-    torture = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Torture?', required=False)
-    murder = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Killing, or trying to kill, someone?', required=False)
-    harm = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Badly hurting, or trying to hurt, a person on purpose?', required=False)
-    sexual_assault = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Forcing, or trying to force, someone to have any kind of sexual contact or relations?', required=False)
-    repressing_religion = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Not letting someone practice their religion?', required=False)
+    genocide = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Genocide?', required=False)
+    torture = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Torture?', required=False)
+    murder = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Killing, or trying to kill, someone?', required=False)
+    harm = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Badly hurting, or trying to hurt, a person on purpose?', required=False)
+    sexual_assault = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Forcing, or trying to force, someone to have any kind of sexual contact or relations?', required=False)
+    repressing_religion = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Not letting someone practice their religion?', required=False)
 
 
 class N400Step5(forms.Form):
@@ -166,9 +166,9 @@ class NameChange(forms.Form):
 
 class TSAPreCheck(forms.Form):
     phone_country_code = forms.IntegerField(label="Phone country code", required=False)
-    names_match = forms.ChoiceField(label="Do the names on the identity documents you've already provided match the name on your birth certificate?", choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, help_text="If the names on your identity documents don’t match the name you were given at birth, you’ll need to provide additional documentation.", required=False)
+    names_match = forms.ChoiceField(label="Do the names on the identity documents you've already provided match the name on your birth certificate?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, help_text="If the names on your identity documents don’t match the name you were given at birth, you’ll need to provide additional documentation.", required=False)
     how_many_documents = forms.IntegerField(label="How many documents are you providing to show that the name you’re enrolling under is the same as your current name?", required=False)
-    under_indictment_tsa = forms.ChoiceField(label="Are you under indictment for qualifying crimes outlined by the TSA?", choices=YES_OR_NO_RADIO, help_text="For a list of qualifying crimes, see https://www.tsa.gov/Disqualifying-Offenses-Factors", widget=forms.RadioSelect, required=False)
+    under_indictment_tsa = forms.ChoiceField(label="Are you under indictment for qualifying crimes outlined by the TSA?", choices=YES_OR_NO_RADIO, help_text="For a list of qualifying crimes, see https://www.tsa.gov/Disqualifying-Offenses-Factors", widget=UswdsRadioSelect, required=False)
 
 
 class Passport(forms.Form):
