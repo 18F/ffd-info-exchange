@@ -111,8 +111,8 @@ class USCISWizard(SessionWizardView):
         },
         '10': {
             'subhead': 'U.S. passport application (optional)',
-            'intro': (''),
-            'body': ('')
+            'intro': ("You indicated that you’d like to apply for a U.S. passport. By completing the N-400, you’ve already provided most of the information necessary for this application; you’ll need to share just a few additional pieces of information."),
+            'body': ('Additional information:')
         },
     }
 
