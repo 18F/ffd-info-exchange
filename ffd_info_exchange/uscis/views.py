@@ -21,10 +21,10 @@ TEMPLATES = {'0': 'n400-default.html',
              '1': 'n400-default.html',
              '2': 'n400-default.html',
              '3': 'n400-default.html',
-             '4': 'n400-default.html',
+             '4': '5-n400.html',
              '5': 'n400-default.html',
-             '6': 'n400-default.html',
-             '7': 'bonus-services.html',
+             '6': 'n400-sign-and-pay.html',
+             '7': 'select-bonus-services.html',
              '8': 'name-change.html',
              '9': 'tsa.html',
              '10': 'passport.html'
@@ -81,13 +81,7 @@ class USCISWizard(SessionWizardView):
         },
         '6': {
             'subhead': '7. Sign and pay',
-            'intro': ('I verify that all of the information I’ve included in '
-                      'my application is true and correct, to the best of my '
-                      'knowledge. In addition, I verify that:'),
-            'body': ('* I can read and understand English and completed every question myself, OR I worked with an approved translator to complete this application.'
-                     '* I’ve provided all the requested evidence to support my application.',
-                     '* I’ve enclosed my biometrics fee and processing fee.')
-            # @todo: Consider adding signature-in-place functionality for
+            # @todo: If time allows, add signature-in-place functionality for
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"
         },
@@ -96,18 +90,16 @@ class USCISWizard(SessionWizardView):
             'intro': ("Based on the information you provided, you’re eligible "
                       "to legally change your name and apply for Global Entry/"
                       "TSA PreCheck and a U.S. passport."),
-            'body': ('If your applications for a name change, Global Entry/TSA '
-                     'PreCheck, and/or a U.S. passport are approved, the '
-                     'granting agencies will contact you directly.')
         },
         '8': {
             'subhead': 'Name change (optional)',
             'intro': ("You indicated that you’d like to legally change your "
-                      'name. Please provide your new name in the fields below.'),
+                      'name. Please provide your desired new name in the fields '
+                      'below.'),
             'body': ('Once your Application for Naturalization is approved, '
-                     'your name-change request will be processed. If your '
+                     'your name change request will be processed. If your '
                      'Application for Naturalization is not approved, your '
-                     'name-change request will not be granted.')
+                     'name change request will not be granted.')
         },
         '9': {
             'subhead': 'Global Entry/TSA PreCheck application (optional)',

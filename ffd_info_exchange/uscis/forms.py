@@ -146,23 +146,21 @@ class N400Step6(forms.Form):
 
 class N400Step7(forms.Form):
     # Sign and pay
-    dummy_question = True
-    # @maybe: Add "signature" fields.
+    signature_applicant = forms.CharField(label="Applicant's signature", required=True)
+    signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)
 
 
-# @todo: Add a verification-and-confirmation screen before this.
 class AdditionalServices(forms.Form):
-    # In practice, we don't need to store this information. Revisit once the
-    # templates are individually customizable.
-    #
-    # @todo: Fix checkbox rendering.
-    name_change_opt_in = forms.BooleanField(widget=forms.CheckboxInput, label='Would you like to apply to legally change your name?', required=False)
+    # If we take a click-individual-buttons-and-return approach, we don't need
+    # to store this information. If we take the click-checkboxes-and-queue-them
+    # -up approach, it may be appropriate to have actual fields here.
+    placeholder = True
 
 
 class NameChange(forms.Form):
-    desired_last_name = forms.CharField(label="Last name (family name)", required=False)
     desired_first_name = forms.CharField(label="First name (given name)", required=False)
     desired_middle_name = forms.CharField(label="Middle name (if applicable)", required=False)
+    desired_last_name = forms.CharField(label="Last name (family name)", required=False)
 
 
 class TSAPreCheck(forms.Form):
