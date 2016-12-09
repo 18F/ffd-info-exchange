@@ -54,7 +54,7 @@ MARITAL_STATUS = (BLANK_CHOICE, ('single', 'Single'), ('married_or_remarried', '
 class N400Step1(forms.Form):
     a_number = forms.IntegerField(label="Your nine-digit A-number", help_text="Your A-number is the eight- or nine-digit number on your Permanent Resident Card.", required=False)
     not_a_minor = forms.ChoiceField(label="Are you at least 18 years old?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, required=False)
-    why_eligible = forms.ChoiceField(label="How are you eligible to apply for citizenship?", choices=ELIGIBILITY_OPTIONS, widget=forms.RadioSelect, required=False)
+    why_eligible = forms.ChoiceField(label="How are you eligible to apply for citizenship?", choices=ELIGIBILITY_OPTIONS, widget=UswdsRadioSelect, required=False)
     # @todo: Reinstate that radio button issue.
 
 
@@ -76,8 +76,8 @@ class N400Step2(forms.Form):
     # @todo: Adjust the display of the above so they're reasonable.
     weight = forms.IntegerField(label="Weight in pounds", required=False)
     # @todo: Fix rendering of these checkboxes.
-    eye_color = forms.ChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=forms.CheckboxSelectMultiple, required=False)
-    hair_color = forms.ChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=forms.CheckboxSelectMultiple, required=False)
+    eye_color = forms.ChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
+    hair_color = forms.ChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
     date_of_residency = forms.DateTimeField(label='Date you became a Lawful Permanent Resident (MM/DD/YYYY)', required=False)
     country_of_birth = forms.CharField(label="Country of birth", required=False)
