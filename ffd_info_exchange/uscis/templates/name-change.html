@@ -33,6 +33,9 @@
 
   {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
 
-  {% include 'includes/navigation.html' %}
+  <div class="button_wrapper">
+    <!-- @TODO: Update the VALUE here. -->
+    <button class="usa-button-small" name="wizard_goto_name_change_confirmation" type="submit" value="{{ todo.update.this }}">{% trans "Submit" %}</button>
+  </div>
 
 {% endblock %}
