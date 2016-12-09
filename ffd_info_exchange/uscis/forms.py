@@ -164,4 +164,23 @@ class TSAPreCheck(forms.Form):
 
 
 class Passport(forms.Form):
-    dummy_question = True
+    another_passport = forms.ChoiceField(label="Do you have a passport from another country?", choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, required=False)
+    # @todo: Implement subsequent conditional qs.
+    # From which country or countries do you currently have a passport?
+    # What is the status of your current passport(s)?)
+    travel_departure_date = forms.DateTimeField(label='Consider your upcoming travel plans. On what date (MM/DD/YYYY) do you plan to leave the United States?', help_text="If you do not have any upcoming travel plans, please leave this field blank.", required=False)
+    travel_return_date = forms.DateTimeField(label='On what date (MM/DD/YYYY) do you plan to return?', help_text="If you do not have any upcoming travel plans, please leave this field blank.", required=False)
+    travel_destinations = forms.CharField(label="Which country or countries will you visit?", required=False)
+    emergency_contact_name = forms.CharField(label="Emergency contact's name", required=False)
+    emergency_contact_phone = USPhoneNumberField(label="Emergency contact's phone number", required=False)
+    emergency_contact_address_street = forms.CharField(label="Emergency contact's street number and name", required=False)
+    emergency_contact_address_apt = forms.CharField(label="Emergency contact's apartment or floor number (if applicable)", required=False)
+    emergency_contact_address_city = forms.CharField(label="Emergency contact's city", required=False)
+    emergency_contact_address_state = forms.ChoiceField(choices=STATES, label="Emergency contact's state", required=False)
+    # @maybe: Refactor as a USStateSelect. Also, allow non-U.S. answers.
+    emergency_contact_address_zip = USZipCodeField(label="Emergency contact's ZIP code", required=False)
+    # @maybe: Refactor these as CountryField()s.
+    # Docs: https://pypi.python.org/pypi/django-countries#countryselectwidget
+    emergency_contact_address_country = forms.CharField(label="Emergency contact's country, if outside the U.S.", required=False)
+    emergency_contact_email = forms.EmailField(label="Emergency contact's email address", required=False)
+    emergency_contact_relationship = forms.CharField(label="Emergency contact's relationship", required=False)
