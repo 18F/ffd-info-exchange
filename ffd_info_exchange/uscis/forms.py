@@ -55,7 +55,6 @@ class N400Step1(forms.Form):
     a_number = forms.IntegerField(label="Your nine-digit A-number", help_text="Your A-number is the eight- or nine-digit number on your Permanent Resident Card.", required=False)
     not_a_minor = forms.ChoiceField(label="Are you at least 18 years old?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, required=False)
     why_eligible = forms.ChoiceField(label="How are you eligible to apply for citizenship?", choices=ELIGIBILITY_OPTIONS, widget=UswdsRadioSelect, required=False)
-    # @todo: Reinstate that radio button issue.
 
 
 class N400Step2(forms.Form):
