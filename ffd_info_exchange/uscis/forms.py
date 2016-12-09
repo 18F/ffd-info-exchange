@@ -74,7 +74,6 @@ class N400Step2(forms.Form):
     height_pt2 = forms.IntegerField(label="Height, inches", required=False)
     # @todo: Adjust the display of the above so they're reasonable.
     weight = forms.IntegerField(label="Weight in pounds", required=False)
-    # @todo: Fix rendering of these checkboxes.
     eye_color = forms.ChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
     hair_color = forms.ChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
