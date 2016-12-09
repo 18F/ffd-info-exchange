@@ -14,8 +14,6 @@
   {% if subhead %}<h2 class="subhead-text">{{ subhead }}</h2>{% endif %}
   {% if intro %}<p class="intro-text">{{ intro }}</p>{% endif %}
 
-  {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
-
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
     {{ wizard.management_form }}
@@ -31,7 +29,10 @@
       {{ field }}
 
     {% endfor %}
-    {% include 'includes/navigation.html' %}
   </form>
+
+  {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
+
+  {% include 'includes/navigation.html' %}
 
 {% endblock %}

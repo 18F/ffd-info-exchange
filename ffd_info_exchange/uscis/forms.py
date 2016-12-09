@@ -158,9 +158,9 @@ class AdditionalServices(forms.Form):
 
 
 class NameChange(forms.Form):
-    desired_last_name = forms.CharField(label="Last name (family name)", required=False)
     desired_first_name = forms.CharField(label="First name (given name)", required=False)
     desired_middle_name = forms.CharField(label="Middle name (if applicable)", required=False)
+    desired_last_name = forms.CharField(label="Last name (family name)", required=False)
 
 
 class TSAPreCheck(forms.Form):
