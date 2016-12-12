@@ -74,8 +74,8 @@ class N400Step2(forms.Form):
     height_pt2 = forms.IntegerField(label="Height, inches", required=False)
     # @todo: Adjust the display of the above so they're reasonable.
     weight = forms.IntegerField(label="Weight in pounds", required=False)
-    eye_color = forms.ChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
-    hair_color = forms.ChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
+    eye_color = forms.MultipleChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
+    hair_color = forms.MultipleChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
     date_of_residency = forms.DateTimeField(label='Date you became a Lawful Permanent Resident (MM/DD/YYYY)', required=False)
     country_of_birth = forms.CharField(label="Country of birth", required=False)
