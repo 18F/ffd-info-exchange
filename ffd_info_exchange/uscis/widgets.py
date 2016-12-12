@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.html import format_html
 
+
 class LabelInputSiblingRenderer():
     def render(self, name=None, value=None, attrs=None):
         # This is mostly just a copy-paste of our superclass method, it
