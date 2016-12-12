@@ -14,6 +14,16 @@
   {% if subhead %}<h2 class="subhead-text">{{ subhead }}</h2>{% endif %}
   {% if intro %}<p class="intro-text">{{ intro }}</p>{% endif %}
 
+  <p class="body-text">
+    I verify that all of the information I’ve included in my application is true and correct, to the best of my knowledge. In addition, I verify that:
+
+    <ul>
+      <li>I can read and understand English and completed every question myself, <strong>or</strong> I worked with an approved translator to complete this application.</li>
+      <li>I’ve provided all the requested evidence to support my application.</li>
+      <li>I’ve enclosed my biometrics fee and processing fee.</li>
+    </ul>
+  </p>
+
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
     {{ wizard.management_form }}
@@ -29,13 +39,7 @@
       {{ field }}
 
     {% endfor %}
+    {% include 'includes/navigation.html' %}
   </form>
-
-  {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
-
-  <div class="button_wrapper">
-    <!-- @TODO: Update the VALUE here. -->
-    <button class="usa-button-small" name="wizard_goto_name_change_confirmation" type="submit" value="{{ todo.update.this }}">{% trans "Submit" %}</button>
-  </div>
 
 {% endblock %}

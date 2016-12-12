@@ -14,7 +14,16 @@
   {% if subhead %}<h2 class="subhead-text">{{ subhead }}</h2>{% endif %}
   {% if intro %}<p class="intro-text">{{ intro }}</p>{% endif %}
 
-  {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
+  <p class="body-text">
+    <ul>
+      <li>Your birth certificate</li>
+      <li>Your Permanent Resident Card (green card)</li>
+      <li>Your driver’s license</li>
+      <li>Your most recent tax return</li>
+      <li>Two identical photographs (color, passport-style)</li>
+      <li>If you’re married: a copy of your marriage certificate</li>
+    </ul>
+  </p>
 
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
