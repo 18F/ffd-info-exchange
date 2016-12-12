@@ -6,7 +6,7 @@ form [type="submit"], form [type="submit"] {
 }
 
 label {
-  max-width: 40rem;
+  max-width: 45rem;
 }
 
 .usa-banner-inner {
@@ -38,6 +38,27 @@ label {
 
 .usa-nav-secondary-links a {
   color: #FFFFFF;
+}
+
+.usa-form-large > ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.usa-form-large > label {
+  margin: 4.5rem 0 1.5rem;
+}
+
+.usa-form-large > ul > li {
+  margin-left: 28px;
+  margin-bottom: 0;
+}
+
+.usa-form-large > ul > li > label {
+  text-indent: -26px;
+  margin-top: 1rem;
 }
 
 /* Other CSS */
@@ -75,7 +96,7 @@ label {
 .tooltip {
   display: inline-block;
   position: absolute;
-  margin-top: 3rem;
+  margin-top: 4.5rem;
   margin-left: 5px;
 }
 .tooltip:hover .tooltip-text {
@@ -147,6 +168,5 @@ a:visited.usa-label {
 .intro-text, .body-text {
   line-height: 1.4;
   margin-bottom: 0rem;
-  margin-top: .75rem;
   width: 60%;
 }

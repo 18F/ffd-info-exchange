@@ -5,6 +5,8 @@ from localflavor.us.us_states import STATE_CHOICES
 #from django_countries.fields import CountryField
 #from django_countries.fields import LazyTypedChoiceField
 #from django_countries.widgets import CountrySelectWidget
+from uscis.widgets import UswdsRadioSelect, UswdsCheckbox
+
 
 BLANK_CHOICE = (('', 'Choose one'))
 YES_OR_NO = (BLANK_CHOICE, ('1', 'Yes'), ('0', 'No'))
@@ -51,9 +53,8 @@ MARITAL_STATUS = (BLANK_CHOICE, ('single', 'Single'), ('married_or_remarried', '
 
 class N400Step1(forms.Form):
     a_number = forms.IntegerField(label="Your nine-digit A-number", help_text="Your A-number is the eight- or nine-digit number on your Permanent Resident Card.", required=False)
-    not_a_minor = forms.ChoiceField(label="Are you at least 18 years old?", choices=YES_OR_NO, widget=forms.RadioSelect, required=False)
-    why_eligible = forms.ChoiceField(label="How are you eligible to apply for citizenship?", choices=ELIGIBILITY_OPTIONS, widget=forms.RadioSelect, required=False)
-    # @todo: Reinstate that radio button issue.
+    not_a_minor = forms.ChoiceField(label="Are you at least 18 years old?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, required=False)
+    why_eligible = forms.ChoiceField(label="How are you eligible to apply for citizenship?", choices=ELIGIBILITY_OPTIONS, widget=UswdsRadioSelect, required=False)
 
 
 class N400Step2(forms.Form):
@@ -73,9 +74,8 @@ class N400Step2(forms.Form):
     height_pt2 = forms.IntegerField(label="Height, inches", required=False)
     # @todo: Adjust the display of the above so they're reasonable.
     weight = forms.IntegerField(label="Weight in pounds", required=False)
-    # @todo: Fix rendering of these checkboxes.
-    eye_color = forms.ChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=forms.CheckboxSelectMultiple, required=False)
-    hair_color = forms.ChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=forms.CheckboxSelectMultiple, required=False)
+    eye_color = forms.ChoiceField(label="Eye color", choices=EYE_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
+    hair_color = forms.ChoiceField(label="Hair color", choices=HAIR_COLOR_CHOICES, widget=UswdsCheckbox, required=False)
     date_of_birth = forms.DateTimeField(label='Date of birth (MM/DD/YYYY)', required=False)
     date_of_residency = forms.DateTimeField(label='Date you became a Lawful Permanent Resident (MM/DD/YYYY)', required=False)
     country_of_birth = forms.CharField(label="Country of birth", required=False)
@@ -118,19 +118,19 @@ class N400Step3(forms.Form):
 
 class N400Step4(forms.Form):
     # Moral character
-    taxes_owe = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Do you owe any overdue local, state, or federal taxes?', required=False)
-    taxes_not_filed = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever not filed any local, state, or federal taxes?', required=False)
-    felony_convicted = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever been convicted of or pled guilty to a felony?', required=False)
-    felony_insanity = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Have you ever been found not guilty of a felony by reason of insanity?', required=False)
-    felony_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Within the past seven years, have you been convicted of a felony?', required=False)
-    incarceration_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Within the past five years, have you been released from incarceration?', required=False)
+    taxes_owe = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Do you owe any overdue local, state, or federal taxes?', required=False)
+    taxes_not_filed = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever not filed any local, state, or federal taxes?', required=False)
+    felony_convicted = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever been convicted of or pled guilty to a felony?', required=False)
+    felony_insanity = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever been found not guilty of a felony by reason of insanity?', required=False)
+    felony_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Within the past seven years, have you been convicted of a felony?', required=False)
+    incarceration_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Within the past five years, have you been released from incarceration?', required=False)
     # "Were you ever, in any way, involved with any of the following?"
-    genocide = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Genocide?', required=False)
-    torture = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Torture?', required=False)
-    murder = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Killing, or trying to kill, someone?', required=False)
-    harm = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Badly hurting, or trying to hurt, a person on purpose?', required=False)
-    sexual_assault = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Forcing, or trying to force, someone to have any kind of sexual contact or relations?', required=False)
-    repressing_religion = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, label='Not letting someone practice their religion?', required=False)
+    genocide = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Genocide?', required=False)
+    torture = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Torture?', required=False)
+    murder = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Killing, or trying to kill, someone?', required=False)
+    harm = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Badly hurting, or trying to hurt, a person on purpose?', required=False)
+    sexual_assault = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Forcing, or trying to force, someone to have any kind of sexual contact or relations?', required=False)
+    repressing_religion = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Not letting someone practice their religion?', required=False)
 
 
 class N400Step5(forms.Form):
@@ -165,9 +165,9 @@ class NameChange(forms.Form):
 
 class TSAPreCheck(forms.Form):
     phone_country_code = forms.IntegerField(label="Phone country code", required=False)
-    names_match = forms.ChoiceField(label="Do the names on the identity documents you've already provided match the name on your birth certificate?", choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, help_text="If the names on your identity documents don’t match the name you were given at birth, you’ll need to provide additional documentation.", required=False)
+    names_match = forms.ChoiceField(label="Do the names on the identity documents you've already provided match the name on your birth certificate?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, help_text="If the names on your identity documents don’t match the name you were given at birth, you’ll need to provide additional documentation.", required=False)
     how_many_documents = forms.IntegerField(label="How many documents are you providing to show that the name you’re enrolling under is the same as your current name?", required=False)
-    under_indictment_tsa = forms.ChoiceField(label="Are you under indictment for qualifying crimes outlined by the TSA?", choices=YES_OR_NO_RADIO, help_text="For a list of qualifying crimes, see https://www.tsa.gov/Disqualifying-Offenses-Factors", widget=forms.RadioSelect, required=False)
+    under_indictment_tsa = forms.ChoiceField(label="Are you under indictment for qualifying crimes outlined by the TSA?", choices=YES_OR_NO_RADIO, help_text="For a list of qualifying crimes, see https://www.tsa.gov/Disqualifying-Offenses-Factors", widget=UswdsRadioSelect, required=False)
 
 
 class Passport(forms.Form):
