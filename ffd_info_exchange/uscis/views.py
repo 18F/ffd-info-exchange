@@ -1,4 +1,5 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponseRedirect
 from .forms import *
 from formtools.wizard.views import SessionWizardView
 
@@ -11,10 +12,8 @@ FORMS = [('0', N400Step1),
          ('4', N400Step5),
          ('5', N400Step6),
          ('6', N400Step7),
-         ('7', AdditionalServices),
-         ('8', NameChange),
-         ('9', TSAPreCheck),
-         ('10', Passport),
+#         ('9', TSAPreCheck),
+#         ('10', Passport),
          ]
 
 TEMPLATES = {'0': 'n400-default.html',
@@ -86,16 +85,6 @@ class USCISWizard(SessionWizardView):
             # applicable)"
         },
         # @todo: As part of #130, refactor these into separate forms entirely.
-        '8': {
-            'subhead': 'Name change (optional)',
-            'intro': ("You indicated that you’d like to legally change your "
-                      'name. Please provide your desired new name in the fields '
-                      'below.'),
-            'body': ('Once your Application for Naturalization is approved, '
-                     'your name change request will be processed. If your '
-                     'Application for Naturalization is not approved, your '
-                     'name change request will not be granted.')
-        },
         '9': {
             'subhead': 'Global Entry/TSA PreCheck application (optional)',
             'intro': ('You indicated that you’d like to apply for Global Entry/'
@@ -130,3 +119,23 @@ class USCISWizard(SessionWizardView):
         if step in self.content:
             context.update(self.content[step])
         return context
+
+
+def select_bonus_services(request):
+    return render(request, 'select-bonus-services.html')
+
+
+def get_name_change_form(request):
+    if request.method == 'POST':
+        form = NameChange(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/confirm-name-change-application/')
+
+    else:
+        form = NameChange()
+
+    return render(request, 'name-change.html', {'form': form})
+
+
+def confirm_name_change_application(request):
+    return render(request, 'confirmation-name-change.html')

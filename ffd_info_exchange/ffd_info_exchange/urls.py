@@ -32,12 +32,12 @@ from uscis.forms import (N400Step1,
                          N400Step5,
                          N400Step6,
                          N400Step7,
-                         AdditionalServices,
-                         NameChange,
-                         TSAPreCheck,
-                         #Passport,
                          )
-from uscis.views import USCISWizard
+from uscis.views import (USCISWizard,
+                         select_bonus_services,
+                         get_name_change_form,
+                         confirm_name_change_application,
+                         )
 
 urlpatterns = [
     url(r'^fafsa/$', FAFSAWizard.as_view([FAFSAApplicationForm1,
@@ -56,9 +56,8 @@ urlpatterns = [
                                     N400Step5,
                                     N400Step6,
                                     N400Step7,
-                                    AdditionalServices,
-                                    NameChange,
-                                    TSAPreCheck,
-                                    #Passport
                                     ])),
+    url(r'^select-bonus-services', select_bonus_services, name='bonus-services'),
+    url(r'^name-change', get_name_change_form, name='name-change'),
+    url(r'^confirm-name-change-application', confirm_name_change_application, name='confirm-name-change'),
 ]
