@@ -150,13 +150,6 @@ class N400Step7(forms.Form):
     signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)
 
 
-class AdditionalServices(forms.Form):
-    # If we take a click-individual-buttons-and-return approach, we don't need
-    # to store this information. If we take the click-checkboxes-and-queue-them
-    # -up approach, it may be appropriate to have actual fields here.
-    placeholder = True
-
-
 class NameChange(forms.Form):
     desired_first_name = forms.CharField(label="First name (given name)", required=False)
     desired_middle_name = forms.CharField(label="Middle name (if applicable)", required=False)

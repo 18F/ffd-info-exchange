@@ -85,12 +85,7 @@ class USCISWizard(SessionWizardView):
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"
         },
-        '7': {
-            'subhead': '8. Optional recommended services',
-            'intro': ("Based on the information you provided, you’re eligible "
-                      "to legally change your name and apply for Global Entry/"
-                      "TSA PreCheck and a U.S. passport."),
-        },
+        # @todo: As part of #130, refactor these into separate forms entirely.
         '8': {
             'subhead': 'Name change (optional)',
             'intro': ("You indicated that you’d like to legally change your "
@@ -119,7 +114,7 @@ class USCISWizard(SessionWizardView):
     def done(self, form_list, **kwargs):
         form_data = self.process_form_data(form_list)
 
-        return render_to_response('confirmation.html', {'form_data': form_data})
+        return render_to_response('select-bonus-services.html', {'form_data': form_data})
 
     def process_form_data(self, form_list):
         form_data = [form.cleaned_data for form in form_list]
