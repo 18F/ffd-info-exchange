@@ -151,12 +151,13 @@ class N400Step7(forms.Form):
 
 
 class NameChange(forms.Form):
+    # @TODO: Get this loading properly! These fields don't currently render.
     desired_first_name = forms.CharField(label="First name (given name)", required=False)
     desired_middle_name = forms.CharField(label="Middle name (if applicable)", required=False)
     desired_last_name = forms.CharField(label="Last name (family name)", required=False)
 
 
-class TSAPreCheck(forms.Form):
+class GlobalEntry(forms.Form):
     phone_country_code = forms.IntegerField(label="Phone country code", required=False)
     names_match = forms.ChoiceField(label="Do the names on the identity documents you've already provided match the name on your birth certificate?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, help_text="If the names on your identity documents don’t match the name you were given at birth, you’ll need to provide additional documentation.", required=False)
     how_many_documents = forms.IntegerField(label="How many documents are you providing to show that the name you’re enrolling under is the same as your current name?", required=False)

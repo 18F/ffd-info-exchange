@@ -113,12 +113,10 @@ def get_name_change_form(request):
     return render(request, 'name-change.html', {'form': form})
 
 
-# @todo: Standardize on Global Entry. 'Precheck' is confusing and this is the
-# only form where I've been using the agency's name instead of the service's.
 def get_global_entry_form(request):
-    form = TSAPreCheck()
+    form = GlobalEntry()
 
-    return render(request, 'tsa.html', {'form': form})
+    return render(request, 'global-entry.html', {'form': form})
 
 
 def get_passport_form(request):
@@ -133,7 +131,7 @@ def confirm_name_change_application(request):
 
 
 def confirm_global_entry_application(request):
-    return render(request, 'confirmation-tsa.html')
+    return render(request, 'confirmation-global-entry.html')
 
 
 def confirm_passport_application(request):
