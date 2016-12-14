@@ -165,7 +165,7 @@ class GlobalEntry(forms.Form):
 
 
 class Passport(forms.Form):
-    another_passport = forms.ChoiceField(label="Do you have a passport from another country?", choices=YES_OR_NO_RADIO, widget=forms.RadioSelect, required=False)
+    another_passport = forms.ChoiceField(label="Do you have a passport from another country?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, required=False)
     # @todo: Implement subsequent conditional qs.
     # From which country or countries do you currently have a passport?
     # What is the status of your current passport(s)?)

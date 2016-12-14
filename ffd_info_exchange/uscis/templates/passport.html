@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block head %}
-{% endblock %}
-
 {% block content %}
-  {% load floppyforms %}
 
   <h2 class="subhead-text">
     U.S. passport application (optional)
@@ -14,14 +10,13 @@
     You indicated that you’d like to apply for a U.S. passport. By completing the N-400, you’ve already provided most of the information necessary for this application; you’ll need to share just a few additional pieces of information.
   </p>
 
-  <p class="body-text">
+  <h3>
     Additional information:
-  </p>
+  </h3>
 
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
-    {{ wizard.management_form }}
-    {% for field in wizard.form %}
+    {% for field in form %}
       {{ field.label_tag }}
       {% if field.help_text %}
         <div class="tooltip">
