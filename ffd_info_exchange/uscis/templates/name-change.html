@@ -7,10 +7,8 @@
 
 {% block content %}
   {% load floppyforms %}
-  {% if hed %}<h1 class="headline-text">{{ hed }}</h1>{% endif %}
-
-  {% if subhead %}<h2 class="subhead-text">{{ subhead }}</h2>{% endif %}
-  {% if intro %}<p class="intro-text">{{ intro }}</p>{% endif %}
+  <h2 class="subhead-text">Name change (optional)</h2>
+  <p class="intro-text">You indicated that you’d like to legally change your name. Please provide your desired new name in the fields below.</p>
 
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
@@ -29,11 +27,14 @@
     {% endfor %}
   </form>
 
-  {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
+  <p class="body-text">
+    Once your Application for Naturalization is approved, your name change request will be processed. If your Application for Naturalization is not approved, your name change request will not be granted.
+  </p>
 
   <div class="button_wrapper">
-    <!-- @TODO: Update the VALUE here. -->
-    <button class="usa-button-small" name="wizard_goto_name_change_confirmation" type="submit" value="{{ todo.update.this }}">{% trans "Submit" %}</button>
+    <a href="{% url 'bonus-services' %}" class="usa-button usa-button-small">Cancel</a>
+    <!-- Currently a link, not a genuine submit button. -->
+    <a href="{% url 'confirm-name-change' %}" class="usa-button usa-button-small">Submit</a>
   </div>
 
 {% endblock %}
