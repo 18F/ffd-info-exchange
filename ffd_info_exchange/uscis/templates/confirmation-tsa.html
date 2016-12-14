@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
-<!-- @todo: Check whether there's a better way to do this than hardcoding. -->
 {% block content %}
-<h1 class="headline-text">Thank you for applying for Global Entry/PreCheck!</h1>
-<p>Thank you for applying for PreCheck — your confirmation number is <strong>003XRT</strong>.</p>
-<p>Once your Application for Naturalization is approved, the TSA will review your application for PreCheck. A TSA representative will contact you directly regarding the status of your application; processing usually takes four to six weeks.</p>
-<p>The TSA will keep your information on file for one year, after which they’ll securely remove it from their records.</p>
-<p>Questions? Contact the TSA call center at 1-866-512-4543.</p>
-{% endblock %}
+    <h1 class="headline-text">Thank you for applying for Global Entry/PreCheck!</h1>
 
-<!-- @todo: Add Cancel button and Next button. -->
+    <p>Thank you for applying for PreCheck — your confirmation number is <strong>003XRT</strong>.</p>
+    <p>Once your Application for Naturalization is approved, the TSA will review your application for PreCheck. A TSA representative will contact you directly regarding the status of your application; processing usually takes four to six weeks.</p>
+    <p>The TSA will keep your information on file for one year, after which they’ll securely remove it from their records.</p>
+    <p>Questions? Contact the TSA call center at 1-866-512-4543.</p>
+
+    <div class="button_wrapper">
+        <a href="{% url 'bonus-services' %}" class="usa-button usa-button-small">Continue</a>
+    </div>
+
+{% endblock %}

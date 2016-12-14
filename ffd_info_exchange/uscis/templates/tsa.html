@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block head %}
-{{ wizard.form.media }}
-{% endblock %}
-
 {% block content %}
   {% load floppyforms %}
 
-  {% if hed %}<h1 class="headline-text">{{ hed }}</h1>{% endif %}
+  <h2 class="subhead-text">
+    Global Entry/TSA PreCheck application (optional)
+  </h2>
+  <p class="intro-text">
+    You indicated that you’d like to apply for Global Entry/TSA PreCheck. You’ve already provided most of the information necessary for this application; you’ll need to answer just a few additional questions.
+  </p>
 
-  {% if subhead %}<h2 class="subhead-text">{{ subhead }}</h2>{% endif %}
-  {% if intro %}<p class="intro-text">{{ intro }}</p>{% endif %}
-
-  {% if body %}<p class="body-text">{{ body }}</p>{% endif %}
+  <p class="body-text">
+    Additional information:
+  </p>
 
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
@@ -31,5 +31,11 @@
 
     {% endfor %}
   </form>
+
+  <div class="button_wrapper">
+    <a href="{% url 'bonus-services' %}" class="usa-button usa-button-small">Cancel</a>
+    <!-- Currently a link, not a genuine submit button. -->
+    <a href="{% url 'confirm-global-entry' %}" class="usa-button usa-button-small">Submit</a>
+  </div>
 
 {% endblock %}

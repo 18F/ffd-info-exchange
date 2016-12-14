@@ -5,6 +5,7 @@ from formtools.wizard.views import SessionWizardView
 
 # Working off of http://django-formtools.readthedocs.io/en/latest/wizard.html#wizard-template-for-each-form.
 # Note: these currently get cranky when given non-numeric keys. :(
+# @todo: Update name to clarify that these are N400 steps, which != all forms.
 FORMS = [('0', N400Step1),
          ('1', N400Step2),
          ('2', N400Step3),
@@ -12,7 +13,6 @@ FORMS = [('0', N400Step1),
          ('4', N400Step5),
          ('5', N400Step6),
          ('6', N400Step7),
-#         ('9', TSAPreCheck),
          ]
 
 TEMPLATES = {'0': 'n400-default.html',
@@ -22,10 +22,6 @@ TEMPLATES = {'0': 'n400-default.html',
              '4': '5-n400.html',
              '5': 'n400-default.html',
              '6': 'n400-sign-and-pay.html',
-             '7': 'select-bonus-services.html',
-             '8': 'name-change.html',
-             '9': 'tsa.html',
-             '10': 'passport.html'
              }
 
 
@@ -83,15 +79,6 @@ class USCISWizard(SessionWizardView):
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"
         },
-        # @todo: As part of #130, refactor these into separate forms entirely.
-        '9': {
-            'subhead': 'Global Entry/TSA PreCheck application (optional)',
-            'intro': ('You indicated that you’d like to apply for Global Entry/'
-                      'TSA PreCheck. You’ve already provided most of the '
-                      'information necessary for this application; you’ll need '
-                      'to answer just a few additional questions.'),
-            'body': ('Additional information:')
-        },
     }
 
     def done(self, form_list, **kwargs):
@@ -126,6 +113,14 @@ def get_name_change_form(request):
     return render(request, 'name-change.html', {'form': form})
 
 
+# @todo: Standardize on Global Entry. 'Precheck' is confusing and this is the
+# only form where I've been using the agency's name instead of the service's.
+def get_global_entry_form(request):
+    form = TSAPreCheck()
+
+    return render(request, 'tsa.html', {'form': form})
+
+
 def get_passport_form(request):
     form = Passport()
 
@@ -135,6 +130,10 @@ def get_passport_form(request):
 # @todo: DRY this out.
 def confirm_name_change_application(request):
     return render(request, 'confirmation-name-change.html')
+
+
+def confirm_global_entry_application(request):
+    return render(request, 'confirmation-tsa.html')
 
 
 def confirm_passport_application(request):
