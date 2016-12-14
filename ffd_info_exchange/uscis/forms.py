@@ -150,20 +150,14 @@ class N400Step7(forms.Form):
     signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)
 
 
-class AdditionalServices(forms.Form):
-    # If we take a click-individual-buttons-and-return approach, we don't need
-    # to store this information. If we take the click-checkboxes-and-queue-them
-    # -up approach, it may be appropriate to have actual fields here.
-    placeholder = True
-
-
 class NameChange(forms.Form):
+    # @TODO: Get this loading properly! These fields don't currently render.
     desired_first_name = forms.CharField(label="First name (given name)", required=False)
     desired_middle_name = forms.CharField(label="Middle name (if applicable)", required=False)
     desired_last_name = forms.CharField(label="Last name (family name)", required=False)
 
 
-class TSAPreCheck(forms.Form):
+class GlobalEntry(forms.Form):
     phone_country_code = forms.IntegerField(label="Phone country code", required=False)
     names_match = forms.ChoiceField(label="Do the names on the identity documents you've already provided match the name on your birth certificate?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, help_text="If the names on your identity documents don’t match the name you were given at birth, you’ll need to provide additional documentation.", required=False)
     how_many_documents = forms.IntegerField(label="How many documents are you providing to show that the name you’re enrolling under is the same as your current name?", required=False)
@@ -171,4 +165,23 @@ class TSAPreCheck(forms.Form):
 
 
 class Passport(forms.Form):
-    dummy_question = True
+    another_passport = forms.ChoiceField(label="Do you have a passport from another country?", choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, required=False)
+    # @todo: Implement subsequent conditional qs.
+    # From which country or countries do you currently have a passport?
+    # What is the status of your current passport(s)?)
+    travel_departure_date = forms.DateTimeField(label='Consider your upcoming travel plans. On what date (MM/DD/YYYY) do you plan to leave the United States?', help_text="If you do not have any upcoming travel plans, please leave this field blank.", required=False)
+    travel_return_date = forms.DateTimeField(label='On what date (MM/DD/YYYY) do you plan to return?', help_text="If you do not have any upcoming travel plans, please leave this field blank.", required=False)
+    travel_destinations = forms.CharField(label="Which country or countries will you visit?", required=False)
+    emergency_contact_name = forms.CharField(label="Emergency contact's name", required=False)
+    emergency_contact_phone = USPhoneNumberField(label="Emergency contact's phone number", required=False)
+    emergency_contact_address_street = forms.CharField(label="Emergency contact's street number and name", required=False)
+    emergency_contact_address_apt = forms.CharField(label="Emergency contact's apartment or floor number (if applicable)", required=False)
+    emergency_contact_address_city = forms.CharField(label="Emergency contact's city", required=False)
+    emergency_contact_address_state = forms.ChoiceField(choices=STATES, label="Emergency contact's state", required=False)
+    # @maybe: Refactor as a USStateSelect. Also, allow non-U.S. answers.
+    emergency_contact_address_zip = USZipCodeField(label="Emergency contact's ZIP code", required=False)
+    # @maybe: Refactor these as CountryField()s.
+    # Docs: https://pypi.python.org/pypi/django-countries#countryselectwidget
+    emergency_contact_address_country = forms.CharField(label="Emergency contact's country, if outside the U.S.", required=False)
+    emergency_contact_email = forms.EmailField(label="Emergency contact's email address", required=False)
+    emergency_contact_relationship = forms.CharField(label="Emergency contact's relationship", required=False)

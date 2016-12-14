@@ -2,8 +2,17 @@
 {% load i18n %}
 
 {% block content %}
-  <h2 class="subhead-text">Name change (optional)</h2>
-  <p class="intro-text">You indicated that you’d like to legally change your name. Please provide your desired new name in the fields below.</p>
+
+  <h2 class="subhead-text">
+    Global Entry/TSA PreCheck application (optional)
+  </h2>
+  <p class="intro-text">
+    You indicated that you’d like to apply for Global Entry/TSA PreCheck. You’ve already provided most of the information necessary for this application; you’ll need to answer just a few additional questions.
+  </p>
+
+  <h3>
+    Additional information:
+  </h3>
 
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
@@ -21,14 +30,10 @@
     {% endfor %}
   </form>
 
-  <p class="body-text">
-    Once your Application for Naturalization is approved, your name change request will be processed. If your Application for Naturalization is not approved, your name change request will not be granted.
-  </p>
-
   <div class="button_wrapper">
     <a href="{% url 'bonus-services' %}" class="usa-button usa-button-small">Cancel</a>
     <!-- Currently a link, not a genuine submit button. -->
-    <a href="{% url 'confirm-name-change' %}" class="usa-button usa-button-small">Submit</a>
+    <a href="{% url 'confirm-global-entry' %}" class="usa-button usa-button-small">Submit</a>
   </div>
 
 {% endblock %}

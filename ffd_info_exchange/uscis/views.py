@@ -1,9 +1,11 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponseRedirect
 from .forms import *
 from formtools.wizard.views import SessionWizardView
 
 # Working off of http://django-formtools.readthedocs.io/en/latest/wizard.html#wizard-template-for-each-form.
 # Note: these currently get cranky when given non-numeric keys. :(
+# @todo: Update name to clarify that these are N400 steps, which != all forms.
 FORMS = [('0', N400Step1),
          ('1', N400Step2),
          ('2', N400Step3),
@@ -11,10 +13,6 @@ FORMS = [('0', N400Step1),
          ('4', N400Step5),
          ('5', N400Step6),
          ('6', N400Step7),
-         ('7', AdditionalServices),
-         ('8', NameChange),
-         ('9', TSAPreCheck),
-         ('10', Passport),
          ]
 
 TEMPLATES = {'0': 'n400-default.html',
@@ -24,10 +22,6 @@ TEMPLATES = {'0': 'n400-default.html',
              '4': '5-n400.html',
              '5': 'n400-default.html',
              '6': 'n400-sign-and-pay.html',
-             '7': 'select-bonus-services.html',
-             '8': 'name-change.html',
-             '9': 'tsa.html',
-             '10': 'passport.html'
              }
 
 
@@ -85,41 +79,12 @@ class USCISWizard(SessionWizardView):
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"
         },
-        '7': {
-            'subhead': '8. Optional recommended services',
-            'intro': ("Based on the information you provided, you’re eligible "
-                      "to legally change your name and apply for Global Entry/"
-                      "TSA PreCheck and a U.S. passport."),
-        },
-        '8': {
-            'subhead': 'Name change (optional)',
-            'intro': ("You indicated that you’d like to legally change your "
-                      'name. Please provide your desired new name in the fields '
-                      'below.'),
-            'body': ('Once your Application for Naturalization is approved, '
-                     'your name change request will be processed. If your '
-                     'Application for Naturalization is not approved, your '
-                     'name change request will not be granted.')
-        },
-        '9': {
-            'subhead': 'Global Entry/TSA PreCheck application (optional)',
-            'intro': ('You indicated that you’d like to apply for Global Entry/'
-                      'TSA PreCheck. You’ve already provided most of the '
-                      'information necessary for this application; you’ll need '
-                      'to answer just a few additional questions.'),
-            'body': ('Additional information:')
-        },
-        '10': {
-            'subhead': 'U.S. passport application (optional)',
-            'intro': (''),
-            'body': ('')
-        },
     }
 
     def done(self, form_list, **kwargs):
         form_data = self.process_form_data(form_list)
 
-        return render_to_response('confirmation.html', {'form_data': form_data})
+        return render_to_response('select-bonus-services.html', {'form_data': form_data})
 
     def process_form_data(self, form_list):
         form_data = [form.cleaned_data for form in form_list]
@@ -135,3 +100,39 @@ class USCISWizard(SessionWizardView):
         if step in self.content:
             context.update(self.content[step])
         return context
+
+
+def select_bonus_services(request):
+    return render(request, 'select-bonus-services.html')
+
+
+# @todo: DRY this out.
+def get_name_change_form(request):
+    form = NameChange()
+
+    return render(request, 'name-change.html', {'form': form})
+
+
+def get_global_entry_form(request):
+    form = GlobalEntry()
+
+    return render(request, 'global-entry.html', {'form': form})
+
+
+def get_passport_form(request):
+    form = Passport()
+
+    return render(request, 'passport.html', {'form': form})
+
+
+# @todo: DRY this out.
+def confirm_name_change_application(request):
+    return render(request, 'confirmation-name-change.html')
+
+
+def confirm_global_entry_application(request):
+    return render(request, 'confirmation-global-entry.html')
+
+
+def confirm_passport_application(request):
+    return render(request, 'confirmation-passport.html')
