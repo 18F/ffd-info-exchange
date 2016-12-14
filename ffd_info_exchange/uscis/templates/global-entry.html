@@ -2,7 +2,6 @@
 {% load i18n %}
 
 {% block content %}
-  {% load floppyforms %}
 
   <h2 class="subhead-text">
     Global Entry/TSA PreCheck application (optional)
@@ -11,14 +10,13 @@
     You indicated that you’d like to apply for Global Entry/TSA PreCheck. You’ve already provided most of the information necessary for this application; you’ll need to answer just a few additional questions.
   </p>
 
-  <p class="body-text">
+  <h3>
     Additional information:
-  </p>
+  </h3>
 
   <form method="POST" action="/" class="usa-form-large">
     {% csrf_token %}
-    {{ wizard.management_form }}
-    {% for field in wizard.form %}
+    {% for field in form %}
       {{ field.label_tag }}
       {% if field.help_text %}
         <div class="tooltip">
