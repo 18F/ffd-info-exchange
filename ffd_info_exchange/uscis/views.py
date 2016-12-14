@@ -119,14 +119,9 @@ def select_bonus_services(request):
     return render(request, 'select-bonus-services.html')
 
 
+# @todo: DRY this out.
 def get_name_change_form(request):
-    if request.method == 'POST':
-        form = NameChange(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/confirm-name-change-application/')
-
-    else:
-        form = NameChange()
+    form = NameChange()
 
     return render(request, 'name-change.html', {'form': form})
 
