@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="headline-text">Thank you for applying for a U.S. passport!</h1>
-<p>Thank you for applying for a U.S. passport — your confirmation number is <strong>XC451N</strong>.</p>
-<p>Once your Application for Naturalization is approved, the Department of State will review your passport application. A representative from the Department of State will contact you directly regarding the status of your application; processing usually takes four to six weeks.</p>
-<p>The Department of State will keep your information on file for two years, after which they will securely remove it from their records.</p>
-<p>Questions? Call the Department of State’s service center at 1-800-975-3000.</p>
-{% endblock %}
+    <h1 class="headline-text">Thank you for applying for a U.S. passport!</h1>
 
-<!-- @todo: Add Next button to return to... the bonus services screen? -->
+    <p>Thank you for applying for a U.S. passport — your confirmation number is <strong>XC451N</strong>.</p>
+    <p>Once your Application for Naturalization is approved, the Department of State will review your passport application. A representative from the Department of State will contact you directly regarding the status of your application; processing usually takes four to six weeks.</p>
+    <p>The Department of State will keep your information on file for two years, after which they will securely remove it from their records.</p>
+    <p>Questions? Call the Department of State’s service center at 1-800-975-3000.</p>
+
+    <div class="button_wrapper">
+        <a href="{% url 'bonus-services' %}" class="usa-button usa-button-small">Continue</a>
+    </div>
+
+{% endblock %}

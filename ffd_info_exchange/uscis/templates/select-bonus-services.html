@@ -2,11 +2,9 @@
 {% load i18n %}
 
 {% block head %}
-{{ wizard.form.media }}
 {% endblock %}
 
 {% block content %}
-  {% load floppyforms %}
 
   {% if hed %}<h1 class="headline-text">{{ hed }}</h1>{% endif %}
 
@@ -19,46 +17,26 @@
     Would you like to apply to legally <strong>change your name</strong>?<br />
     <em>You've currently answered 95% of the necessary questions.</em>
     <div class="button_wrapper">
-        <!-- @TODO: Update the VALUE here. -->
-        <button class="usa-button-small" name="wizard_goto_name_change" type="submit" value="{{ wizard.steps.prev }}">{% trans "Apply" %}</button>
+      <a href="{% url 'name-change' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
     </div>
   </p>
   <p class="body-text">
     Would you like to <strong>apply for Global Entry/TSA PreCheck</strong>?<br />
     <em>You've currently answered 70% of the necessary questions.</em>
     <div class="button_wrapper">
-        <!-- @TODO: Update the VALUE here. -->
-        <button class="usa-button-small" name="wizard_goto_tsa" type="submit" value="{{ wizard.steps.prev }}">{% trans "Apply" %}</button>
+      <a href="{% url 'bonus-services' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
     </div>
   </p>
   <p class="body-text">
     Would you like to <strong>apply for a U.S. passport</strong>?<br />
     <em>You've currently answered 85% of the necessary questions.</em>
     <div class="button_wrapper">
-        <!-- @TODO: Update the VALUE here. -->
-        <button class="usa-button-small" name="wizard_goto_passport" type="submit" value="{{ wizard.steps.prev }}">{% trans "Apply" %}</button>
+      <a href="{% url 'passport' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
     </div>
   </p>
 
   <p class="body-text">
     If these additional applications are approved, the granting agencies will contact you directly.
   </p>
-
-  <form method="POST" action="/" class="usa-form-large">
-    {% csrf_token %}
-    {{ wizard.management_form }}
-    {% for field in wizard.form %}
-      {{ field.label_tag }}
-      {% if field.help_text %}
-        <div class="tooltip">
-          <p class="tooltip-text" id="tooltip-text-labels">{{ field.help_text }}</p>
-          <a class="usa-label label-beta" href="#" aria-describedby="tooltip-text-labels">?</a>
-        </div>
-      {% endif %}
-      {{ field.errors }}
-      {{ field }}
-
-    {% endfor %}
-  </form>
 
 {% endblock %}

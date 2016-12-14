@@ -36,7 +36,9 @@ from uscis.forms import (N400Step1,
 from uscis.views import (USCISWizard,
                          select_bonus_services,
                          get_name_change_form,
+                         get_passport_form,
                          confirm_name_change_application,
+                         confirm_passport_application,
                          )
 
 urlpatterns = [
@@ -60,4 +62,6 @@ urlpatterns = [
     url(r'^select-bonus-services', select_bonus_services, name='bonus-services'),
     url(r'^name-change', get_name_change_form, name='name-change'),
     url(r'^confirm-name-change-application', confirm_name_change_application, name='confirm-name-change'),
+    url(r'^passport', get_passport_form, name='passport'),
+    url(r'^confirm-passport', confirm_passport_application, name='confirm-passport'),
 ]

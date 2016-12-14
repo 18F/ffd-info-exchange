@@ -13,7 +13,6 @@ FORMS = [('0', N400Step1),
          ('5', N400Step6),
          ('6', N400Step7),
 #         ('9', TSAPreCheck),
-#         ('10', Passport),
          ]
 
 TEMPLATES = {'0': 'n400-default.html',
@@ -93,11 +92,6 @@ class USCISWizard(SessionWizardView):
                       'to answer just a few additional questions.'),
             'body': ('Additional information:')
         },
-        '10': {
-            'subhead': 'U.S. passport application (optional)',
-            'intro': ("You indicated that you’d like to apply for a U.S. passport. By completing the N-400, you’ve already provided most of the information necessary for this application; you’ll need to share just a few additional pieces of information."),
-            'body': ('Additional information:')
-        },
     }
 
     def done(self, form_list, **kwargs):
@@ -137,5 +131,16 @@ def get_name_change_form(request):
     return render(request, 'name-change.html', {'form': form})
 
 
+def get_passport_form(request):
+    form = Passport()
+
+    return render(request, 'passport.html', {'form': form})
+
+
+# @todo: DRY this out.
 def confirm_name_change_application(request):
     return render(request, 'confirmation-name-change.html')
+
+
+def confirm_passport_application(request):
+    return render(request, 'confirmation-passport.html')
