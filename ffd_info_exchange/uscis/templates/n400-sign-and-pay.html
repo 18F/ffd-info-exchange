@@ -16,7 +16,9 @@
 
   <p class="body-text">
     I verify that all of the information I’ve included in my application is true and correct, to the best of my knowledge. In addition, I verify that:
+  </p>
 
+  <p class="body-text">
     <ul>
       <li>I can read and understand English and completed every question myself, <strong>or</strong> I worked with an approved translator to complete this application.</li>
       <li>I’ve provided all the requested evidence to support my application.</li>
@@ -24,7 +26,8 @@
     </ul>
   </p>
 
-  <form method="POST" action="/" class="usa-form-large">
+
+  <form method="POST" action="/" class="usa-form-large signature-form">
     {% csrf_token %}
     {{ wizard.management_form }}
     {% for field in wizard.form %}
