@@ -81,8 +81,11 @@ class N400Step2(forms.Form):
     country_of_birth = forms.CharField(label="Country of birth", required=False)
     city_of_birth = forms.CharField(label="City of birth", required=False)
     country_of_citizenship = forms.CharField(label="Country of citizenship or nationality", required=False)
+
+
+class N400Step3(forms.Form):
     # "Current residential address"
-    residential_address_street = forms.CharField(label="Street number and name", required=False)
+    residential_address_street = forms.CharField(label="Current residential address street number and name", required=False)
     residential_address_apt = forms.CharField(label="Apartment or floor number (if applicable)", required=False)
     residential_address_city = forms.CharField(label="City", required=False)
     residential_address_state = forms.ChoiceField(choices=STATES, label="State", required=False)
@@ -111,12 +114,12 @@ class N400Step2(forms.Form):
     employer_name = forms.CharField(label="Name of your current employer or school", required=False)
 
 
-class N400Step3(forms.Form):
+class N400Step4(forms.Form):
     # @todo: Fill in the remaining questions.
     marital_status = forms.ChoiceField(choices=MARITAL_STATUS, label="Current marital status", required=False)
 
 
-class N400Step4(forms.Form):
+class N400Step5(forms.Form):
     # Moral character
     taxes_owe = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Do you owe any overdue local, state, or federal taxes?', required=False)
     taxes_not_filed = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever not filed any local, state, or federal taxes?', required=False)
@@ -133,18 +136,18 @@ class N400Step4(forms.Form):
     repressing_religion = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Not letting someone practice their religion?', required=False)
 
 
-class N400Step5(forms.Form):
+class N400Step6(forms.Form):
     # Evidence for your application
     add_custom_template = True
 
 
-class N400Step6(forms.Form):
+class N400Step7(forms.Form):
     # Review your application
     add_custom_template = True
     # In the forthcoming template, include a representation of the data thus far.
 
 
-class N400Step7(forms.Form):
+class N400Step8(forms.Form):
     # Sign and pay
     signature_applicant = forms.CharField(label="Applicant's signature", required=True)
     signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)

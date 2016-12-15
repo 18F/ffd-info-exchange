@@ -13,15 +13,18 @@ FORMS = [('0', N400Step1),
          ('4', N400Step5),
          ('5', N400Step6),
          ('6', N400Step7),
+         ('7', N400Step8),
          ]
 
+# @todo: DRY.
 TEMPLATES = {'0': 'n400-default.html',
              '1': 'n400-default.html',
-             '2': 'n400-default.html',
+             '2': 'n400-default.html',  # @todo: Break out the form fields into groupings.
              '3': 'n400-default.html',
-             '4': '5-n400.html',
-             '5': 'n400-default.html',
-             '6': 'n400-sign-and-pay.html',
+             '4': 'n400-default.html',
+             '5': '5-n400.html',
+             '6': 'n400-default.html',
+             '7': 'n400-sign-and-pay.html',
              }
 
 
@@ -44,18 +47,21 @@ class USCISWizard(SessionWizardView):
                       'yourself.')
         },
         '2': {
-            'subhead': '3. Information about your family',
+            'subhead': '3. Information about you, continued',
+        },
+        '3': {
+            'subhead': '4. Information about your family',
             'intro': ('Share the following information about your family to '
                       'help us better understand your eligibility for '
                       'citizenship.')
         },
-        '3': {
-            'subhead': '4. Moral character',
+        '4': {
+            'subhead': '5. Moral character',
             'intro': ('In this section, we’ll ask you questions related to '
                       'your moral character.')
         },
-        '4': {
-            'subhead': '5. Evidence for your application',
+        '5': {
+            'subhead': '6. Evidence for your application',
             'intro': ('Now that you’ve provided all the required information '
                       'about yourself, please upload scanned copies of the '
                       'following documents: '),
@@ -67,14 +73,14 @@ class USCISWizard(SessionWizardView):
                      '* If you’re married: A copy of your marriage certificate'
                      )
             },
-        '5': {
-            'subhead': '6. Review your application',
+        '6': {
+            'subhead': '7. Review your application',
             'intro': ('Please review your answers and make sure everything is '
                       'correct. If you would rather review your application as '
                       'a PDF, you can download the entire form.')
         },
-        '6': {
-            'subhead': '7. Sign and pay',
+        '7': {
+            'subhead': '8. Sign and pay',
             # @todo: If time allows, add signature-in-place functionality for
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"
