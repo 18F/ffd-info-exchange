@@ -8,32 +8,34 @@
 
   {% if hed %}<h1 class="headline-text">{{ hed }}</h1>{% endif %}
 
-  {% if subhead %}<h2 class="subhead-text">Optional recommended services</h2>{% endif %}
-  {% if intro %}<p class="intro-text">
+  <h2 class="subhead-text">Optional recommended services</h2>
+  <p class="intro-text">
     Based on the information you provided, you’re eligible to legally change your name and apply for Global Entry/TSA PreCheck and a U.S. passport.
-  </p>{% endif %}
-
-  <p class="body-text">
-    Would you like to apply to legally <strong>change your name</strong>?<br />
-    <em>You've currently answered 95% of the necessary questions.</em>
-    <div class="button_wrapper">
-      <a href="{% url 'name-change' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
-    </div>
   </p>
-  <p class="body-text">
-    Would you like to <strong>apply for Global Entry/TSA PreCheck</strong>?<br />
-    <em>You've currently answered 70% of the necessary questions.</em>
-    <div class="button_wrapper">
-      <a href="{% url 'global-entry' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
-    </div>
-  </p>
-  <p class="body-text">
-    Would you like to <strong>apply for a U.S. passport</strong>?<br />
-    <em>You've currently answered 85% of the necessary questions.</em>
-    <div class="button_wrapper">
-      <a href="{% url 'passport' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
-    </div>
-  </p>
+  
+  <div class="optional-services-block">
+    <p class="body-text">
+      Would you like to apply to legally <strong>change your name</strong>?<br />
+      <em>You've currently answered 95% of the necessary questions.</em>
+      <div class="apply-button">
+        <a href="{% url 'name-change' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
+      </div>
+    </p>
+    <p class="body-text">
+      Would you like to <strong>apply for Global Entry/TSA PreCheck</strong>?<br />
+      <em>You've currently answered 70% of the necessary questions.</em>
+      <div class="apply-button">
+        <a href="{% url 'global-entry' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
+      </div>
+    </p>
+    <p class="body-text">
+      Would you like to <strong>apply for a U.S. passport</strong>?<br />
+      <em>You've currently answered 85% of the necessary questions.</em>
+      <div class="apply-button">
+        <a href="{% url 'passport' %}" class="usa-button usa-button-small">{% trans "Apply" %}</a>
+      </div>
+    </p>
+  </div>
 
   <p class="body-text">
     If these additional applications are approved, the granting agencies will contact you directly.

@@ -9,6 +9,10 @@ label {
   max-width: 45rem;
 }
 
+[type="checkbox"]+label {
+    margin-bottom: 0rem;
+}
+
 .usa-banner-inner {
   padding: 0;
 }
@@ -48,7 +52,7 @@ label {
 }
 
 .usa-form-large > label {
-  margin: 4.5rem 0 1.5rem;
+  margin: 4rem 0 1rem;
 }
 
 .usa-form-large > ul > li {
@@ -63,8 +67,16 @@ label {
 
 /* Other CSS */
 
+.apply-button {
+  margin: 1rem 0 3rem;
+}
+
 .main-content {
   padding: 2rem 1rem 0;
+}
+
+.optional-services-block {
+  margin: 3rem 0;
 }
 
 @media screen and (min-width: 951px) {
@@ -96,15 +108,20 @@ label {
 .tooltip {
   display: inline-block;
   position: absolute;
-  margin-top: 4.5rem;
+  margin-top: 4rem;
   margin-left: 5px;
 }
 .tooltip:hover .tooltip-text {
-  opacity: 1;
+  visibility: visible;
 }
 
 .tooltip-text {
   display: none;
+}
+
+/* for the unique way form fields are presented below a list paragraph */
+.signature-form label:first-of-type {
+  margin-top: 1.5rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -118,10 +135,10 @@ label {
     color: #ffffff;
     display: block;
     font-size: 14px;
-    left: 50%;
+    left: 20px;
     padding: 7px 10px;
     width: 267px;
-    opacity: 0;
+    visibility: hidden;
     position: absolute;
     transition: all 0.1s ease-in-out;
     transition-delay: 0.1s;
