@@ -1,5 +1,4 @@
 from django.shortcuts import render, render_to_response
-from django.http import HttpResponseRedirect
 from .forms import *
 from formtools.wizard.views import SessionWizardView
 
@@ -29,7 +28,7 @@ TEMPLATES = {'0': 'n400-default.html',
 
 
 # @todo: Follow the 'pay_by_credit_card' example when setting up whether they
-# want to pursue more options.
+# want to pursue more options. [#108]
 
 
 class USCISWizard(SessionWizardView):
