@@ -148,7 +148,6 @@ class N400Step7(forms.Form):
 
 
 class NameChange(forms.Form):
-    # @TODO: Get this loading properly! These fields don't currently render.
     desired_first_name = forms.CharField(label="First name (given name)", required=False)
     desired_middle_name = forms.CharField(label="Middle name (if applicable)", required=False)
     desired_last_name = forms.CharField(label="Last name (family name)", required=False)
