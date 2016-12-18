@@ -2,6 +2,11 @@ from django.shortcuts import render, render_to_response
 from .forms import *
 from formtools.wizard.views import SessionWizardView
 
+bonuses_completed = {'name_change': False,
+                     'global_entry': False,
+                     'passport': False,
+                     }
+
 # Working off of http://django-formtools.readthedocs.io/en/latest/wizard.html#wizard-template-for-each-form.
 # Note: these currently get cranky when given non-numeric keys. :(
 # @todo: Update name to clarify that these are N400 steps, which != all forms.
@@ -108,7 +113,7 @@ class USCISWizard(SessionWizardView):
 
 
 def select_bonus_services(request):
-    return render(request, 'select-bonus-services.html')
+    return render(request, 'select-bonus-services.html', {'bonuses_completed': bonuses_completed})
 
 
 # @todo: DRY this out.
@@ -132,12 +137,15 @@ def get_passport_form(request):
 
 # @todo: DRY this out.
 def confirm_name_change_application(request):
+    bonuses_completed['name_change'] = True
     return render(request, 'confirmation-name-change.html')
 
 
 def confirm_global_entry_application(request):
+    bonuses_completed['global_entry'] = True
     return render(request, 'confirmation-global-entry.html')
 
 
 def confirm_passport_application(request):
+    bonuses_completed['passport'] = True
     return render(request, 'confirmation-passport.html')
