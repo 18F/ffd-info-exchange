@@ -143,7 +143,7 @@ class N400Step6(forms.Form):
 
 class N400Step7(forms.Form):
     # Sign and pay
-    signature_applicant = forms.CharField(label="Applicant's signature", required=True)
+    signature_applicant = forms.CharField(label="Applicant's signature", required=False)
     signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)
 
 
