@@ -13,7 +13,6 @@ FORMS = [('0', N400Step1),
          ('4', N400Step5),
          ('5', N400Step6),
          ('6', N400Step7),
-         ('7', N400Step8),
          ]
 
 # @todo: DRY.
@@ -23,8 +22,7 @@ TEMPLATES = {'0': 'n400-default.html',
              '3': 'n400-default.html',
              '4': 'n400-default.html',
              '5': '5-n400.html',
-             '6': 'n400-default.html',
-             '7': 'n400-sign-and-pay.html',
+             '6': 'n400-sign-and-pay.html',
              }
 
 
@@ -74,13 +72,7 @@ class USCISWizard(SessionWizardView):
                      )
             },
         '6': {
-            'subhead': '7. Review your application',
-            'intro': ('Please review your answers and make sure everything is '
-                      'correct. If you would rather review your application as '
-                      'a PDF, you can download the entire form.')
-        },
-        '7': {
-            'subhead': '8. Sign and pay',
+            'subhead': '7. Sign and pay',
             # @todo: If time allows, add signature-in-place functionality for
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"

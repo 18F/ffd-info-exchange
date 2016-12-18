@@ -142,12 +142,6 @@ class N400Step6(forms.Form):
 
 
 class N400Step7(forms.Form):
-    # Review your application
-    add_custom_template = True
-    # In the forthcoming template, include a representation of the data thus far.
-
-
-class N400Step8(forms.Form):
     # Sign and pay
     signature_applicant = forms.CharField(label="Applicant's signature", required=True)
     signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)
