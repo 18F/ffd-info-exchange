@@ -142,19 +142,12 @@ class N400Step6(forms.Form):
 
 
 class N400Step7(forms.Form):
-    # Review your application
-    add_custom_template = True
-    # In the forthcoming template, include a representation of the data thus far.
-
-
-class N400Step8(forms.Form):
     # Sign and pay
-    signature_applicant = forms.CharField(label="Applicant's signature", required=True)
+    signature_applicant = forms.CharField(label="Applicant's signature", required=False)
     signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)
 
 
 class NameChange(forms.Form):
-    # @TODO: Get this loading properly! These fields don't currently render.
     desired_first_name = forms.CharField(label="First name (given name)", required=False)
     desired_middle_name = forms.CharField(label="Middle name (if applicable)", required=False)
     desired_last_name = forms.CharField(label="Last name (family name)", required=False)
