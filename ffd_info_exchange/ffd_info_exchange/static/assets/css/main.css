@@ -119,6 +119,15 @@ label {
   display: none;
 }
 
+.optional-services-block > .body-text {
+  display: inline-block;
+  width: auto;
+}
+
+.optional-services-block > .tooltip {
+  margin-top: 1.7rem;
+}
+
 /* for the unique way form fields are presented below a list paragraph */
 .signature-form label:first-of-type {
   margin-top: 1.5rem;
