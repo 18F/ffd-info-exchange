@@ -128,12 +128,12 @@ class N400Step5(forms.Form):
     felony_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Within the past seven years, have you been convicted of a felony?', required=False)
     incarceration_recent = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Within the past five years, have you been released from incarceration?', required=False)
     # "Were you ever, in any way, involved with any of the following?"
-    genocide = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Genocide?', required=False)
-    torture = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Torture?', required=False)
-    murder = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Killing, or trying to kill, someone?', required=False)
-    harm = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Badly hurting, or trying to hurt, a person on purpose?', required=False)
-    sexual_assault = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Forcing, or trying to force, someone to have any kind of sexual contact or relations?', required=False)
-    repressing_religion = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Not letting someone practice their religion?', required=False)
+    genocide = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever committed genocide?', required=False)
+    torture = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever committed torture?', required=False)
+    murder = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever killed or tried to kill someone?', required=False)
+    harm = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever badly hurt, or tried to hurt, someone on purpose?', required=False)
+    sexual_assault = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever forced, or tried to force, someone to have any kind of sexual contact or relations?', required=False)
+    repressing_religion = forms.ChoiceField(choices=YES_OR_NO_RADIO, widget=UswdsRadioSelect, label='Have you ever prevented someone from practicing their religion?', required=False)
 
 
 class N400Step6(forms.Form):
