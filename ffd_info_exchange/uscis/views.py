@@ -16,7 +16,6 @@ FORMS = [('0', N400Step1),
          ('3', N400Step4),
          ('4', N400Step5),
          ('5', N400Step6),
-         ('6', N400Step7),
          ]
 
 # @todo: DRY.
@@ -25,8 +24,7 @@ TEMPLATES = {'0': 'n400-default.html',
              '2': 'n400-default.html',  # @todo: Break out the form fields into groupings.
              '3': 'n400-default.html',
              '4': 'n400-default.html',
-             '5': '5-n400.html',
-             '6': 'n400-sign-and-pay.html',
+             '5': 'n400-sign-and-pay.html',
              }
 
 
@@ -63,20 +61,7 @@ class USCISWizard(SessionWizardView):
                       'your moral character.')
         },
         '5': {
-            'subhead': '6. Evidence for your application',
-            'intro': ('Now that you’ve provided all the required information '
-                      'about yourself, please upload scanned copies of the '
-                      'following documents: '),
-            'body': ('* Your birth certificate'
-                     '* Your Permanent Resident Card (green card)'
-                     '* Your driver’s license'
-                     '* Your most recent tax return'
-                     '* Two identical photographs (color, passport-style)'
-                     '* If you’re married: A copy of your marriage certificate'
-                     )
-            },
-        '6': {
-            'subhead': '7. Sign and pay',
+            'subhead': '6. Sign and submit',
             # @todo: If time allows, add signature-in-place functionality for
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"

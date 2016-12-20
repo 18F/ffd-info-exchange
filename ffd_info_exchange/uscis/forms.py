@@ -1,6 +1,6 @@
 from django import forms
 from localflavor.us import forms as localflavor
-from localflavor.us.forms import USSocialSecurityNumberField, USZipCodeField, USPhoneNumberField
+from localflavor.us.forms import USZipCodeField, USPhoneNumberField
 from localflavor.us.us_states import STATE_CHOICES
 #from django_countries.fields import CountryField
 #from django_countries.fields import LazyTypedChoiceField
@@ -64,8 +64,8 @@ class N400Step2(forms.Form):
     middle_name = forms.CharField(label="Middle name (if applicable)", required=False)
     other_names = forms.CharField(label="Have you ever used any other names? If so, please list them", help_text="Include nicknames, aliases, and your maiden name, if applicable.", required=False)
     # @todo: Determine whether to add "Would you like to legally change your name?" here or elsewhere.
-    ssn = USSocialSecurityNumberField(label="U.S. Social Security number (if you have one)", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your application for naturalization.", required=False)
-    # @todo: Determine whether that help text ^ is still accurate.
+    # Social Security number changed to charfield for flexibility during user testing.
+    ssn = forms.CharField(label="U.S. Social Security number (if you have one)", help_text="Why do we need this? We collect your Social Security number to verify your identity and protect you against fraud. We don’t store this information once we’ve processed your application for naturalization.", required=False)
     uscis_acct_number = forms.CharField(label="USCIS online account number (if you have one)", required=False)
     # ^ If this were a live app, we'd add validation and more specifics. It
     # isn't, so we won't spend time on that now.
@@ -137,11 +137,6 @@ class N400Step5(forms.Form):
 
 
 class N400Step6(forms.Form):
-    # Evidence for your application
-    add_custom_template = True
-
-
-class N400Step7(forms.Form):
     # Sign and pay
     signature_applicant = forms.CharField(label="Applicant's signature", required=False)
     signature_translator = forms.CharField(label="Translator's signature (if applicable)", required=False)
