@@ -61,7 +61,7 @@ class USCISWizard(SessionWizardView):
                       'your moral character.')
         },
         '5': {
-            'subhead': '6. Sign and pay',
+            'subhead': '6. Sign and submit',
             # @todo: If time allows, add signature-in-place functionality for
             # the "Applicant's signature" and "Translator's signature (if
             # applicable)"
