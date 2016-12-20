@@ -94,15 +94,15 @@ class N400Step3(forms.Form):
     # @maybe: Refactor these as CountryField()s.
     # Docs: https://pypi.python.org/pypi/django-countries#countryselectwidget
     residential_address_country = forms.CharField(label="Country, if outside the U.S.", required=False)
-    dates_of_residence = forms.CharField(label="Dates of residence (ex: from MM/DD/YYYY to present", required=False)
+    # dates_of_residence = forms.CharField(label="Dates of residence (ex: from MM/DD/YYYY to present", required=False)
     # Is your mailing address different than your residential address?
     # or: If you have a different mailing address:
-    mailing_address_street = forms.CharField(label="Mailing address street number and name", required=False)
-    mailing_address_apt = forms.CharField(label="Apartment or floor number (if applicable)", required=False)
-    mailing_address_city = forms.CharField(label="City", required=False)
-    mailing_address_state = forms.ChoiceField(choices=STATES, label="State", required=False)
+    # mailing_address_street = forms.CharField(label="Mailing address street number and name", required=False)
+    # mailing_address_apt = forms.CharField(label="Apartment or floor number (if applicable)", required=False)
+    # mailing_address_city = forms.CharField(label="City", required=False)
+    # mailing_address_state = forms.ChoiceField(choices=STATES, label="State", required=False)
     # @maybe: Refactor as a USStateSelect.
-    mailing_address_zip = USZipCodeField(label="ZIP code", required=False)
+    # mailing_address_zip = USZipCodeField(label="ZIP code", required=False)
 
     email = forms.EmailField(label="Email address", required=False)
     # @todo: Tweak this to allow for non-U.S. phone numbers. Add country code field.
