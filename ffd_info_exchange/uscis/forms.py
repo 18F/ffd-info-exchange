@@ -1,5 +1,4 @@
 from django import forms
-from localflavor.us import forms as localflavor
 from localflavor.us.forms import USZipCodeField, USPhoneNumberField
 from localflavor.us.us_states import STATE_CHOICES
 #from django_countries.fields import CountryField
