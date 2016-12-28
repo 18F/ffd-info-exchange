@@ -10,12 +10,12 @@ bonuses_completed = {'name_change': False,
 # Working off of http://django-formtools.readthedocs.io/en/latest/wizard.html#wizard-template-for-each-form.
 # Note: these currently get cranky when given non-numeric keys. :(
 # @todo: Update name to clarify that these are N400 steps, which != all forms.
-FORMS = [('0', N400Step1),
-         ('1', N400Step2),
-         ('2', N400Step3),
-         ('3', N400Step4),
-         ('4', N400Step5),
-         ('5', N400Step6),
+FORMS = [('0', N400YourEligibility),
+         ('1', N400AboutYou),
+         ('2', N400AboutYouContinued),
+         ('3', N400YourFamily),
+         ('4', N400MoralCharacter),
+         ('5', N400SignAndSubmit),
          ]
 
 # @todo: DRY.
