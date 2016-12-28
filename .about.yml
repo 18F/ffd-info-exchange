@@ -20,8 +20,8 @@ licenses:
     url: https://github.com/18F/about_yml/blob/master/LICENSE.md
 tasks: https://github.com/18F/ffd-info-exchange/issues#boards
 contact:
-- url: mailto:ffd-info-exchange@gsa.gov #replace once we have a google group
-  text: Federal Front Door Information Exchange #replace once we have a google group
+- url: mailto:ffd-info-exchange@gsa.gov
+  text: Federal Front Door Information Exchange
 team:
-- github: 18F/ffd-info-x
+- github: @18F/ffd-info-x
   role: team
