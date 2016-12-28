@@ -8,20 +8,20 @@ owner_type: project
 status: active
 stage: alpha
 testable: true
-description: The Federal Front Door: Information Exchange project is a twelve-week discovery engagement (ending 12/23/16) meant to uncover possibilities for information sharing between federal agencies as a way of providing better public access to government services.
+description: The Federal Front Door: Information Exchange project is a twelve-week discovery engagement (ending 12/31/16) meant to uncover possibilities for information sharing between federal agencies as a way of providing better public access to government services.
 impact: >
  Our goal is to learn more about end users' and agencies' attitudes toward federal information sharing, ultimately identifying opportunity areas for further research. 
+ Our wiki (https://github.com/18F/ffd-info-exchange/wiki) summarizes our progress to date.
 stack:
 - Django
-- Postgres
 licenses:
   .about.yml:
     name: CC0
     url: https://github.com/18F/about_yml/blob/master/LICENSE.md
 tasks: https://github.com/18F/ffd-info-exchange/issues#boards
 contact:
-- url: mailto:michael.antiporta@gsa.gov #replace once we have a google group
-  text: Porta Antiporta #replace once we have a google group
+- url: mailto:ffd-info-exchange@gsa.gov #replace once we have a google group
+  text: Federal Front Door Information Exchange #replace once we have a google group
 team:
 - github: 18F/ffd-info-x
   role: team
